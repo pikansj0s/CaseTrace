@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaseTrace — Automatisk tidsregistrering til Windows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a08;--off-white:#f5f3ee;--warm-white:#faf9f6;
+  --amber:#d97706;--amber-l:#fbbf24;--amber-d:#92400e;
+  --stone:#78716c;--stone-l:#a8a29e;--stone-ll:#e7e5e0;
+  --border:#ddd9d0;--card:#ffffff;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Instrument Serif',serif;
+  --sans:'Manrope',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--warm-white);color:var(--black);font-family:var(--sans);font-size:18px;line-height:1.7;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9999}
+
+/* ── Header ── */
+header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(250,249,246,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--mono);font-size:1rem;font-weight:600;letter-spacing:-.02em;color:var(--black);display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo-mark{width:22px;height:22px;background:var(--black);border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.logo-mark::before{content:'';position:absolute;bottom:3px;left:3px;right:3px;height:2px;background:var(--amber);border-radius:1px;animation:pb 2.4s ease-in-out infinite}
+.logo-mark::after{content:'';position:absolute;bottom:3px;left:3px;width:40%;height:2px;background:var(--amber-l);border-radius:1px;animation:pb 2.4s .4s ease-in-out infinite}
+@keyframes pb{0%,100%{opacity:1}50%{opacity:.3}}
+.header-right{display:flex;align-items:center;gap:.5rem}
+nav{display:flex;align-items:center;gap:.2rem}
+nav a{font-family:var(--mono);font-size:.88rem;font-weight:500;color:var(--stone);text-decoration:none;padding:.45rem 1rem;border-radius:6px;letter-spacing:.02em;transition:color .15s,background .15s}
+nav a:hover{color:var(--black);background:var(--stone-ll)}
+.btn-cta-nav{font-family:var(--mono);font-size:.88rem;font-weight:600;background:var(--black);color:var(--off-white)!important;padding:.55rem 1.4rem!important;border-radius:6px;letter-spacing:.03em;transition:background .15s,transform .1s!important}
+.btn-cta-nav:hover{background:#1c1c19!important;transform:translateY(-1px)}
+.lang-toggle{display:flex;align-items:center;background:var(--stone-ll);border-radius:7px;padding:2px;border:1px solid var(--border)}
+.lang-btn{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.06em;padding:.35rem .75rem;border-radius:5px;border:none;background:transparent;color:var(--stone);cursor:pointer;transition:background .15s,color .15s;line-height:1}
+.lang-btn.active{background:#fff;color:var(--black);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;color:var(--black);font-size:1.2rem;line-height:1}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 5rem;max-width:1280px;margin:0 auto;gap:5rem}
+.hero-eyebrow{font-family:var(--mono);font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--amber)}
+h1{font-family:var(--serif);font-size:clamp(2rem,4vw,4.8rem);font-weight:400;line-height:1.08;letter-spacing:-.02em;color:var(--black);margin-bottom:1.8rem}
+h1 em{font-style:italic;color:var(--amber)}
+.hero-sub{font-size:1.15rem;color:var(--stone);line-height:1.75;max-width:480px;margin-bottom:1.8rem;font-weight:500}
+
+/* ── Use-case chips ── */
+.use-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.chip{font-family:var(--mono);font-size:.8rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1rem;border-radius:6px;background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.2);color:var(--amber-d)}
+
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--black);color:var(--off-white);text-decoration:none;font-family:var(--mono);font-size:.95rem;font-weight:600;padding:1rem 2.2rem;border-radius:8px;display:inline-flex;align-items:center;gap:.6rem;letter-spacing:.03em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.18);cursor:pointer;border:none}
+.btn-primary:hover{background:#1c1c19;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.btn-ghost{background:transparent;color:var(--stone);text-decoration:none;font-family:var(--mono);font-size:.95rem;font-weight:500;padding:1rem 1.8rem;border-radius:8px;border:1px solid var(--border);display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.02em;transition:border-color .15s,color .15s,background .15s}
+.btn-ghost:hover{border-color:var(--stone-l);color:var(--black);background:var(--stone-ll)}
+.hero-trust{display:flex;align-items:center;gap:.8rem;margin-top:2rem;font-family:var(--mono);font-size:.82rem;color:var(--stone-l);letter-spacing:.04em;flex-wrap:wrap}
+.trust-divider{width:1px;height:14px;background:var(--border)}
+.install-note{margin-top:.7rem;font-family:var(--mono);font-size:.78rem;color:var(--stone-l);letter-spacing:.03em;display:flex;align-items:center;gap:.4rem}
+.install-note::before{content:'i';color:var(--amber);font-style:italic;font-weight:700}
+
+/* ── Folder tree mockup ── */
+.hero-right{position:relative}
+.terminal{background:var(--black);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.08);position:relative}
+.terminal::before{content:'';position:absolute;inset:-1px;border-radius:17px;background:linear-gradient(135deg,rgba(217,119,6,.3),transparent 50%);pointer-events:none;z-index:0}
+.term-bar{display:flex;align-items:center;gap:.5rem;padding:.9rem 1.2rem;background:#111110;border-bottom:1px solid rgba(255,255,255,.06);position:relative;z-index:1}
+.term-dot{width:10px;height:10px;border-radius:50%}
+.term-dot.r{background:#ff5f57}.term-dot.y{background:#febc2e}.term-dot.g{background:#28c840}
+.term-label{font-family:var(--mono);font-size:.78rem;color:rgba(255,255,255,.25);margin:0 auto;letter-spacing:.06em}
+.term-body{padding:1.2rem 1.5rem;position:relative;z-index:1}
+.term-clock{font-family:var(--mono);font-size:2.8rem;font-weight:600;color:#fff;letter-spacing:-.04em;line-height:1;margin-bottom:.3rem}
+.term-clock-label{font-family:var(--mono);font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+
+/* Folder tree */
+.ftree{list-style:none;font-family:var(--mono);font-size:.82rem}
+.ftree li{padding:.38rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:grid;grid-template-columns:1fr auto auto;gap:.5rem 1rem;align-items:center}
+.ftree li:last-child{border-bottom:none}
+.fname{color:rgba(255,255,255,.8);display:flex;align-items:center;gap:.4rem;overflow:hidden}
+.fname.folder{color:var(--amber-l)}
+.fname.sub{padding-left:1.2rem;color:rgba(255,255,255,.6)}
+.fname.sub2{padding-left:2.4rem;color:rgba(255,255,255,.45)}
+.ftime{color:rgba(255,255,255,.5);text-align:right;white-space:nowrap}
+.ftime.hot{color:var(--amber)}
+.fbar{height:2px;border-radius:1px;background:rgba(255,255,255,.06);position:relative;width:50px}
+.fbar::before{content:'';position:absolute;top:0;left:0;bottom:0;border-radius:1px;background:var(--amber)}
+.fb80::before{width:80%}.fb55::before{width:55%}.fb30::before{width:30%}.fb15::before{width:15%}.fb70::before{width:70%}.fb40::before{width:40%}
+.fbud{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.25);white-space:nowrap}
+.fbud.warn{color:#f59e0b}
+.term-status{display:flex;align-items:center;gap:.5rem;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);font-family:var(--mono);font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:.06em}
+.sdot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:sp 2s ease-in-out infinite;flex-shrink:0}
+@keyframes sp{0%,100%{opacity:1}50%{opacity:.4}}
+.float-tag{position:absolute;right:-1.5rem;top:1.5rem;background:var(--amber);color:var(--black);font-family:var(--mono);font-size:.72rem;font-weight:600;padding:.4rem .9rem;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 16px rgba(217,119,6,.4);animation:flt 3s ease-in-out infinite;white-space:nowrap}
+.float-tag2{position:absolute;left:-1.5rem;bottom:2.5rem;background:var(--card);color:var(--black);font-family:var(--mono);font-size:.72rem;font-weight:600;padding:.5rem 1rem;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.12),0 0 0 1px var(--border);letter-spacing:.04em;animation:flt 3s 1.2s ease-in-out infinite;white-space:nowrap}
+.float-tag2 span{color:var(--amber)}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ── Marquee ── */
+.marquee-strip{background:var(--black);color:rgba(255,255,255,.3);font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;padding:.9rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;gap:3rem;animation:mq 24s linear infinite}
+.marquee-inner b{color:var(--amber);font-weight:600}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── Folder pitch section ── */
+.folder-section{padding:7rem 3rem;max-width:1080px;margin:0 auto}
+.folder-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem}
+.folder-explain{display:flex;flex-direction:column;gap:1.5rem}
+.folder-step{display:flex;gap:1.2rem;align-items:flex-start}
+.folder-step-icon{width:40px;height:40px;background:var(--black);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.folder-step-title{font-family:var(--mono);font-size:.95rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
+.folder-step-text{font-size:1rem;color:var(--stone);line-height:1.7}
+.folder-demo{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.07)}
+.fd-bar{background:var(--black);padding:.7rem 1rem;display:flex;align-items:center;gap:.5rem}
+.fd-bar-title{font-family:var(--mono);font-size:.75rem;color:rgba(255,255,255,.3);margin:0 auto;letter-spacing:.06em}
+.fd-body{padding:1rem}
+.fd-header{display:grid;grid-template-columns:1fr auto auto auto;gap:.3rem 1rem;padding:.4rem .5rem;font-family:var(--mono);font-size:.72rem;color:var(--stone-l);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.fd-row{display:grid;grid-template-columns:1fr auto auto auto;gap:.3rem 1rem;align-items:center;padding:.55rem .5rem;border-bottom:1px solid rgba(0,0,0,.04);transition:background .15s}
+.fd-row:hover{background:var(--warm-white)}
+.fd-row:last-child{border-bottom:none}
+.fd-name{font-family:var(--mono);font-size:.82rem;color:var(--black);display:flex;align-items:center;gap:.4rem}
+.fd-name.sub{padding-left:1rem;color:var(--stone)}
+.fd-name.sub2{padding-left:2rem;color:var(--stone-l)}
+.fd-time{font-family:var(--mono);font-size:.82rem;color:var(--stone);text-align:right;white-space:nowrap}
+.fd-time.act{color:var(--amber);font-weight:600}
+.fd-bud{font-family:var(--mono);font-size:.72rem;color:var(--stone-l);white-space:nowrap;text-align:right}
+.fd-bud.warn{color:#f59e0b}
+.fd-bud.ok{color:#22c55e}
+.fd-prog{width:40px;height:3px;border-radius:2px;background:var(--stone-ll)}
+.fd-prog-fill{height:100%;border-radius:2px;background:var(--amber)}
+
+/* ── Who it's for ── */
+.who-section{background:var(--black);padding:6rem 3rem}
+.who-inner{max-width:1080px;margin:0 auto}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.who-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:2rem;transition:border-color .2s,background .2s}
+.who-card:hover{border-color:rgba(217,119,6,.3);background:rgba(217,119,6,.05)}
+.who-icon{width:40px;height:40px;background:rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;color:var(--amber)}
+.who-title{font-family:var(--mono);font-size:1rem;font-weight:600;color:#fff;margin-bottom:.6rem;letter-spacing:.01em}
+.who-text{font-size:.95rem;color:rgba(255,255,255,.45);line-height:1.75}
+.who-tag{display:inline-block;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:4px;margin-top:.8rem;background:rgba(217,119,6,.12);color:var(--amber)}
+
+/* ── Law ── */
+.law-section{background:var(--off-white);padding:6rem 3rem;border-top:1px solid var(--border)}
+.law-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.sec-tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.sec-tag::before{content:'';display:block;width:16px;height:1px;background:var(--amber)}
+.law-title{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;line-height:1.1;color:var(--black);margin-bottom:1.2rem}
+.law-title em{font-style:italic;color:var(--amber)}
+.law-desc{font-size:1rem;color:var(--stone);line-height:1.8;margin-bottom:2rem;font-weight:500}
+.law-pills{display:flex;flex-direction:column;gap:1rem}
+.law-pill{display:flex;align-items:flex-start;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.6rem;transition:border-color .2s,box-shadow .2s}
+.law-pill:hover{border-color:rgba(217,119,6,.3);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.lpi{width:36px;height:36px;background:rgba(217,119,6,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amber)}
+.lpt{font-family:var(--mono);font-size:.88rem;font-weight:600;color:var(--black);margin-bottom:.3rem}
+.lpd{font-size:.92rem;color:var(--stone);line-height:1.65}
+
+/* ── Features ── */
+.features-section{padding:7rem 3rem;max-width:1080px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.section-label::before{content:'';display:block;width:16px;height:1px;background:var(--amber)}
+.section-title{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:400;line-height:1.08;letter-spacing:-.02em;color:var(--black);margin-bottom:1rem}
+.section-sub{font-size:1.05rem;color:var(--stone);max-width:500px;line-height:1.75;font-weight:500}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:4rem;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.feat{background:var(--card);padding:2.5rem;transition:background .2s}
+.feat:hover{background:var(--warm-white)}
+.feat-num{font-family:var(--mono);font-size:.72rem;color:var(--stone-l);letter-spacing:.1em;margin-bottom:1.5rem}
+.feat-icon{width:38px;height:38px;background:rgba(217,119,6,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;color:var(--amber)}
+.feat h3{font-family:var(--mono);font-size:.95rem;font-weight:600;color:var(--black);margin-bottom:.8rem}
+.feat p{font-size:.92rem;color:var(--stone);line-height:1.7}
+.feat-tag{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:4px;margin-top:1rem;background:rgba(217,119,6,.08);color:var(--amber-d)}
+
+/* ── Testimonials ── */
+.testi-section{background:var(--off-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:7rem 3rem}
+.testi-inner{max-width:1080px;margin:0 auto}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.testi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.2rem;transition:box-shadow .2s,transform .2s}
+.testi:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);transform:translateY(-2px)}
+.testi-quote{font-family:var(--serif);font-size:1.1rem;color:var(--black);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.8rem;border-top:1px solid var(--border);padding-top:1.2rem}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--off-white);flex-shrink:0}
+.testi-name{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--black)}
+.testi-role{font-family:var(--mono);font-size:.75rem;color:var(--stone-l);letter-spacing:.04em}
+
+/* ── Pricing ── */
+.pricing-section{padding:7rem 3rem;max-width:1080px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:4rem;max-width:720px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:box-shadow .2s,transform .2s}
+.price-card.hot{background:var(--black);border-color:transparent;box-shadow:0 0 0 1px rgba(217,119,6,.3),0 24px 60px rgba(0,0,0,.18)}
+.price-card:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.1)}
+.price-card.hot:hover{box-shadow:0 0 0 1px rgba(217,119,6,.5),0 24px 60px rgba(0,0,0,.25)}
+.price-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--stone-l);margin-bottom:1.5rem}
+.price-card.hot .price-eyebrow{color:var(--amber)}
+.price-name{font-family:var(--serif);font-size:2rem;color:var(--black);margin-bottom:1rem}
+.price-card.hot .price-name{color:#fff}
+.price-amount{display:flex;align-items:baseline;gap:.3rem;margin:1.5rem 0}
+.price-num{font-family:var(--mono);font-size:3.8rem;font-weight:600;letter-spacing:-.04em;color:var(--black);line-height:1}
+.price-card.hot .price-num{color:#fff}
+.price-period{font-family:var(--mono);font-size:.85rem;color:var(--stone-l)}
+.price-card.hot .price-period{color:rgba(255,255,255,.4)}
+.price-desc{font-size:.95rem;color:var(--stone);margin-bottom:2rem;line-height:1.65}
+.price-card.hot .price-desc{color:rgba(255,255,255,.5)}
+.price-feats{list-style:none;margin-bottom:2.5rem}
+.price-feats li{font-family:var(--mono);font-size:.85rem;color:var(--stone);padding:.6rem 0;border-bottom:1px solid var(--stone-ll);display:flex;align-items:center;gap:.7rem}
+.price-feats li:last-child{border-bottom:none}
+.price-card.hot .price-feats li{color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)}
+.price-feats li::before{content:'✓';font-size:.78rem;color:var(--amber);font-weight:700;flex-shrink:0}
+.price-feats li.dim{color:var(--stone-l)}
+.price-feats li.dim::before{content:'—';color:var(--stone-ll)}
+.btn-buy{width:100%;background:var(--black);color:var(--off-white);border:none;font-family:var(--mono);font-size:.92rem;font-weight:600;padding:1rem;border-radius:10px;cursor:pointer;letter-spacing:.04em;transition:background .15s,transform .12s;text-align:center;text-decoration:none;display:block}
+.btn-buy:hover{background:#1c1c19;transform:translateY(-1px)}
+.btn-buy.light{background:var(--amber);color:var(--black)}
+.btn-buy.light:hover{background:var(--amber-l)}
+.price-guarantee{text-align:center;margin-top:2rem;font-family:var(--mono);font-size:.78rem;color:var(--stone-l);letter-spacing:.04em}
+
+/* ── CTA ── */
+.cta-section{background:var(--black);padding:8rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(217,119,6,.12),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-inner{position:relative;z-index:1}
+.cta-eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem}
+.cta-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,5rem);color:#fff;line-height:1.06;font-weight:400;margin-bottom:1.5rem}
+.cta-title em{font-style:italic;color:var(--amber)}
+.cta-sub{font-size:1.1rem;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 2.5rem;line-height:1.75;font-weight:500}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.btn-cta-large{background:var(--amber);color:var(--black);text-decoration:none;font-family:var(--mono);font-size:.95rem;font-weight:700;padding:1.1rem 2.4rem;border-radius:10px;display:inline-flex;align-items:center;gap:.6rem;letter-spacing:.04em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 0 40px rgba(217,119,6,.35);cursor:pointer;border:none}
+.btn-cta-large:hover{background:var(--amber-l);transform:translateY(-2px);box-shadow:0 0 60px rgba(251,191,36,.4)}
+.btn-cta-ghost{background:transparent;color:rgba(255,255,255,.6);text-decoration:none;font-family:var(--mono);font-size:.92rem;font-weight:500;padding:1.1rem 2rem;border-radius:10px;border:1px solid rgba(255,255,255,.12);display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.03em;transition:border-color .15s,color .15s}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.cta-note{font-family:var(--mono);font-size:.78rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
+.cta-size{font-family:var(--mono);font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.04em;margin-top:.8rem;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.cta-size::before{content:"i";font-style:italic;font-weight:700;color:var(--amber)}
+.dl-status{margin-top:1.2rem;font-family:var(--mono);font-size:.78rem;color:rgba(255,255,255,.55);letter-spacing:.04em;min-height:1.2rem;transition:color .2s}
+.dl-status.error{color:#fbbf24}
+.dl-status a{color:var(--amber);text-decoration:underline}
+
+/* ── Footer ── */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--mono);font-size:.92rem;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.footer-copy{font-family:var(--mono);font-size:.75rem;color:rgba(255,255,255,.2);letter-spacing:.04em}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-family:var(--mono);font-size:.78rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .15s}
+.footer-links a:hover{color:var(--amber)}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── Modal — buy license form ── */
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,10,8,.78);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;animation:fadeIn .25s ease}
+.modal-backdrop.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--card);border-radius:18px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.32);position:relative;animation:slideUp .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.modal-header{padding:1.8rem 2rem 1rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card);border-radius:18px 18px 0 0;z-index:1}
+.modal-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.modal-title{font-family:var(--serif);font-size:1.7rem;color:var(--black);line-height:1.2;font-weight:400}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;border-radius:8px;background:var(--stone-ll);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--stone);transition:background .15s,color .15s}
+.modal-close:hover{background:var(--border);color:var(--black)}
+.modal-body{padding:1.5rem 2rem 2rem}
+.modal-desc{font-size:.92rem;color:var(--stone);line-height:1.65;margin-bottom:1.5rem}
+.form-row{margin-bottom:1.1rem}
+.form-row.split{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-label{display:block;font-family:var(--mono);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);margin-bottom:.4rem}
+.form-label .req{color:var(--amber)}
+.form-input,.form-textarea,.form-select{width:100%;font-family:var(--sans);font-size:.95rem;color:var(--black);background:var(--warm-white);border:1px solid var(--border);border-radius:8px;padding:.75rem .9rem;transition:border-color .15s,background .15s;line-height:1.4}
+.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--amber);background:#fff;box-shadow:0 0 0 3px rgba(217,119,6,.12)}
+.form-textarea{resize:vertical;min-height:80px;font-family:var(--sans)}
+.form-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2.5'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.4rem}
+.form-submit{width:100%;background:var(--black);color:var(--off-white);border:none;font-family:var(--mono);font-size:.92rem;font-weight:600;padding:.95rem;border-radius:10px;cursor:pointer;letter-spacing:.04em;transition:background .15s,transform .12s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.form-submit:hover:not(:disabled){background:#1c1c19;transform:translateY(-1px)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-status{margin-top:1rem;padding:.85rem 1rem;border-radius:8px;font-family:var(--mono);font-size:.82rem;line-height:1.5;display:none}
+.form-status.show{display:block}
+.form-status.success{background:rgba(34,197,94,.08);color:#15803d;border:1px solid rgba(34,197,94,.2)}
+.form-status.error{background:rgba(239,68,68,.08);color:#b91c1c;border:1px solid rgba(239,68,68,.2)}
+.form-status.error a{color:var(--amber);font-weight:600}
+.form-footer{font-family:var(--mono);font-size:.72rem;color:var(--stone-l);text-align:center;margin-top:1rem;letter-spacing:.03em}
+.spinner{width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Mobile ── */
+@media(max-width:900px){
+  .modal{max-width:none;border-radius:14px;max-height:94vh}
+  .modal-header{padding:1.4rem 1.4rem .8rem}
+  .modal-body{padding:1.2rem 1.4rem 1.6rem}
+  .modal-title{font-size:1.4rem}
+  .form-row.split{grid-template-columns:1fr}
+  header{padding:1rem 1.5rem}
+  nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--warm-white);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem;gap:.3rem;z-index:100}
+  nav.open{display:flex}
+  .hamburger{display:block}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 5rem;gap:3rem}
+  .hero-right{display:none}
+  .folder-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr}
+  .law-inner{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .testi-grid{grid-template-columns:1fr}
+  .float-tag,.float-tag2{display:none}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
+  .folder-section,.features-section,.pricing-section{padding:5rem 1.5rem}
+  .who-section,.law-section,.testi-section,.cta-section{padding:5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="top">
+  <a href="#" class="logo"><div class="logo-mark"></div>casetrace</a>
+  <div class="header-right">
+    <nav id="nav">
+      <a href="#folder-pitch" data-da="Mappetracking" data-en="Folder Tracking">Mappetracking</a>
+      <a href="#features" data-da="Funktioner" data-en="Features">Funktioner</a>
+      <a href="#pricing" data-da="Gratis" data-en="Free">Gratis</a>
+      <a href="#contact" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      <a href="#download" class="btn-cta-nav" data-da="Download gratis →" data-en="Download free →">Download gratis →</a>
+    </nav>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-da" onclick="setLang('da')">DA</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div style="max-width:1280px;margin:0 auto">
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow" data-da="Automatisk · Passiv · Fil & mappe-niveau" data-en="Automatic · Passive · File & folder level">Automatisk · Passiv · Fil & mappe-niveau</div>
+    <h1 data-da="Hvor lang tid brugte du på <em>den sag?</em>" data-en="How long did you spend on <em>that case?</em>">Hvor lang tid brugte du på <em>den sag?</em></h1>
+    <p class="hero-sub" data-da="CaseTrace overvåger dine mapper og undermapper automatisk. Åbn en fil — og CaseTrace registrerer det. Ingen timere. Ingen glemte timer. Præcis dokumentation pr. sag, pr. kunde, pr. projekt." data-en="CaseTrace monitors your folders and subfolders automatically. Open a file — CaseTrace logs it. No timers. No forgotten hours. Precise documentation per case, per client, per project.">CaseTrace overvåger dine mapper og undermapper automatisk. Åbn en fil — og CaseTrace registrerer det. Ingen timere. Ingen glemte timer. Præcis dokumentation pr. sag, pr. kunde, pr. projekt.</p>
+    <div class="use-chips">
+      <span class="chip" data-da="Advokater" data-en="Law firms">Advokater</span>
+      <span class="chip" data-da="Revisorer" data-en="Accountants">Revisorer</span>
+      <span class="chip" data-da="Rådgivere" data-en="Consultants">Rådgivere</span>
+      <span class="chip" data-da="IT-bureauer" data-en="IT agencies">IT-bureauer</span>
+      <span class="chip" data-da="Alle med sagsmapper" data-en="Anyone with case folders">Alle med sagsmapper</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#download" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-da="Download gratis — Windows" data-en="Download free — Windows">Download gratis — Windows</span>
+      </a>
+      <a href="#folder-pitch" class="btn-ghost" data-da="Se hvordan det virker" data-en="See how it works">Se hvordan det virker</a>
+    </div>
+    <div class="hero-trust">
+      <span data-da="Windows 10 / 11" data-en="Windows 10 / 11">Windows 10 / 11</span>
+      <div class="trust-divider"></div>
+      <span data-da="100% gratis" data-en="100% free">100% gratis</span>
+      <div class="trust-divider"></div>
+      <span data-da="Intet kreditkort" data-en="No credit card">Intet kreditkort</span>
+    </div>
+    <div class="install-note" data-da="Installationsfil: ~62 MB · Windows installer" data-en="Installer size: ~62 MB · Windows installer">Installationsfil: ~62 MB · Windows installer</div>
+  </div>
+  <div class="hero-right">
+    <div class="float-tag" data-da="● TRACKING AKTIV" data-en="● TRACKING ACTIVE">● TRACKING AKTIV</div>
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+        <div class="term-label" data-da="CaseTrace — Mappetid i dag" data-en="CaseTrace — Folder time today">CaseTrace — Mappetid i dag</div>
+      </div>
+      <div class="term-body">
+        <div class="term-clock" id="clock">03:47:22</div>
+        <div class="term-clock-label" data-da="registreret i dag" data-en="tracked today">registreret i dag</div>
+        <ul class="ftree">
+          <li>
+            <span class="fname folder"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.7"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="firma" data-en="firm">firma</span></span>
+            <span class="ftime hot">03:47:22</span>
+            <span class="fbar fb80"></span>
+          </li>
+          <li>
+            <span class="fname sub"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.5"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="Sag-75834" data-en="Case-75834">Sag-75834</span></span>
+            <span class="ftime">01:36:12</span>
+            <span class="fbar fb55"></span>
+          </li>
+          <li>
+            <span class="fname sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> kontrakt_v3.docx</span>
+            <span class="ftime">01:22:04</span>
+            <span class="fbar fb40"></span>
+          </li>
+          <li>
+            <span class="fname sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> bilag_01.jpg</span>
+            <span class="ftime">00:14:08</span>
+            <span class="fbar fb15"></span>
+          </li>
+          <li>
+            <span class="fname sub"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.5"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="Danseklassen · Budget" data-en="Danseklassen · Budget">Danseklassen · Budget</span></span>
+            <span class="ftime hot">02:11:10</span>
+            <span class="fbud warn" data-da="16 DKK / 29.500 DKK ⚠" data-en="16 DKK / 29.500 DKK ⚠">16 DKK / 29.500 DKK ⚠</span>
+          </li>
+          <li>
+            <span class="fname sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> chargeback_brev.pdf</span>
+            <span class="ftime">01:47:03</span>
+            <span class="fbar fb70"></span>
+          </li>
+          <li>
+            <span class="fname sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> chargeback_brev_Copy.pdf</span>
+            <span class="ftime">00:24:07</span>
+            <span class="fbar fb30"></span>
+          </li>
+        </ul>
+        <div class="term-status"><div class="sdot"></div><span data-da="LIVE · 124 aktiviteter · gemt 19:41:11" data-en="LIVE · 124 activities · saved 19:41:11">LIVE · 124 aktiviteter · gemt 19:41:11</span></div>
+      </div>
+    </div>
+    <div class="float-tag2"><span data-da="+2t 14min" data-en="+2h 14min">+2t 14min</span>&nbsp;<span style="color:var(--stone)" data-da="ufaktureret tid genfundet" data-en="unbilled hours recovered">ufaktureret tid genfundet</span></div>
+  </div>
+</section>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <b data-da="SAGSMAPPER" data-en="CASE FOLDERS">SAGSMAPPER</b> · Undermapper · Filniveau · Tidsbudget pr. sag · Automatisk · Ingen knapper · Cloud-backup · CVR-søgning · Lovpligtig compliant · GDPR-venlig ·&nbsp;
+    <b data-da="SAGSMAPPER" data-en="CASE FOLDERS">SAGSMAPPER</b> · Undermapper · Filniveau · Tidsbudget pr. sag · Automatisk · Ingen knapper · Cloud-backup · CVR-søgning · Lovpligtig compliant · GDPR-venlig ·
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<section class="who-section">
+  <div class="who-inner">
+    <div class="reveal" style="margin-bottom:0"><div class="section-label" style="color:var(--amber)" data-da="Hvem er det til?" data-en="Who is it for?">Hvem er det til?</div></div>
+    <h2 class="section-title reveal" style="color:#fff" data-da="Perfekt til alle der<br>arbejder i mappestrukturer." data-en="Perfect for anyone who<br>works in folder structures.">Perfekt til alle der<br>arbejder i mappestrukturer.</h2>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="who-title" data-da="Advokatfirmaer" data-en="Law firms">Advokatfirmaer</div>
+        <div class="who-text" data-da="Én mappe pr. klient. Undermapper pr. sag. CaseTrace registrerer præcis hvor lang tid du har haft hver sagsfil åben — og leverer faktureringsgrundlag på sekunder." data-en="One folder per client. Subfolders per case. CaseTrace logs exactly how long each case file was open — and delivers billing documentation in seconds.">Én mappe pr. klient. Undermapper pr. sag. CaseTrace registrerer præcis hvor lang tid du har haft hver sagsfil åben — og leverer faktureringsgrundlag på sekunder.</div>
+        <span class="who-tag" data-da="Faktureringsgrundlag" data-en="Billing documentation">Faktureringsgrundlag</span>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <div class="who-title" data-da="Revisorer & bogholdere" data-en="Accountants & bookkeepers">Revisorer & bogholdere</div>
+        <div class="who-text" data-da="Klientmapper med årsregnskaber, momsrapporter, lønsedler. CaseTrace viser dig nøjagtigt hvad du brugte på hvem — automatisk, passivt, uden at gøre noget." data-en="Client folders with annual accounts, VAT reports, payroll. CaseTrace shows exactly what you spent on whom — automatic, passive, without doing anything.">Klientmapper med årsregnskaber, momsrapporter, lønsedler. CaseTrace viser dig nøjagtigt hvad du brugte på hvem — automatisk, passivt, uden at gøre noget.</div>
+        <span class="who-tag" data-da="Lovpligtig compliance" data-en="Legal compliance">Lovpligtig compliance</span>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="who-title" data-da="Rådgivere & konsulenter" data-en="Advisors & consultants">Rådgivere & konsulenter</div>
+        <div class="who-text" data-da="Sæt et tidsbudget på en projektmappe og få besked når du nærmer dig grænsen. Aldrig mere overraskelser ved projektafslutning." data-en="Set a time budget on a project folder and get notified as you approach the limit. No more surprises at project end.">Sæt et tidsbudget på en projektmappe og få besked når du nærmer dig grænsen. Aldrig mere overraskelser ved projektafslutning.</div>
+        <span class="who-tag" data-da="Projektbudgetter" data-en="Project budgets">Projektbudgetter</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLDER PITCH -->
+<section class="folder-section" id="folder-pitch">
+  <div class="reveal"><div class="section-label" data-da="Sådan virker mappetracking" data-en="How folder tracking works">Sådan virker mappetracking</div></div>
+  <h2 class="section-title reveal" data-da="Din mappestruktur er<br>allerede din timeseddel." data-en="Your folder structure is<br>already your timesheet.">Din mappestruktur er<br>allerede din timeseddel.</h2>
+  <p class="section-sub reveal" data-da="Peg CaseTrace mod din rodmappe — den finder selv alle sagsmapper og undermapper og starter tracking." data-en="Point CaseTrace at your root folder — it finds all case folders and subfolders and starts tracking automatically.">Peg CaseTrace mod din rodmappe — den finder selv alle sagsmapper og undermapper og starter tracking.</p>
+  <div class="folder-grid reveal">
+    <div class="folder-explain">
+      <div class="folder-step">
+        <div class="folder-step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <div class="folder-step-title" data-da="Tilføj en rodmappe" data-en="Add a root folder">Tilføj en rodmappe</div>
+          <div class="folder-step-text" data-da="Peg CaseTrace mod fx C:\Kunder\ eller C:\Sager\ — den overvåger automatisk alle mapper og undermapper derunder." data-en="Point CaseTrace at e.g. C:\Clients\ or C:\Cases\ — it automatically monitors all folders and subfolders within.">Peg CaseTrace mod fx C:\Kunder\ — den overvåger automatisk alle mapper og undermapper derunder.</div>
+        </div>
+      </div>
+      <div class="folder-step">
+        <div class="folder-step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <div class="folder-step-title" data-da="Sæt tidsbudget pr. sag" data-en="Set time budget per case">Sæt tidsbudget pr. sag</div>
+          <div class="folder-step-text" data-da="Tildel et antal timer og en timepris til en sagsmappe. CaseTrace beregner automatisk hvad sagen har kostet og advarer ved 25%, 50%, 75% og 100% af budgettet." data-en="Assign hours and an hourly rate to a case folder. CaseTrace automatically calculates costs and warns at 25%, 50%, 75% and 100% of budget.">Tildel timer og timepris til en sagsmappe. CaseTrace advarer ved 25%, 50%, 75% og 100% af budgettet.</div>
+        </div>
+      </div>
+      <div class="folder-step">
+        <div class="folder-step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div>
+          <div class="folder-step-title" data-da="Rapport klar til faktura" data-en="Report ready to invoice">Rapport klar til faktura</div>
+          <div class="folder-step-text" data-da="Eksportér en pr.-sag-rapport som PDF eller CSV direkte til klienten. Tid brugt, timepris, total — klar til at vedhæfte til faktura." data-en="Export a per-case report as PDF or CSV. Time spent, hourly rate, total — ready to attach to an invoice.">Eksportér en pr.-sag-rapport som PDF eller CSV. Tid brugt, timepris, total — klar til faktura.</div>
+        </div>
+      </div>
+      <div class="folder-step">
+        <div class="folder-step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div>
+        <div>
+          <div class="folder-step-title" data-da="Backup — så mange du vil" data-en="Backup — as many as you want">Backup — så mange du vil</div>
+          <div class="folder-step-text" data-da="Du bestemmer selv antal backups. Vil du have 1.000? Intet problem. CaseTrace roterer dem automatisk og gemmer til OneDrive, Google Drive eller dit eget netværksdrev." data-en="You decide how many backups to keep. Want 1,000? No problem. CaseTrace rotates them automatically and saves to OneDrive, Google Drive or your own network drive.">Du bestemmer selv antal backups. Vil du have 1.000? Intet problem. Backup til OneDrive, Google Drive eller dit netværksdrev.</div>
+        </div>
+      </div>
+    </div>
+    <div class="folder-demo">
+      <div class="fd-bar">
+        <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+        <div class="fd-bar-title" data-da="Mappetid — i dag" data-en="Folder time — today">Mappetid — i dag</div>
+      </div>
+      <div class="fd-body">
+        <div class="fd-header">
+          <span data-da="Mappe / Fil" data-en="Folder / File">Mappe / Fil</span>
+          <span data-da="Tid" data-en="Time">Tid</span>
+          <span data-da="Budget" data-en="Budget">Budget</span>
+          <span data-da="%" data-en="%">%</span>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;color:var(--amber);opacity:.8"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <b data-da="Kunder" data-en="Clients">Kunder</b></span>
+          <span class="fd-time act">05:12:44</span>
+          <span class="fd-bud">—</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:100%;background:var(--amber-l)"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.5;color:var(--stone)"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="Hansen & Co" data-en="Hansen & Co">Hansen & Co</span></span>
+          <span class="fd-time">02:14:18</span>
+          <span class="fd-bud ok" data-da="5t / 10t" data-en="5h / 10h">5t / 10t</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:50%"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> kontrakt_final.docx</span>
+          <span class="fd-time">01:22:09</span>
+          <span class="fd-bud">—</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:62%"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> bilag_oversigt.xlsx</span>
+          <span class="fd-time">00:52:09</span>
+          <span class="fd-bud">—</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:39%"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.5;color:var(--stone)"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="Danseklassen" data-en="Danseklassen">Danseklassen</span></span>
+          <span class="fd-time act">02:58:26</span>
+          <span class="fd-bud warn" data-da="88t / 100t ⚠" data-en="88h / 100h ⚠">88t / 100t ⚠</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:88%;background:#f59e0b"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub2"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> chargeback_brev.pdf</span>
+          <span class="fd-time">01:47:03</span>
+          <span class="fd-bud">—</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:71%"></div></div>
+        </div>
+        <div class="fd-row">
+          <span class="fd-name sub"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:.5;color:var(--stone)"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> <span data-da="Ny kunde" data-en="New client">Ny kunde</span></span>
+          <span class="fd-time">00:00:00</span>
+          <span class="fd-bud ok" data-da="0t / 20t" data-en="0h / 20h">0t / 20t</span>
+          <div class="fd-prog"><div class="fd-prog-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAW -->
+<section class="law-section">
+  <div class="law-inner">
+    <div>
+      <div class="sec-tag" data-da="Pålidelig dokumentation" data-en="Reliable documentation">Pålidelig dokumentation</div>
+      <h2 class="law-title reveal" data-da="Dokumentér din tid —<br><em>objektivt og automatisk.</em>" data-en="Document your time —<br><em>objectively and automatically.</em>">Dokumentér din tid —<br><em>objektivt og automatisk.</em></h2>
+      <p class="law-desc reveal" data-da="Passiv computer-tracking giver et objektivt og pålideligt billede af hvor din tid gik — uden manuel indtastning. Praktisk når du skal dokumentere dit tidsforbrug over for en kunde, eller bare selv vil have styr på timerne." data-en="Passive computer tracking gives an objective, reliable picture of where your time went — without manual entry. Handy when you need to document your hours to a client, or just want to keep track of them yourself.">Passiv computer-tracking giver et objektivt og pålideligt billede af hvor din tid gik — uden manuel indtastning. Praktisk når du skal dokumentere dit tidsforbrug over for en kunde, eller bare selv vil have styr på timerne.</p>
+      <a href="#download" class="btn-primary" style="display:inline-flex;gap:.6rem;align-items:center">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span data-da="Kom i gang i dag" data-en="Get started today">Kom i gang i dag</span>
+      </a>
+    </div>
+    <div class="law-pills">
+      <div class="law-pill reveal"><div class="lpi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="lpt" data-da="Objektivt & pålideligt" data-en="Objective & reliable">Objektivt & pålideligt</div><div class="lpd" data-da="Passiv computertracking er mere objektivt end manuel registrering — og lever op til loven." data-en="Passive computer tracking is more objective than manual entry — and meets legal requirements.">Passiv computertracking er mere objektivt end manuel registrering — og lever op til loven.</div></div></div>
+      <div class="law-pill reveal"><div class="lpi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div><div class="lpt" data-da="Behold data så længe du vil" data-en="Keep data as long as you want">Behold data så længe du vil</div><div class="lpd" data-da="Du bestemmer selv hvor mange backups du vil have — og data gemmes sikkert på din egen maskine og dit eget drev." data-en="You decide how many backups to keep — data is stored securely on your own machine and drive.">Du bestemmer selv antal backups — data gemmes på din egen maskine og dit eget drev.</div></div></div>
+      <div class="law-pill reveal"><div class="lpi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><div class="lpt" data-da="Dine data — kun dine" data-en="Your data — only yours">Dine data — kun dine</div><div class="lpd" data-da="Du har altid fuld adgang til dine egne registreringer — lokalt på din maskine, intet i skyen, ingen der kigger med." data-en="You always have full access to your own records — locally on your machine, nothing in the cloud, no one looking over your shoulder.">Du har altid fuld adgang til dine egne registreringer — lokalt på din maskine, intet i skyen, ingen der kigger med.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="reveal"><div class="section-label" data-da="Funktioner" data-en="Features">Funktioner</div></div>
+  <h2 class="section-title reveal" data-da="Alt du har brug for.<br>Intet du ikke har." data-en="Everything you need.<br>Nothing you don't.">Alt du har brug for.<br>Intet du ikke har.</h2>
+  <p class="section-sub reveal" data-da="Bygget til professionelle der ikke vil bruge tid på at registrere tid." data-en="Built for professionals who refuse to waste time tracking time.">Bygget til professionelle der ikke vil bruge tid på at registrere tid.</p>
+  <div class="features-grid reveal">
+    <div class="feat"><div class="feat-num">01</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+      <h3 data-da="Mappe- & filtracking" data-en="Folder & file tracking">Mappe- & filtracking</h3>
+      <p data-da="Registrerer automatisk hvad du arbejder med på fil-niveau. Mapper, undermapper, enhver fil du åbner — logges passivt uden at du gør noget." data-en="Automatically records what you work with at file level. Folders, subfolders, every file you open — logged passively without you doing anything.">Registrerer automatisk hvad du arbejder med på fil-niveau. Mapper, undermapper, enhver fil du åbner — logges passivt.</p>
+      <span class="feat-tag" data-da="Nul klik" data-en="Zero clicks">Nul klik</span>
+    </div>
+    <div class="feat"><div class="feat-num">02</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3 data-da="Tidsbudget pr. mappe" data-en="Time budget per folder">Tidsbudget pr. mappe</h3>
+      <p data-da="Sæt en time-grænse og timepris på en sagsmappe. CaseTrace advarer automatisk ved 25%, 50%, 75% og 100% — så du aldrig overskriver et budget." data-en="Set a time limit and hourly rate on a case folder. CaseTrace warns at 25%, 50%, 75% and 100% — so you never exceed a budget.">Sæt time-grænse og timepris på en sagsmappe. CaseTrace advarer ved 25/50/75/100% — aldrig overskridt budget.</p>
+      <span class="feat-tag" data-da="Budgetstyring" data-en="Budget control">Budgetstyring</span>
+    </div>
+    <div class="feat"><div class="feat-num">03</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div>
+      <h3 data-da="Fleksibel cloud-backup" data-en="Flexible cloud backup">Fleksibel cloud-backup</h3>
+      <p data-da="Du bestemmer selv antal backups — 10, 100, 1.000, hvad du vil. Auto-synk til OneDrive, Google Drive eller dit eget netværksdrev med automatisk rotation." data-en="You decide how many backups — 10, 100, 1,000, whatever you want. Auto-sync to OneDrive, Google Drive or your own network drive with automatic rotation.">Du bestemmer selv antal backups. Auto-synk til OneDrive, Google Drive eller dit netværksdrev.</p>
+      <span class="feat-tag" data-da="Brugerdefineret" data-en="User-defined">Brugerdefineret</span>
+    </div>
+    <div class="feat"><div class="feat-num">04</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3 data-da="CVR-søgning" data-en="CVR lookup">CVR-søgning</h3>
+      <p data-da="Slå danske firmaer op via CVR-nummer eller navn direkte i appen. Kopier formateret adresse og kontaktinfo med ét klik." data-en="Search Danish companies by CVR number or name directly in the app. Copy formatted address and contact info with one click.">Slå danske firmaer op via CVR-nummer direkte i appen. Kopier formateret info med ét klik.</p>
+      <span class="feat-tag" data-da="Danmark-native" data-en="Denmark-native">Danmark-native</span>
+    </div>
+    <div class="feat"><div class="feat-num">05</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <h3 data-da="Rapporter & eksport" data-en="Reports & export">Rapporter & eksport</h3>
+      <p data-da="PDF, CSV og email-rapporter pr. mappe, pr. sag, pr. dag. Direkte faktureringsgrundlag. Send rapport automatisk via email-ops." data-en="PDF, CSV and email reports per folder, per case, per day. Direct billing documentation. Send reports automatically via email automation.">PDF, CSV og email-rapporter pr. mappe, pr. sag, pr. dag. Klar til at vedhæfte til faktura.</p>
+      <span class="feat-tag" data-da="Faktura-klar" data-en="Invoice-ready">Faktura-klar</span>
+    </div>
+    <div class="feat"><div class="feat-num">06</div><div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <h3 data-da="Lokal database & privat" data-en="Local database & private">Lokal database & privat</h3>
+      <p data-da="Al data gemmes lokalt på din maskine i en SQLite-database. Hardware-bundet licens. Ingen sky-tvang. GDPR-venlig fra dag ét." data-en="All data stored locally on your machine in a SQLite database. Hardware-bound license. No cloud obligation. GDPR-friendly from day one.">Al data gemmes lokalt i SQLite. Hardware-bundet licens. Ingen sky-tvang. GDPR-venlig fra dag ét.</p>
+      <span class="feat-tag" data-da="GDPR-venlig" data-en="GDPR-friendly">GDPR-venlig</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section" id="testimonials">
+  <div class="testi-inner">
+    <div class="reveal"><div class="section-label" data-da="Anmeldelser" data-en="Reviews">Anmeldelser</div></div>
+    <h2 class="section-title reveal" data-da="Hvad siger brugerne?" data-en="What users say.">Hvad siger brugerne?</h2>
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="testi-quote" data-da="»Jeg peger CaseTrace mod min klientmappe og den tracker automatisk alle sager. Jeg genfandt over 3 fakturerbare timer i den første uge alene.«" data-en="&ldquo;I point CaseTrace at my client folder and it tracks all cases automatically. I recovered over 3 billable hours in the first week alone.&rdquo;">»Jeg peger CaseTrace mod min klientmappe og den tracker automatisk alle sager. Jeg genfandt over 3 fakturerbare timer i den første uge alene.«</div>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Mette H.</div><div class="testi-role" data-da="Advokatsekretær" data-en="Legal secretary">Advokatsekretær</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-quote" data-da="»Budgetadvarslen reddede en sag. Jeg fik besked ved 75% og kunne tale med kunden i tide. Uden CaseTrace havde jeg arbejdet gratis de sidste 10 timer.«" data-en="&ldquo;The budget warning saved a case. I got notified at 75% and could talk to the client in time. Without CaseTrace I'd have worked the last 10 hours for free.&rdquo;">»Budgetadvarslen reddede en sag. Jeg fik besked ved 75% og kunne tale med kunden i tide. Uden CaseTrace havde jeg arbejdet gratis de sidste 10 timer.«</div>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Thomas K.</div><div class="testi-role" data-da="Selvstændig revisor" data-en="Self-employed accountant">Selvstændig revisor</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-quote" data-da="»Cloud-backup til vores netværksdrev virker perfekt. Jeg har sat 500 backups — og det kører bare. Data er altid der når vi skal dokumentere over for myndighederne.«" data-en="&ldquo;Cloud backup to our network drive works perfectly. I set 500 backups — and it just works. Data is always there when we need to document for authorities.&rdquo;">»Cloud-backup til vores netværksdrev virker perfekt. Jeg har sat 500 backups — og det kører bare. Data er altid der når vi skal dokumentere over for myndighederne.«</div>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Pernille S.</div><div class="testi-role" data-da="IT-administrator" data-en="IT administrator">IT-administrator</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING — gratis software med fri licens -->
+<section class="pricing-section" id="pricing">
+  <div class="reveal"><div class="section-label" data-da="Pris" data-en="Pricing">Pris</div></div>
+  <h2 class="section-title reveal" data-da="Gratis. Helt enkelt." data-en="Free. Simple as that.">Gratis. Helt enkelt.</h2>
+  <p class="section-sub reveal" data-da="CaseTrace er gratis software med fri licens. Intet abonnement, intet kreditkort, ingen binding." data-en="CaseTrace is free software with a free license. No subscription, no credit card, no lock-in.">CaseTrace er gratis software med fri licens. Intet abonnement, intet kreditkort, ingen binding.</p>
+  <div class="pricing-grid reveal" style="grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto">
+    <div class="price-card hot">
+      <div class="price-eyebrow" data-da="Fri licens" data-en="Free license">Fri licens</div>
+      <div class="price-name" data-da="Gratis" data-en="Free">Gratis</div>
+      <div class="price-amount"><div class="price-num">0</div><div class="price-period" data-da="kr · for altid" data-en="kr · forever">kr · for altid</div></div>
+      <div class="price-desc" data-da="Fuld adgang til alle funktioner. Ingen begrænsninger, ingen skjulte gebyrer." data-en="Full access to all features. No limits, no hidden fees.">Fuld adgang til alle funktioner. Ingen begrænsninger, ingen skjulte gebyrer.</div>
+      <ul class="price-feats">
+        <li data-da="Alle funktioner inkluderet" data-en="All features included">Alle funktioner inkluderet</li>
+        <li data-da="Ubegrænset mappe- & sagstracking" data-en="Unlimited folder & case tracking">Ubegrænset mappe- & sagstracking</li>
+        <li data-da="Tidsbudget pr. mappe & advarsler" data-en="Time budget per folder & alerts">Tidsbudget pr. mappe & advarsler</li>
+        <li data-da="Cloud-backup (selvvalgt antal)" data-en="Cloud backup (custom count)">Cloud-backup (selvvalgt antal)</li>
+        <li data-da="PDF, CSV & email-rapporter" data-en="PDF, CSV & email reports">PDF, CSV & email-rapporter</li>
+      </ul>
+      <a href="#download" class="btn-buy light" data-da="Download gratis →" data-en="Download free →">Download gratis →</a>
+    </div>
+  </div>
+  <div class="price-guarantee reveal" data-da="Gratis software · Ingen binding · Dine data bliver på din egen maskine" data-en="Free software · No lock-in · Your data stays on your own machine">Gratis software · Ingen binding · Dine data bliver på din egen maskine</div>
+</section>
+
+<!-- CTA DOWNLOAD -->
+<section class="cta-section" id="download">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow" data-da="Windows 10 / 11" data-en="Windows 10 / 11">Windows 10 / 11</div>
+    <h2 class="cta-title" data-da="Åbn en fil.<br><em>Resten sker selv.</em>" data-en="Open a file.<br><em>The rest happens automatically.</em>">Åbn en fil.<br><em>Resten sker selv.</em></h2>
+    <p class="cta-sub" data-da="Download CaseTrace og vær i gang på under 2 minutter. Ingen konto. Intet kreditkort. Helt gratis." data-en="Download CaseTrace and be up and running in under 2 minutes. No account. No credit card. Completely free.">Download CaseTrace og vær i gang på under 2 minutter. Ingen konto. Intet kreditkort. Helt gratis.</p>
+    <div class="cta-btns">
+      <button id="dl-button" class="btn-cta-large" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-da="Download gratis — Windows" data-en="Download free — Windows">Download gratis — Windows</span>
+      </button>
+      <a href="#folder-pitch" class="btn-cta-ghost" data-da="Læs mere ↓" data-en="Learn more ↓">Læs mere ↓</a>
+    </div>
+    <div class="cta-note" data-da="30 DAGES GRATIS PRØVE · INGEN KONTO · INGEN KREDITKORT" data-en="30-DAY FREE TRIAL · NO ACCOUNT · NO CREDIT CARD">30 DAGES GRATIS PRØVE · INGEN KONTO · INGEN KREDITKORT</div>
+    <div class="cta-size" data-da="Installationsfil er ~62 MB — hav tålmodighed ved langsom forbindelse" data-en="Installer is ~62 MB — please allow extra time on slow connections">Installationsfil er ~62 MB — hav tålmodighed ved langsom forbindelse</div>
+    <div id="dl-status" class="dl-status"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--black);padding:3rem;text-align:center;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem" data-da="Support" data-en="Support">Support</div>
+  <div style="font-family:var(--serif);font-size:1.8rem;color:#fff;margin-bottom:.8rem" data-da="Spørgsmål?" data-en="Questions?">Spørgsmål?</div>
+  <div style="font-family:var(--mono);font-size:.82rem;color:rgba(255,255,255,.4)">
+    <span data-da="Skriv til os på" data-en="Email us at">Skriv til os på</span>
+    <a href="mailto:support@casetrace.app" style="color:var(--amber);text-decoration:none"> support@casetrace.app</a>
+    — <span data-da="vi svarer inden for 24 timer." data-en="we reply within 24 hours.">vi svarer inden for 24 timer.</span>
+  </div>
+</section>
+
+<!-- (Køb-modal fjernet — CaseTrace er gratis software med fri licens) -->
+
+<footer>
+  <a href="#top" class="footer-logo"><div class="logo-mark" style="width:18px;height:18px"></div>casetrace.app</a>
+  <div class="footer-copy" data-da="© 2026 CaseTrace · Alle rettigheder forbeholdes" data-en="© 2026 CaseTrace · All rights reserved">© 2026 CaseTrace · Alle rettigheder forbeholdes</div>
+  <div class="footer-links">
+    <a href="#" data-da="Privatlivspolitik" data-en="Privacy">Privatlivspolitik</a>
+    <a href="#" data-da="Vilkår" data-en="Terms">Vilkår</a>
+    <a href="mailto:support@casetrace.app" data-da="Kontakt" data-en="Contact">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// BULLETPROOF DOWNLOAD HANDLER
+// Order: try modern versionless filename → fallback to v4 → final fallback to releases page
+// ─────────────────────────────────────────────────────────────
+const DL_OWNER = 'pikansj0s';
+const DL_REPO  = 'CaseTrace';
+const DL_CANDIDATES = [
+  'CaseTraceSetup.exe',       // future-proof: rename your asset to this on next release
+  'CaseTraceSetup_v4.exe',    // current asset name as of V.4.0
+  'TimeTrackerProSetup_v4.exe' // legacy from old release
+];
+const DL_RELEASES_PAGE = `https://github.com/${DL_OWNER}/${DL_REPO}/releases/latest`;
+
+// Build a download URL with cache-busting parameter — forces fresh redirect from GitHub each click
+function dlUrl(filename) {
+  const cacheBust = Date.now();
+  return `https://github.com/${DL_OWNER}/${DL_REPO}/releases/latest/download/${filename}?_=${cacheBust}`;
+}
+
+// Probe a URL with HEAD-like fetch — but cors-blocked on github so we use no-cors fire-and-forget plus a timeout race
+async function probeUrl(url, timeoutMs = 4000) {
+  return new Promise((resolve) => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => { ctrl.abort(); resolve(false); }, timeoutMs);
+    fetch(url, { method: 'GET', mode: 'no-cors', signal: ctrl.signal, redirect: 'follow' })
+      .then(() => { clearTimeout(timer); resolve(true); })
+      .catch(() => { clearTimeout(timer); resolve(false); });
+  });
+}
+
+async function startDownload() {
+  const status = document.getElementById('dl-status');
+  const btn = document.getElementById('dl-button');
+  status.classList.remove('error');
+  status.textContent = lang === 'da'
+    ? 'Forbereder download …'
+    : 'Preparing download …';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
+
+  // Try candidates in order. First reachable one wins.
+  for (const filename of DL_CANDIDATES) {
+    const url = dlUrl(filename);
+    const ok = await probeUrl(url);
+    if (ok) {
+      // Trigger download via temp anchor (more reliable than location.href across browsers)
+      const a = document.createElement('a');
+      a.href = url;
+      a.rel = 'noopener noreferrer';
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      status.textContent = lang === 'da'
+        ? 'Download startet — tjek din browsers downloadmappe.'
+        : 'Download started — check your browser downloads.';
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+      return;
+    }
+  }
+
+  // All candidates failed — fall back to releases page
+  status.classList.add('error');
+  status.innerHTML = lang === 'da'
+    ? `Direkte download er midlertidigt utilgængelig. <a href="${DL_RELEASES_PAGE}" target="_blank" rel="noopener noreferrer">Åbn release-siden manuelt →</a>`
+    : `Direct download temporarily unavailable. <a href="${DL_RELEASES_PAGE}" target="_blank" rel="noopener noreferrer">Open releases page manually →</a>`;
+  btn.style.opacity = '';
+  btn.style.pointerEvents = '';
+}
+
+document.getElementById('dl-button').addEventListener('click', startDownload);
+
+// ─────────────────────────────────────────────────────────────
+// LANGUAGE — DA is ALWAYS default
+// ─────────────────────────────────────────────────────────────
+let lang = 'da';
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById('btn-da').classList.toggle('active', l === 'da');
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.querySelectorAll('[data-' + l + ']').forEach(el => {
+    const v = el.getAttribute('data-' + l);
+    if (!v) return;
+    if (v.includes('<')) el.innerHTML = v; else el.textContent = v;
+  });
+  document.title = l === 'da'
+    ? 'CaseTrace — Automatisk tidsregistrering til Windows'
+    : 'CaseTrace — Automatic time tracking for Windows';
+  // Update form placeholders if helper exists
+  if (typeof updatePlaceholders === 'function') updatePlaceholders();
+  try { localStorage.setItem('dl-lang', l); } catch(e) {}
+}
+(function() {
+  let saved;
+  try { saved = localStorage.getItem('dl-lang'); } catch(e) {}
+  if (saved) { if (saved === 'en') setLang('en'); return; }
+  const bl = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  const browserIsDanish = bl.startsWith('da');
+  if (browserIsDanish) return;
+  fetch('https://ip-api.com/json/?fields=countryCode', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(data => { if (data && data.countryCode !== 'DK') setLang('en'); })
+    .catch(() => setLang('en'));
+})();
+
+// ─────────────────────────────────────────────────────────────
+// SCROLL REVEAL
+// ─────────────────────────────────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// (Buy-license modal + Web3Forms handler removed - CaseTrace is free software)
+
+// ─────────────────────────────────────────────────────────────
+// LIVE CLOCK
+// ─────────────────────────────────────────────────────────────
+const clockEl = document.getElementById('clock');
+let s = 3 * 3600 + 47 * 60 + 22;
+setInterval(() => {
+  s++;
+  clockEl.textContent = [Math.floor(s/3600), Math.floor((s%3600)/60), s%60]
+    .map(n => String(n).padStart(2, '0')).join(':');
+}, 1000);
+</script>
+</body>
+</html>
