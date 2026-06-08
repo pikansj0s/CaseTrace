@@ -1,0 +1,143 @@
+/* ──────────────────────────────────────────────────────────────
+   CaseTrace · delt stylesheet til brancherettede landingssider
+   Genbruger designtokens fra forsiden (index.html).
+   ────────────────────────────────────────────────────────────── */
+:root{
+  --cream:#faf9f5; --cream-2:#f3f0e9; --panel:#fffefb;
+  --ink:#15181f; --ink-2:#3a3f4a; --muted:#5d626f;
+  --gold:#b08544; --gold-2:#c2a05c; --gold-soft:#bf9f5e; --gold-deep:#876727;
+  --line:#e8e3d8; --green2:#3fb950;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 2rem}
+.serif{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)}
+em.gi{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
+
+/* ── Header ── */
+header{position:sticky;top:0;z-index:100;background:rgba(250,249,245,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;font-weight:500}
+.nav-links{display:flex;gap:2rem;font-size:.9rem;color:var(--ink-2)}
+.nav-links a{transition:color .15s}
+.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9rem;padding:.7rem 1.3rem;border-radius:9px;cursor:pointer;border:none;transition:transform .12s,background .15s,box-shadow .15s;font-family:var(--sans)}
+.btn-dark{background:var(--ink);color:var(--cream)}
+.btn-dark:hover{background:#23282f;transform:translateY(-1px);box-shadow:0 8px 24px rgba(21,24,31,.18)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn-lg{padding:.95rem 1.7rem;font-size:.98rem;border-radius:11px}
+
+/* ── Sektioner ── */
+.sec{padding:4.6rem 0;position:relative}
+.sec-hero{padding:3.4rem 0 2.6rem}
+.tinted{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hero-inner{max-width:55rem}
+.sec-head{max-width:44rem;margin-bottom:2.6rem}
+.sec-head .eyebrow{display:block;margin-bottom:.9rem}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,5vw,3.85rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.3rem}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.3vw,2.6rem);line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem}
+h3{font-family:var(--serif);font-weight:500}
+
+/* ── Hero ── */
+.crumb{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted);margin-bottom:1.3rem}
+.crumb a:hover{color:var(--gold)}
+.crumb span{color:var(--ink-2)}
+.badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink-2);background:var(--cream-2);border:1px solid var(--line);padding:.4rem .85rem;border-radius:99px;margin-bottom:1.5rem}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green2)}
+.lead{font-size:1.14rem;color:var(--ink-2);line-height:1.72;margin-bottom:2rem;max-width:42rem}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.trust-row{display:flex;flex-wrap:wrap;gap:.85rem 1.5rem}
+.trust-row span{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:var(--ink-2)}
+.trust-row svg{color:var(--gold);flex-shrink:0}
+
+/* ── Prosa + checklist ── */
+.prose p{font-size:1.07rem;color:var(--ink-2);line-height:1.78;margin-bottom:1.15rem;max-width:44rem}
+.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink);font-weight:600}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin-top:1.8rem}
+.checks .c{display:flex;gap:.7rem;align-items:flex-start;font-size:1rem;color:var(--ink);line-height:1.55}
+.checks .c svg{color:var(--green2);flex-shrink:0;margin-top:.25rem}
+
+/* ── Problem / løsning ── */
+.ps{display:flex;flex-direction:column;gap:1rem;max-width:46rem}
+.ps-item{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:1.2rem 1.35rem}
+.ps-item .q{font-size:.98rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start}
+.ps-item .q::before{content:"✕";color:#c2554d;font-weight:700;flex-shrink:0}
+.ps-item .a{font-size:.98rem;color:var(--ink);font-weight:500;display:flex;gap:.6rem;align-items:flex-start;margin-top:.65rem}
+.ps-item .a::before{content:"✓";color:var(--green2);font-weight:700;flex-shrink:0}
+
+/* ── Funktionskort ── */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.fcard{padding:1.7rem 1.5rem;border:1px solid var(--line);border-radius:15px;background:var(--panel);transition:border-color .18s,transform .18s}
+.fcard:hover{border-color:var(--gold-soft);transform:translateY(-3px)}
+.fcard .ic{width:42px;height:42px;border-radius:10px;background:var(--cream-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:1.1rem}
+.fcard h3{font-size:1.25rem;margin-bottom:.5rem}
+.fcard p{font-size:.92rem;color:var(--ink-2);line-height:1.65}
+
+/* ── Krydslinks til andre brancher ── */
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.aud-link{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1.25rem;font-weight:600;font-size:.96rem;transition:transform .15s,border-color .15s,color .15s}
+.aud-link:hover{transform:translateY(-2px);border-color:var(--gold-soft);color:var(--gold)}
+.aud-link .arr{color:var(--gold);font-family:var(--serif)}
+
+/* ── FAQ (native details/summary) ── */
+.faq{max-width:47rem}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1.2rem 2.4rem 1.2rem 0;position:relative;font-family:var(--serif);font-weight:500;font-size:1.14rem;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;font-family:var(--sans);font-size:1.5rem;font-weight:400;color:var(--gold);transition:transform .2s}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 0 1.3rem;font-size:1rem;color:var(--ink-2);line-height:1.72;max-width:44rem}
+.faq .ans a{color:var(--gold);text-decoration:underline}
+
+/* ── CTA ── */
+.cta{text-align:center;padding:5rem 0}
+.cta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}
+.cta p{font-size:1.08rem;color:var(--ink-2);max-width:34rem;margin:0 auto 1.8rem;line-height:1.7}
+.cta-actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.dl-status{min-height:1.3rem;font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-top:.9rem}
+.dl-status.error{color:#c2554d}
+.dl-status a{color:var(--gold);text-decoration:underline}
+.cta-note{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.03em;margin-top:.5rem}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--line);padding:2.6rem 0;background:var(--cream)}
+.foot{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.6rem}
+.foot .cp{font-size:.82rem;color:var(--muted);max-width:18rem}
+.foot-cols{display:flex;gap:3rem;flex-wrap:wrap}
+.foot-col h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:500}
+.foot-col a{display:block;font-size:.88rem;color:var(--ink-2);padding:.22rem 0;transition:color .15s}
+.foot-col a:hover{color:var(--gold)}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── Responsivt ── */
+@media(max-width:900px){
+  .wrap{padding:0 1.7rem}
+  .nav-links{display:none}
+  .fgrid,.aud-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .fgrid,.aud-grid,.checks{grid-template-columns:1fr}
+  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center}
+  .sec{padding:3.4rem 0}
+  .sec-hero{padding:2.2rem 0 1.6rem}
+  .foot{flex-direction:column;gap:1.8rem}
+}
+
+/* ── Respektér reduceret bevægelse ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important}
+}
