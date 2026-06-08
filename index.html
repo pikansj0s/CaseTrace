@@ -3,16 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CaseTrace — Automatisk tidsregistrering for revisorer & advokater</title>
-<meta name="description" content="CaseTrace registrerer automatisk din tid pr. sag, klient og dokument — uden timere, uden manuel indtastning. Gratis software til danske professionelle.">
+<meta name="theme-color" content="#15181f">
+
+<!-- ── Primær SEO ── -->
+<title>Tidsregistrering for advokater & revisorer · CaseTrace</title>
+<meta name="description" content="Gratis tidsregistrering til advokater & revisorer. CaseTrace logger automatisk din tid pr. sag, klient og dokument — uden timere eller manuel indtastning.">
+<link rel="canonical" href="https://casetrace.dk/">
+<link rel="alternate" hreflang="da" href="https://casetrace.dk/">
+<link rel="alternate" hreflang="x-default" href="https://casetrace.dk/">
+
+<!-- ── Ikoner ── -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- ── Open Graph (Facebook, LinkedIn, Slack m.fl.) ── -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CaseTrace">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://casetrace.dk/">
+<meta property="og:title" content="CaseTrace – Automatisk tidsregistrering for advokater & revisorer">
+<meta property="og:description" content="Gratis tidsregistrering der automatisk dokumenterer din tid pr. sag, klient og dokument. Uden timere, uden manuel indtastning. Til Windows 10/11.">
+<meta property="og:image" content="https://casetrace.dk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CaseTrace – automatisk tidsregistrering for advokater og revisorer">
+
+<!-- ── Twitter / X Card ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CaseTrace – Automatisk tidsregistrering for advokater & revisorer">
+<meta name="twitter:description" content="Gratis tidsregistrering der automatisk dokumenterer din tid pr. sag, klient og dokument. Til Windows 10/11.">
+<meta name="twitter:image" content="https://casetrace.dk/og-image.png">
+
+<!-- ── Skrifttyper: hentes uden at blokere rendering (preload → swap) ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+
+<!-- ── Structured data (JSON-LD): Organization + WebSite + SoftwareApplication ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://casetrace.dk/#organization",
+      "name": "CaseTrace",
+      "url": "https://casetrace.dk/",
+      "logo": "https://casetrace.dk/apple-touch-icon.png",
+      "email": "info@casetrace.dk",
+      "description": "CaseTrace udvikler gratis software til automatisk tidsregistrering for advokater, revisorer og rådgivere."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://casetrace.dk/#website",
+      "url": "https://casetrace.dk/",
+      "name": "CaseTrace",
+      "inLanguage": "da-DK",
+      "publisher": { "@id": "https://casetrace.dk/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CaseTrace",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Tidsregistrering / Time tracking",
+      "url": "https://casetrace.dk/",
+      "downloadUrl": "https://casetrace.dk/",
+      "softwareVersion": "1.0",
+      "inLanguage": "da-DK",
+      "description": "Automatisk tidsregistrering der passivt logger din tid pr. sag, mappe og dokument — til advokater, revisorer og rådgivere. Eksportér faktureringsklare PDF- og CSV-rapporter.",
+      "publisher": { "@id": "https://casetrace.dk/#organization" },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "DKK",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "Automatisk mappe- og filtracking",
+        "Tidsbudget pr. sag med advarsler",
+        "PDF- og CSV-rapporter til fakturering",
+        "Indbygget CVR-opslag",
+        "Lokal, GDPR-venlig SQLite-database"
+      ]
+    }
+  ]
+}
+</script>
+<!-- aggregateRating: tilføj FØRST når du har ægte anmeldelser (Google straffer falske ratings).
+     Indsæt da dette felt i SoftwareApplication-objektet ovenfor:
+     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "23", "bestRating": "5" }
+-->
+<meta name="robots" content="index, follow, max-image-preview:large">
 <style>
 :root{
   --cream:#faf9f5; --cream-2:#f3f0e9; --panel:#fffefb;
-  --ink:#15181f; --ink-2:#3a3f4a; --muted:#74798a;
-  --gold:#b08544; --gold-2:#c2a05c; --gold-soft:#bf9f5e;
+  --ink:#15181f; --ink-2:#3a3f4a; --muted:#5d626f;
+  --gold:#b08544; --gold-2:#c2a05c; --gold-soft:#bf9f5e; --gold-deep:#876727;
   --line:#e8e3d8; --line-2:#efebe2;
   --dark:#0d1014; --dark-2:#161b22; --dark-row:#1b212b;
   --amber:#e3b341; --green:#4caf6e; --green2:#3fb950;
@@ -27,7 +116,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 2rem}
 section{position:relative}
 .serif{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
-.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)}
 .gold{color:var(--gold)}
 em.gi{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
 
@@ -106,7 +195,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .aud:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(21,24,31,.3);border-color:var(--gold-soft)}
 .aud h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:.9rem}
 .aud p{font-size:.95rem;color:var(--ink-2);line-height:1.7;margin-bottom:1.6rem}
-.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:.35rem .7rem;border-radius:99px;display:inline-block}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:.35rem .7rem;border-radius:99px;display:inline-block}
 
 /* ── Stats + problem/solution ── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
@@ -145,7 +234,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .sec-list .li{display:flex;align-items:center;gap:.9rem;padding:.95rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.98rem;color:#d6dae2}
 .sec-list .li svg{color:var(--gold-2);flex-shrink:0}
 .pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:1.3rem;margin-bottom:1rem}
-.pill h4{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin-bottom:.4rem;color:var(--cream)}
+.pill h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin-bottom:.4rem;color:var(--cream)}
 .pill p{font-size:.9rem;color:#aab0bd;line-height:1.6}
 .sec-note{margin-top:1.4rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:#8b93a1}
 
@@ -265,6 +354,13 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   .badge{flex-wrap:wrap;font-size:.68rem}
   .stats{gap:1rem 1.3rem}
 }
+
+/* ── Respektér brugerens ønske om reduceret bevægelse ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -286,12 +382,13 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
 </header>
 
 <a id="top"></a>
+<main>
 <!-- ── HERO ── -->
 <section class="wrap hero">
   <div>
     <div class="badge"><span class="dot"></span>100% gratis · Windows 10/11 · Ingen kreditkort</div>
-    <h1 class="hero-title">Bevis hver minut.<br><em class="gi">Fakturer med ro</em> i maven.</h1>
-    <p class="lead">CaseTrace registrerer automatisk din tid pr. sag, klient og dokument — uden timere, uden manuel indtastning. Resultatet: fuld dokumentation, færre uregistrerede timer og fakturaer der holder vand.</p>
+    <h1 class="hero-title">Automatisk tidsregistrering<br><em class="gi">der beviser hver minut.</em></h1>
+    <p class="lead">CaseTrace er gratis tidsregistrering til advokater, revisorer og rådgivere. Den logger automatisk din tid pr. sag, klient og dokument — uden timere, uden manuel indtastning — så du får fuld dokumentation, færre uregistrerede timer og fakturaer der holder vand.</p>
     <div class="hero-actions">
       <a class="btn btn-dark btn-lg" id="hero-dl">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -425,8 +522,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <h2 style="margin-top:1rem">Passiv tracking er mere <em class="gi">objektivt</em> end manuel indtastning.</h2>
       <p style="color:#b6bcc8;font-size:1.05rem;line-height:1.7">Passiv computer-tracking giver et objektivt, pålideligt billede af hvor din tid gik hen — uden manuel indtastning. Praktisk når du skal dokumentere dine timer over for en klient, eller bare selv holde styr på dem.</p>
       <div style="margin-top:2rem">
-        <div class="pill"><h4>Behold data så længe du vil</h4><p>Du bestemmer hvor mange backups der gemmes — data gemmes sikkert på din egen maskine og drev.</p></div>
-        <div class="pill"><h4>Dine data — kun dine</h4><p>Du har altid fuld adgang til dine egne registreringer — lokalt på din maskine, intet i skyen, ingen der kigger over skulderen.</p></div>
+        <div class="pill"><h3>Behold data så længe du vil</h3><p>Du bestemmer hvor mange backups der gemmes — data gemmes sikkert på din egen maskine og drev.</p></div>
+        <div class="pill"><h3>Dine data — kun dine</h3><p>Du har altid fuld adgang til dine egne registreringer — lokalt på din maskine, intet i skyen, ingen der kigger over skulderen.</p></div>
       </div>
       <div class="sec-note">Compatibel med Advokatrådets retningslinjer for IT-sikkerhed</div>
     </div>
@@ -498,6 +595,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <a class="btn btn-dark" href="mailto:info@casetrace.dk">Kontakt support</a>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap foot">
