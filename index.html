@@ -201,18 +201,66 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
 
 /* ── Responsive ── */
 .hamburger{display:none}
+
+/* Large tablet / small laptop (≤960px): 3-col grids → 2-col */
+@media(max-width:960px){
+  .aud-grid,.feat-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Tablet portrait (≤900px) */
 @media(max-width:900px){
-  .wrap{padding:0 1.3rem}
+  .wrap{padding:0 1.4rem}
   .nav-links{display:none}
-  .hero{grid-template-columns:1fr;gap:3rem;padding:3.5rem 0}
+  .hero{grid-template-columns:1fr;gap:2.6rem;padding:3rem 0 2.5rem}
   .hero p.lead{max-width:none}
-  .split,.sec-grid{grid-template-columns:1fr;gap:2.5rem}
-  .aud-grid,.feat-grid,.testi-grid{grid-template-columns:1fr}
+  .split,.sec-grid{grid-template-columns:1fr;gap:2.6rem}
   .steps{grid-template-columns:1fr 1fr}
   .sec{padding:4.5rem 0}
-  .stats{gap:1.5rem}
+  .stats{gap:1.6rem}
+  /* #hvordan has inline padding:5rem 3rem — tame the sides on smaller screens */
+  #hvordan{padding-left:1.6rem!important;padding-right:1.6rem!important}
 }
-@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* Phone (≤600px) */
+@media(max-width:600px){
+  .wrap{padding:0 1.15rem}
+  .nav{height:60px}
+  .aud-grid,.feat-grid,.testi-grid,.steps{grid-template-columns:1fr}
+  h1.hero-title{font-size:clamp(2.4rem,9vw,3rem)}
+  .hero{padding:2rem 0 1.6rem;gap:2.2rem}
+  .hero p.lead{font-size:1.04rem}
+  .hero-actions{gap:.7rem}
+  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center}
+  .btn-lg{padding:.92rem 1.4rem;font-size:.95rem}
+  .sec{padding:3.6rem 0}
+  .sec-head{margin-bottom:2.4rem}
+  #hvordan{padding-top:3.4rem!important;padding-bottom:3.4rem!important}
+  /* Stats wrap nicely instead of overflowing */
+  .stats{gap:1.1rem 1.7rem;flex-wrap:wrap}
+  .stat{min-width:6rem}
+  .stat .n{font-size:2.2rem}
+  /* App-window mockup: shrink so it never overflows a narrow screen */
+  .mock-body{padding:1.1rem 1rem}
+  .mock-clock{font-size:1.7rem}
+  .mock-today{font-size:.9rem}
+  .mrow{font-size:.75rem;padding:.42rem .4rem}
+  .mrow .right{gap:.45rem}
+  .mrow.budget .warn{font-size:.64rem}
+  .mock-foot{font-size:.66rem;flex-direction:column;align-items:flex-start;gap:.45rem}
+  .price-card{padding:2.2rem 1.5rem}
+  .price-card .amt .n{font-size:3.6rem}
+  .contact{padding:3.6rem 0}
+  .contact h2{font-size:1.85rem}
+  .foot{justify-content:center;text-align:center}
+  .foot-links{justify-content:center}
+}
+
+/* Small phone (≤380px) */
+@media(max-width:380px){
+  h1.hero-title{font-size:2.2rem}
+  .badge{flex-wrap:wrap;font-size:.68rem}
+  .stats{gap:1rem 1.3rem}
+}
 </style>
 </head>
 <body>
