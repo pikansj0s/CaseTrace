@@ -113,7 +113,7 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0;background:var(--cream)
 .foot{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.6rem}
 .foot .cp{font-size:.82rem;color:var(--muted);max-width:18rem}
 .foot-cols{display:flex;gap:3rem;flex-wrap:wrap}
-.foot-col h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:500}
+.foot-col h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:500}
 .foot-col a{display:block;font-size:.88rem;color:var(--ink-2);padding:.22rem 0;transition:color .15s}
 .foot-col a:hover{color:var(--gold)}
 
