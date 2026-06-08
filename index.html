@@ -219,6 +219,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   .stats{gap:1.6rem}
   /* #hvordan has inline padding:5rem 3rem — tame the sides on smaller screens */
   #hvordan{padding-left:1.7rem!important;padding-right:1.7rem!important}
+  /* .hero/.sec/.cta zero out .wrap's side padding via their shorthand — restore it */
+  .hero,.sec,.cta{padding-left:1.7rem;padding-right:1.7rem}
 }
 
 /* Phone (≤600px) */
@@ -253,6 +255,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   .contact h2{font-size:1.85rem}
   .foot{justify-content:center;text-align:center}
   .foot-links{justify-content:center}
+  /* restore the side padding that .hero/.sec/.cta shorthands zero out */
+  .hero,.sec,.cta{padding-left:1.7rem;padding-right:1.7rem}
 }
 
 /* Small phone (≤380px) */
