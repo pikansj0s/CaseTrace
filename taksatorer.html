@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15181f">
+
+<title>Tidsregistrering for taksatorer &amp; skadesbehandlere · CaseTrace</title>
+<meta name="description" content="Automatisk tidsregistrering for taksatorer og skadesbehandlere. CaseTrace dokumenterer passivt tid pr. skadesag ud fra dine sagsmapper — objektivt overblik over mange parallelle sager.">
+<link rel="canonical" href="https://casetrace.dk/taksatorer.html">
+<link rel="alternate" hreflang="da" href="https://casetrace.dk/taksatorer.html">
+<link rel="alternate" hreflang="x-default" href="https://casetrace.dk/taksatorer.html">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CaseTrace">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://casetrace.dk/taksatorer.html">
+<meta property="og:title" content="Tidsregistrering for taksatorer – passivt pr. skadesag">
+<meta property="og:description" content="CaseTrace dokumenterer automatisk tid pr. skadesag ud fra dine sagsmapper. Objektivt overblik over mange parallelle sager. Gratis til Windows.">
+<meta property="og:image" content="https://casetrace.dk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tidsregistrering for taksatorer – passivt pr. skadesag">
+<meta name="twitter:description" content="CaseTrace dokumenterer automatisk tid pr. skadesag. Objektivt overblik over mange parallelle sager. Gratis til Windows.">
+<meta name="twitter:image" content="https://casetrace.dk/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/landing.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://casetrace.dk/taksatorer.html#webpage",
+      "url": "https://casetrace.dk/taksatorer.html",
+      "name": "Tidsregistrering for taksatorer & skadesbehandlere · CaseTrace",
+      "inLanguage": "da-DK",
+      "isPartOf": { "@id": "https://casetrace.dk/#website" },
+      "about": { "@id": "https://casetrace.dk/#organization" },
+      "description": "Automatisk tidsregistrering for taksatorer og skadesbehandlere der dokumenterer tid pr. skadesag ud fra dine sagsmapper."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://casetrace.dk/" },
+        { "@type": "ListItem", "position": 2, "name": "Tidsregistrering for taksatorer", "item": "https://casetrace.dk/taksatorer.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hvordan registrerer jeg tid pr. skadesag uden en timer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Du peger CaseTrace på dine skadesagsmapper, og programmet logger automatisk hvor lang tid du arbejder i hver sag og hvert dokument — taksationsrapporter, fotos og korrespondance. Registreringen er passiv, så du ikke skal starte og stoppe en timer mens du besigtiger og skriver." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan jeg få et objektivt overblik over tid pr. sag?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Fordi tiden logges ud fra mappestrukturen, får du tid opgjort pr. skadesag og pr. dokument. Du ser objektivt hvor tiden gik hen — nyttigt til intern dokumentation, ressourceplanlægning og afregning." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan det håndtere mange skadesager på én gang?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Hver skadesag har sin egen mappe, og tiden holdes adskilt automatisk — også når du har tredive sager kørende parallelt. Du behøver ikke huske hvilken sag du sidst arbejdede i; CaseTrace gør det for dig." }
+        },
+        {
+          "@type": "Question",
+          "name": "Er forsikrings- og skadedata sikre og GDPR-venlige?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Alle data gemmes lokalt på din egen maskine i en SQLite-database — intet sendes til skyen, og der er ingen telemetri. CaseTrace registrerer kun mappe- og filnavne for at måle tid, ikke indholdet i rapporter eller fotos, hvilket passer til følsomme personoplysninger i skadesager." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad koster CaseTrace for taksatorer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "CaseTrace er gratis. Der er intet abonnement, intet kreditkort og ingen binding — du downloader programmet til Windows 10 eller 11 og er i gang på under to minutter." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+    <nav class="nav-links">
+      <a href="/#hvordan">Sådan virker det</a>
+      <a href="/#funktioner">Funktioner</a>
+      <a href="/#sikkerhed">Sikkerhed</a>
+      <a href="/#pris">Pris</a>
+      <a href="/#kontakt">Support</a>
+    </nav>
+    <a class="btn btn-dark" data-dl href="#download">Download
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ── HERO ── -->
+<section class="sec sec-hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="crumb"><a href="/">Forside</a> › <span>Taksatorer</span></div>
+      <div class="badge"><span class="dot"></span>Til taksatorer &amp; skadesbehandlere · Windows · 100% gratis</div>
+      <h1>Tidsregistrering for taksatorer og skadesbehandlere</h1>
+      <p class="lead">CaseTrace registrerer automatisk hvad du bruger din tid på — ud fra de skadesagsmapper du arbejder i. Tid pr. sag og pr. dokument, uden timere eller manuel indtastning. Når mange sager kører parallelt, får du et objektivt overblik over tidsforbruget pr. skade — helt passivt.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark btn-lg" data-dl href="#download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download gratis</a>
+        <a class="btn btn-ghost btn-lg" href="/#hvordan">Se hvordan det virker →</a>
+      </div>
+      <div class="trust-row">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tid pr. skadesag</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mange sager parallelt</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Data bliver på din maskine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HVEM ER DET TIL ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Derfor taksatorer</span>
+      <h2>Din skadesagsmappe er <em class="gi">allerede din timeseddel.</em></h2>
+    </div>
+    <div class="prose reveal">
+      <p>Skadesbehandling lever i en mappestruktur: én mappe pr. skadesag, med fotos, taksationsrapporter og korrespondance. Du har ofte mange sager kørende på samme tid, og det er svært at huske <strong>hvor lang tid hver enkelt skade reelt tog</strong> — endsige dokumentere det bagefter.</p>
+      <p>CaseTrace logger tiden <strong>automatisk ud fra de mapper og filer du arbejder i</strong>. Hver skadesag holdes adskilt, og du får et objektivt overblik over tidsforbruget pr. sag — passivt, mens du besigtiger, fotograferer og skriver rapporter. Ingen timer, ingen manuel notering.</p>
+    </div>
+    <div class="checks reveal">
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Automatisk tid pr. skadesag — ingen manuel indtastning</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Mange parallelle sager holdes adskilt af sig selv</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Objektiv dokumentation af tidsforbrug pr. skade</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Væk i mere end 10 minutter? Pausen registreres automatisk — du vælger selv om den tæller med</div>
+    </div>
+    <div class="reveal" style="margin-top:2.3rem">
+      <div class="eyebrow" style="margin-bottom:.8rem">Eksempel · din mappestruktur</div>
+      <div style="background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:1.3rem 1.45rem;font-family:var(--mono);font-size:.88rem;color:var(--ink-2);line-height:1.9;max-width:35rem">
+        <div style="color:var(--ink);font-weight:600">📁 Skadesager</div>
+        <div>&nbsp;&nbsp;📁 SK-2026-3391 · Vandskade</div>
+        <div style="color:var(--muted)">&nbsp;&nbsp;&nbsp;&nbsp;↳ taksationsrapport.pdf</div>
+        <div style="color:var(--muted)">&nbsp;&nbsp;&nbsp;&nbsp;↳ skadefotos/</div>
+        <div style="color:var(--muted)">&nbsp;&nbsp;&nbsp;&nbsp;↳ korrespondance.eml</div>
+        <div>&nbsp;&nbsp;📁 SK-2026-3402 · Brandskade</div>
+        <div style="color:var(--muted)">&nbsp;&nbsp;&nbsp;&nbsp;↳ besigtigelse.docx</div>
+      </div>
+      <p style="font-size:.95rem;color:var(--ink-2);margin-top:1rem;max-width:40rem">CaseTrace opgør automatisk tiden pr. skadesag og pr. fil — så du ser hvor lang tid hver enkelt skade reelt tog, uden at føre regnskab i hånden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── GENKENDER DU DET ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Genkender du det?</span>
+      <h2>Slut med at gætte på tidsforbruget.</h2>
+    </div>
+    <div class="ps reveal">
+      <div class="ps-item"><div class="q">»Hvor meget tid gik der egentlig i den skadesag?«</div><div class="a">Objektiv tid pr. sag, opgjort automatisk ud fra mappen.</div></div>
+      <div class="ps-item"><div class="q">Tredive sager kørende — umuligt at huske tiden på hver.</div><div class="a">Hver skadesag spores adskilt, helt af sig selv.</div></div>
+      <div class="ps-item"><div class="q">Skal kunne dokumentere tidsforbruget internt.</div><div class="a">PDF-/CSV-rapport pr. skadesag med tid pr. dokument.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SÅDAN ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sådan virker det</span>
+      <h2>Objektiv tid pr. skade — på tre trin.</h2>
+    </div>
+    <div class="fgrid">
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Peg på dine skadesagsmapper</h3>
+        <p>Vis CaseTrace hvor skadesagerne ligger. Den finder selv resten — rapporter, fotos og korrespondance inklusive.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Behandl sagerne som du plejer</h3>
+        <p>Gennemgå fotos, skriv taksationsrapporter, svar på korrespondance. Tiden logges passivt pr. sag — ingen timer at huske.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Træk overblik & rapport</h3>
+        <p>Eksportér tid pr. skadesag som PDF eller CSV — til intern dokumentation, ressourceplanlægning eller afregning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ANDRE BRANCHER ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Også til</span>
+      <h2>Tidsregistrering til din faggruppe.</h2>
+    </div>
+    <div class="aud-grid reveal">
+      <a class="aud-link" href="/advokater.html">Advokater &amp; jurister <span class="arr">→</span></a>
+      <a class="aud-link" href="/revisorer.html">Revisorer &amp; bogholdere <span class="arr">→</span></a>
+      <a class="aud-link" href="/konsulenter.html">Konsulenter &amp; rådgivere <span class="arr">→</span></a>
+      <a class="aud-link" href="/byggesagkyndige.html">Byggesagkyndige &amp; energikonsulenter <span class="arr">→</span></a>
+      <a class="aud-link" href="/oversaettere.html">Oversættere &amp; bureauer <span class="arr">→</span></a>
+      <a class="aud-link" href="/patentbureauer.html">Patent- &amp; varemærkebureauer <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Ofte stillede spørgsmål.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Hvordan registrerer jeg tid pr. skadesag uden en timer?</summary><div class="ans">Du peger CaseTrace på dine skadesagsmapper, og programmet logger automatisk hvor lang tid du arbejder i hver sag og hvert dokument — taksationsrapporter, fotos og korrespondance. Registreringen er passiv, så du ikke skal starte og stoppe en timer mens du besigtiger og skriver.</div></details>
+      <details><summary>Kan jeg få et objektivt overblik over tid pr. sag?</summary><div class="ans">Ja. Fordi tiden logges ud fra mappestrukturen, får du tid opgjort pr. skadesag og pr. dokument. Du ser objektivt hvor tiden gik hen — nyttigt til intern dokumentation, ressourceplanlægning og afregning.</div></details>
+      <details><summary>Kan det håndtere mange skadesager på én gang?</summary><div class="ans">Ja. Hver skadesag har sin egen mappe, og tiden holdes adskilt automatisk — også når du har tredive sager kørende parallelt. Du behøver ikke huske hvilken sag du sidst arbejdede i; CaseTrace gør det for dig.</div></details>
+      <details><summary>Er forsikrings- og skadedata sikre og GDPR-venlige?</summary><div class="ans">Ja. Alle data gemmes lokalt på din egen maskine i en SQLite-database — intet sendes til skyen, og der er ingen telemetri. CaseTrace registrerer kun mappe- og filnavne for at måle tid, ikke indholdet i rapporter eller fotos, hvilket passer til følsomme personoplysninger i skadesager.</div></details>
+      <details><summary>Hvad koster CaseTrace for taksatorer?</summary><div class="ans">CaseTrace er gratis. Der er intet abonnement, intet kreditkort og ingen binding — du downloader programmet til Windows 10 eller 11 og er i gang på under to minutter.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="sec cta" id="download">
+  <div class="wrap reveal">
+    <h2 class="serif">Objektiv tid <em class="gi">på hver skadesag.</em></h2>
+    <p>Download CaseTrace og lad dine skadesagsmapper holde styr på tiden. Ingen konto, intet kreditkort, helt gratis.</p>
+    <div class="cta-actions">
+      <a class="btn btn-dark btn-lg" data-dl href="#download">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download gratis — Windows</a>
+      <a class="btn btn-ghost btn-lg" href="/#funktioner">Alle funktioner</a>
+    </div>
+    <div class="dl-status" id="dl-status"></div>
+    <div class="cta-note">Windows 10 / 11 · ~76 MB installer · 100% GDPR-venlig · Ingen konto</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+      <div class="cp" style="margin-top:.8rem">© 2026 · Gratis automatisk tidsregistrering til danske professionelle</div>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h3>Brancher</h3>
+        <a href="/advokater.html">Advokater</a>
+        <a href="/revisorer.html">Revisorer</a>
+        <a href="/konsulenter.html">Konsulenter</a>
+        <a href="/arkitekter-ingenioerer.html">Arkitekter &amp; ingeniører</a>
+        <a href="/bureauer.html">Bureauer</a>
+        <a href="/freelancere.html">Freelancere</a>
+        <a href="/oversaettere.html">Oversættere</a>
+        <a href="/patentbureauer.html">Patentbureauer</a>
+        <a href="/taksatorer.html">Taksatorer</a>
+        <a href="/byggesagkyndige.html">Byggesagkyndige</a>
+        <a href="/computertid.html">Overblik over computertid</a>
+      </div>
+      <div class="foot-col">
+        <h3>CaseTrace</h3>
+        <a href="/#funktioner">Funktioner</a>
+        <a href="/#hvordan">Sådan virker det</a>
+        <a href="/#pris">Pris</a>
+        <a href="/#kontakt">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>
