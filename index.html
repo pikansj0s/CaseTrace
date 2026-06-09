@@ -191,11 +191,11 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 
 /* ── Audience cards ── */
 .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.aud{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:2rem 1.8rem;transition:transform .18s,box-shadow .18s,border-color .18s}
+.aud{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:2rem 1.8rem;transition:transform .18s,box-shadow .18s,border-color .18s;display:flex;flex-direction:column}
 .aud:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(21,24,31,.3);border-color:var(--gold-soft)}
 .aud h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:.9rem}
 .aud p{font-size:.95rem;color:var(--ink-2);line-height:1.7;margin-bottom:1.6rem}
-.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:.35rem .7rem;border-radius:99px;display:inline-block}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:.35rem .7rem;border-radius:99px;display:inline-block;margin-top:auto;align-self:flex-start}
 
 /* ── Stats + problem/solution ── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
@@ -405,15 +405,15 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   </div>
 
   <div class="mock reveal">
-    <div class="mock-bar"><span class="tl"><i></i><i></i><i></i></span><span class="ttl">CaseTrace — Folder time today</span></div>
+    <div class="mock-bar"><span class="tl"><i></i><i></i><i></i></span><span class="ttl">CaseTrace — Mappetid i dag</span></div>
     <div class="mock-body">
       <div class="mock-top">
         <div><div class="mock-lbl">Tid registreret</div><div class="mock-clock" id="mockClock">03:47:23</div></div>
-        <div><div class="mock-lbl" style="text-align:right">Tracked today</div><div class="mock-today">+2t 14min</div></div>
+        <div><div class="mock-lbl" style="text-align:right">I dag</div><div class="mock-today">+2t 14min</div></div>
       </div>
       <div class="mock-rows">
         <div class="mrow folder"><span class="nm">📁 firma</span><span class="tm">03:47:22</span></div>
-        <div class="mrow file"><span class="nm">↳ Case-758340</span><span class="tm">01:36:12</span></div>
+        <div class="mrow file"><span class="nm">↳ Sag-758340</span><span class="tm">01:36:12</span></div>
         <div class="mrow file"><span class="nm">↳ kontrakt_v3.docx</span><span class="tm">01:22:04</span></div>
         <div class="mrow file"><span class="nm">↳ bilag_01.jpg</span><span class="tm">00:14:08</span></div>
         <div class="mrow budget"><span class="nm">📁 Danseklassen · Budget</span><span class="right"><span class="warn">⚠ 16 DKK / 29.500 DKK</span><span class="tm">02:11:10</span></span></div>
@@ -421,7 +421,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
         <div class="mrow file"><span class="nm">↳ chargeback_brev_Copy.pdf</span><span class="tm">00:24:07</span></div>
       </div>
       <div class="mock-foot">
-        <span class="live"><span class="d"></span>LIVE · 124 aktiviteter · saved 19:41:11</span>
+        <span class="live"><span class="d"></span>LIVE · 124 aktiviteter · gemt 19:41:11</span>
         <span class="rec">+2t 14min ufaktureret tid genfundet</span>
       </div>
     </div>
@@ -491,7 +491,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <h2>Din mappestruktur er <em class="gi">allerede din timeseddel.</em></h2>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="num">01</div><h3>Tilføj en rodmappe</h3><p>Vis CaseTrace hvor dine klient- eller sagsmapper ligger (fx C:\Clients eller C:\Cases). Resten finder den selv.</p></div>
+    <div class="step reveal"><div class="num">01</div><h3>Tilføj en rodmappe</h3><p>Vis CaseTrace hvor dine klient- eller sagsmapper ligger (fx C:\Sager eller C:\Klienter). Resten finder den selv.</p></div>
     <div class="step reveal"><div class="num">02</div><h3>Sæt tidsbudget pr. sag</h3><p>Tildel timer og en timepris til en sag. CaseTrace beregner automatisk omkostninger og advarer ved 25, 50, 75 og 100% af budgettet.</p></div>
     <div class="step reveal"><div class="num">03</div><h3>Arbejd som du plejer</h3><p>Åbn filer, skriv, redigér, læs. CaseTrace logger passivt på fil- og mappeniveau. Ingen knapper. Ingen forstyrrelser.</p></div>
     <div class="step reveal"><div class="num">04</div><h3>Rapport klar til faktura</h3><p>Eksportér en sagsspecifik rapport som PDF eller CSV. Tid brugt, timepris, total — klar til at vedhæfte en faktura.</p></div>
