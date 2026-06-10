@@ -141,3 +141,24 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0;background:var(--cream)
   html{scroll-behavior:auto}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* ── Artikler & lov-sider ── */
+.art-meta{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted);margin:-.4rem 0 2rem}
+.prose h2{font-size:clamp(1.45rem,2.4vw,1.85rem);margin:2.6rem 0 .9rem}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-size:1.1rem;margin:1.9rem 0 .55rem;font-family:var(--sans);font-weight:650}
+.prose ul,.prose ol{margin:0 0 1.15rem 1.3rem;max-width:43rem;color:var(--ink-2);line-height:1.74;font-size:1.05rem}
+.prose li{margin-bottom:.5rem}
+.prose li strong{color:var(--ink)}
+.prose a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.prose table{width:100%;max-width:44rem;border-collapse:collapse;margin:1.5rem 0;font-size:.96rem}
+.prose th{text-align:left;padding:.65rem .8rem;border-bottom:2px solid var(--ink);font-weight:600}
+.prose td{padding:.65rem .8rem;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+.prose .note{background:var(--cream-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:1rem 1.2rem;font-size:.97rem;color:var(--ink-2);max-width:44rem;margin:1.5rem 0}
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem}
+.art-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.5rem 1.3rem;transition:transform .15s,box-shadow .15s,border-color .15s}
+.art-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(21,24,31,.07);border-color:var(--gold-2)}
+.art-card .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep)}
+.art-card h3{font-size:1.18rem;margin:.55rem 0 .5rem;line-height:1.25}
+.art-card p{font-size:.95rem;color:var(--ink-2);line-height:1.6}
+.art-card .more{display:inline-block;margin-top:.9rem;font-weight:600;font-size:.88rem;color:var(--gold)}
