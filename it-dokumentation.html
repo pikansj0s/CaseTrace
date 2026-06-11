@@ -227,15 +227,25 @@
     <div class="prose reveal">
       <table>
         <tr><td><strong>Platform</strong></td><td>Windows 10 / 11, 64-bit (x64)</td></tr>
-        <tr><td><strong>Installer-størrelse</strong></td><td>ca. 64 MB (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
+        <tr><td><strong>Installer-størrelse</strong></td><td>ca. <span class="dl-size">64 MB</span> (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
         <tr><td><strong>Installationssti</strong></td><td>Brugerens egen profil: <code>%LOCALAPPDATA%\Programs\CaseTrace\</code> (ingen skrivning til <code>Program Files</code>)</td></tr>
         <tr><td><strong>Administrator-rettigheder</strong></td><td>Nej — installeres og kører som almindelig bruger (lowest privileges, ingen UAC)</td></tr>
-        <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere downloaden via SHA-256-tjeksum (kan oplyses på forespørgsel)</td></tr>
+        <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere integriteten via SHA-256-tjeksummen nedenfor.</td></tr>
         <tr><td><strong>Autostart</strong></td><td>Frravalgt som standard. Kan slås til af brugeren («Start med Windows»), hvilket skriver én værdi under <code>HKCU\...\Run</code></td></tr>
         <tr><td><strong>Opdateringer</strong></td><td>Manuelt initieret af brugeren (ingen tvungen/baggrunds-opdatering). Henter fra GitHub-releases og installerer i brugerens egen profil</td></tr>
         <tr><td><strong>Licensmodel</strong></td><td>Gratis. Hardware-bundet licens pr. arbejdsstation (fingerprint-bundet, valideret offline via embedded Ed25519-nøgle)</td></tr>
       </table>
       <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
+
+      <h3>Verificér download (SHA-256)</h3>
+      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.0.18</span>):</p>
+      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">2ae92f9e0e4e371d9e880de9fec4a7d54ddae1f5983efb249d4626a076b96463</code></p>
+      <p>Beregn tjeksummen af den hentede fil i en kommandoprompt og sammenlign:</p>
+      <table>
+        <tr><td>Windows (indbygget)</td><td><code>certutil -hashfile CaseTraceSetup_v&lt;version&gt;.exe SHA256</code></td></tr>
+        <tr><td>PowerShell</td><td><code>Get-FileHash CaseTraceSetup_v&lt;version&gt;.exe -Algorithm SHA256</code></td></tr>
+      </table>
+      <div class="note">Tjeksummen genereres automatisk som en del af hver udgivelse (ud fra den faktiske installer-fil), så værdien ovenfor følger altid den seneste version.</div>
     </div>
   </div>
 </section>
@@ -245,7 +255,7 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">7 · Kontakt</span><h2>Tekniske &amp; sikkerhedsmæssige henvendelser</h2></div>
     <div class="prose reveal">
-      <p>Spørgsmål til denne dokumentation, anmodning om SHA-256-tjeksum, eller andre sikkerhedshenvendelser:<br>
+      <p>Spørgsmål til denne dokumentation eller andre tekniske og sikkerhedsmæssige henvendelser:<br>
       <strong><a href="mailto:info@casetrace.dk">info@casetrace.dk</a></strong></p>
     </div>
   </div>
@@ -263,7 +273,7 @@
       <a class="btn btn-ghost btn-lg" href="/#sikkerhed">Sikkerhed &amp; data</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
-    <div class="cta-note">Windows 10 / 11 · ca. 64 MB · installeres pr. bruger · ingen admin</div>
+    <div class="cta-note">Windows 10 / 11 · ca. <span class="dl-size">64 MB</span> · installeres pr. bruger · ingen admin</div>
   </div>
 </section>
 </main>
