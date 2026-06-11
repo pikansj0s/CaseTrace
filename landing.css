@@ -162,3 +162,7 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0;background:var(--cream)
 .art-card h3{font-size:1.18rem;margin:.55rem 0 .5rem;line-height:1.25}
 .art-card p{font-size:.95rem;color:var(--ink-2);line-height:1.6}
 .art-card .more{display:inline-block;margin-top:.9rem;font-weight:600;font-size:.88rem;color:var(--gold)}
+
+/* ── Inline code (IT-dokumentation m.fl.) ── */
+.prose code{font-family:var(--mono);font-size:.88em;background:var(--cream-2);border:1px solid var(--line);border-radius:4px;padding:.05em .35em;word-break:break-word}
+code.dl-sha256{word-break:break-all}
