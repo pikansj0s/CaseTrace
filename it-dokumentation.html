@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15181f">
+
+<title>IT- &amp; sikkerhedsdokumentation · CaseTrace</title>
+<meta name="description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: hvad CaseTrace gør og ikke gør, komplet liste over netværkstrafik, datalagring, persondata og installation. Verificeret mod kildekoden.">
+<link rel="canonical" href="https://casetrace.dk/it-dokumentation.html">
+<link rel="alternate" hreflang="da" href="https://casetrace.dk/it-dokumentation.html">
+<link rel="alternate" hreflang="x-default" href="https://casetrace.dk/it-dokumentation.html">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CaseTrace">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://casetrace.dk/it-dokumentation.html">
+<meta property="og:title" content="IT- &amp; sikkerhedsdokumentation · CaseTrace">
+<meta property="og:description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: netværkstrafik, datalagring, persondata og installation. Verificeret mod kildekoden.">
+<meta property="og:image" content="https://casetrace.dk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IT- &amp; sikkerhedsdokumentation · CaseTrace">
+<meta name="twitter:description" content="Beslutningsgrundlag for IT, sikkerhed og DPO: netværkstrafik, datalagring, persondata, installation.">
+<meta name="twitter:image" content="https://casetrace.dk/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/landing.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://casetrace.dk/it-dokumentation.html#article",
+      "url": "https://casetrace.dk/it-dokumentation.html",
+      "name": "IT- & sikkerhedsdokumentation · CaseTrace",
+      "headline": "IT- & sikkerhedsdokumentation til godkendelse af CaseTrace",
+      "inLanguage": "da-DK",
+      "isPartOf": { "@id": "https://casetrace.dk/#website" },
+      "description": "Teknisk beslutningsgrundlag for IT-afdelinger, sikkerhedsansvarlige og DPO'er: hvad CaseTrace gør og ikke gør, komplet netværkstrafik, datalagring, persondata og installation.",
+      "dateModified": "2026-06-11"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://casetrace.dk/" },
+        { "@type": "ListItem", "position": 2, "name": "IT- & sikkerhedsdokumentation", "item": "https://casetrace.dk/it-dokumentation.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+    <nav class="nav-links">
+      <a href="/#hvordan">Sådan virker det</a>
+      <a href="/#funktioner">Funktioner</a>
+      <a href="/#sikkerhed">Sikkerhed</a>
+      <a href="/#pris">Pris</a>
+      <a href="/tidsregistrering-lov.html">Lovkrav</a>
+      <a href="/#kontakt">Support</a>
+    </nav>
+    <a class="btn btn-ghost" href="/en/" style="padding:.55rem .9rem;font-size:.8rem" title="English">EN</a>
+    <a class="btn btn-dark" data-dl href="#download">Download
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ── HERO ── -->
+<section class="sec sec-hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="crumb"><a href="/">Forside</a> › <span>IT- &amp; sikkerhedsdokumentation</span></div>
+      <div class="badge"><span class="dot"></span>Teknisk beslutningsgrundlag · Verificeret mod kildekoden</div>
+      <h1>IT- &amp; sikkerhedsdokumentation</h1>
+      <p class="lead">Denne side er skrevet til IT-afdelinger, sikkerhedsansvarlige og DPO'er der skal vurdere CaseTrace før installation i en organisation — privat eller offentlig. Den beskriver præcist hvad programmet gør, hvilken netværkstrafik det kan lave, og hvordan data håndteres. Indholdet er afstemt med den faktiske kildekode. Den kan læses som beslutningsgrundlag på ca. 5 minutter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 1. HVAD CASETRACE GØR ── -->
+<section class="sec" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">1 · Teknisk overblik</span><h2>Hvad CaseTrace gør</h2></div>
+    <div class="prose reveal">
+      <p>CaseTrace er et lokalt Windows-skrivebordsprogram til tidsregistrering. Det kører i den enkelte brugers session og registrerer, hvor tiden bruges, ud fra hvilket vindue der er i fokus.</p>
+      <ul>
+        <li><strong>Mappe- og filtid:</strong> Brugeren udvælger selv et antal rodmapper. CaseTrace registrerer aktiv tid pr. mappe og fil, når en fil fra en overvåget mappe er åben i det aktive vindue. Detektionen sker via vinduestitler, åbne fil-handles og Windows' filsystem-hændelser (ReadDirectoryChangesW) — der læses <strong>kun metadata</strong> (filnavn, sti, tidsstempler), aldrig filindhold.</li>
+        <li><strong>Aktivitetstid:</strong> Programmet aflæser titlen på det aktive vindue for at kategorisere tid (fx «Word», «Browser», «Mail»). Der gemmes vinduestitler og tidsstempler.</li>
+        <li><strong>Inaktivitet (idle):</strong> Fravær af tastatur/mus-input ud over en grænse (standard 300 sekunder = 5 minutter, kan ændres til 1–120 min) registreres som pause. Brugeren vælger selv, om pausen skal tælle med. Idle måles via Windows' <code>GetLastInputInfo</code>, som kun returnerer <em>tid siden sidste input</em> — ikke hvad der blev tastet.</li>
+        <li><strong>Lagring:</strong> Alle registreringer skrives til en lokal SQLite-database på brugerens egen maskine:<br><code>%APPDATA%\CaseTrace\tracking.db</code> (typisk <code>C:\Users\&lt;bruger&gt;\AppData\Roaming\CaseTrace\)</code>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. HVAD CASETRACE ALDRIG GØR ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">2 · Afgrænsning</span><h2>Hvad CaseTrace ikke gør</h2></div>
+    <div class="prose reveal">
+      <ul>
+        <li><strong>Ingen telemetri eller analytics.</strong> Programmet indeholder ingen analytics-, telemetri- eller fejlrapporterings-biblioteker, og sender ikke brugs- eller registreringsdata til CaseTrace eller andre. En fejllog skrives <em>lokalt</em> til <code>%APPDATA%\CaseTrace\crash.log</code> og forlader aldrig maskinen.</li>
+        <li><strong>Ingen registreringsdata sendes nogensteds.</strong> Tidsregistreringer, mappenavne og aktiviteter ligger udelukkende i den lokale database. De forlader kun maskinen, hvis brugeren <em>selv</em> eksporterer (PDF/CSV/e-mail) eller vælger en synkroniseret backup-mappe (se afsnit 4).</li>
+        <li><strong>Ingen keylogging, ingen skærmbilleder.</strong> Der opsættes ingen tastatur-/muse-hooks der opfanger indhold, og der tages ingen screenshots. Der læses metadata: vinduestitler, filnavne, stier og tidsstempler.</li>
+        <li><strong>Ingen forhøjede rettigheder.</strong> Programmet installeres og kører som almindelig bruger. Installeren kører med <code>PrivilegesRequired=lowest</code> (ingen UAC-elevation), og den kørende .exe anmoder ikke om administrator-rettigheder. Alle filer ligger i brugerens egen profil; al registry-skrivning sker under <code>HKEY_CURRENT_USER</code>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. NETVÆRKSTRAFIK ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">3 · Netværk</span><h2>Komplet liste over udgående trafik</h2></div>
+    <div class="prose reveal">
+      <p>CaseTrace fungerer fuldt ud offline. Nedenstående er <strong>samtlige</strong> udgående kald koden kan lave. Intet kald sender tidsregistreringer eller mappe-/filnavne.</p>
+
+      <h3>Kald appen kan lave automatisk</h3>
+      <table>
+        <tr><th>Kald</th><th>Endpoint</th><th>Hvornår</th><th>Hvad sendes</th></tr>
+        <tr>
+          <td>Opdaterings­tjek</td>
+          <td><code>api.github.com</code> (CaseTrace-releases)</td>
+          <td>Ca. 8 sek. efter opstart + når brugeren klikker «Søg efter opdateringer»</td>
+          <td>Intet (offentligt GET — henter seneste versionsnummer)</td>
+        </tr>
+        <tr>
+          <td>Hent opdatering</td>
+          <td><code>github.com</code> (release-fil)</td>
+          <td>Kun når brugeren siger ja til at opdatere</td>
+          <td>Intet (downloader installeren)</td>
+        </tr>
+      </table>
+
+      <h3>Kald der kun sker ved en aktiv brugerhandling</h3>
+      <table>
+        <tr><th>Kald</th><th>Endpoint</th><th>Udløses af</th></tr>
+        <tr><td>CVR-opslag</td><td><code>cvrapi.dk/api</code></td><td>Brugeren slår et CVR-nummer op (kunde-oprettelse)</td></tr>
+        <tr><td>Hent licens automatisk</td><td>CaseTraces licens-tjeneste (Google Apps Script)</td><td>Brugeren klikker «Hent licens automatisk». Sender e-mail + maskine-fingerprint + version for at få en gratis nøgle</td></tr>
+        <tr><td>Send rapport på e-mail</td><td>Brugerens <strong>egen</strong> SMTP-server</td><td>Brugeren sender en rapport. Forbindelsen oprettes til den SMTP-server brugeren selv har konfigureret (vært/port/login). CaseTrace driver ingen mailserver</td></tr>
+      </table>
+
+      <h3>Valgfrie integrationer — kun hvis brugeren selv opsætter dem</h3>
+      <p>Disse er slået fra som standard og kontakter først noget, når brugeren aktivt har indtastet adgang (token/URL) i Indstillinger:</p>
+      <table>
+        <tr><th>Integration</th><th>Endpoint</th></tr>
+        <tr><td>e-conomic (regnskab)</td><td><code>restapi.e-conomic.com</code></td></tr>
+        <tr><td>Uniconta (regnskab)</td><td><code>odata.uniconta.com</code></td></tr>
+        <tr><td>Monday.com (salgsanalyse)</td><td><code>api.monday.com/v2</code></td></tr>
+        <tr><td>Kalender-import (ICS)</td><td>Brugerens <strong>egen</strong> kalender-URL (Google/Outlook ICS)</td></tr>
+      </table>
+      <div class="note">Vil organisationen forhindre al udgående trafik, kan domænerne ovenfor blokeres i firewall/proxy. CaseTrace fungerer fortsat til lokal tidsregistrering; kun de tilhørende funktioner (opdaterings­tjek, CVR-opslag, online licens, e-mail-rapport, integrationer) bliver utilgængelige.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. DATALAGRING & KRYPTERING ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">4 · Data</span><h2>Datalagring, kryptering og sletning</h2></div>
+    <div class="prose reveal">
+      <h3>Placering</h3>
+      <p>Al data ligger under brugerens profil i <code>%APPDATA%\CaseTrace\</code>:</p>
+      <ul>
+        <li><code>tracking.db</code> — SQLite-database med alle registreringer</li>
+        <li><code>license.key</code> — licensnøgle · <code>settings.json</code> — indstillinger · <code>categorize_rules.json</code> — kategoriregler</li>
+        <li><code>Backup\</code>, <code>Logs\</code>, <code>Rapporter\</code>, <code>PDF-rapporter\</code></li>
+      </ul>
+
+      <h3>Kryptering — nøgtern status</h3>
+      <p>Databasen er <strong>ikke applikations-krypteret</strong>. <code>tracking.db</code> er en almindelig SQLite-fil i åbent format. Den er beskyttet af styresystemets adgangskontrol — filen ligger i brugerens egen profil og kan kun læses af den pågældende brugerkonto og lokale administratorer — samt af eventuel <strong>disk-kryptering på maskinen (fx BitLocker)</strong>, som organisationen selv styrer. Den eneste kryptografi i programmet er <strong>Ed25519-signaturvalidering af licensnøglen</strong> (asymmetrisk; kun den offentlige nøgle ligger i appen, så den kan verificere — aldrig udstede — licenser).</p>
+      <div class="note"><strong>Anbefaling til IT:</strong> på enheder med fortrolige data bør fuld-disk-kryptering (BitLocker) være aktiveret. Det beskytter <code>tracking.db</code> på linje med organisationens øvrige lokale dokumenter.</div>
+
+      <h3>Backup</h3>
+      <p>Backup er valgfri og skrives <strong>kun</strong> til en destination brugeren selv vælger: et lokalt drev, et netværksdrev eller en mappe der er cloud-synkroniseret af organisationen. Vælges en synkroniseret mappe (fx OneDrive), er det <strong>organisationens egen tenant/konto</strong> der opbevarer kopien — CaseTrace uploader intet til egne servere. Gendannelse sker sikkert: den klargøres og lægges på plads ved næste programstart, før databasen åbnes.</p>
+
+      <h3>Fuld sletning</h3>
+      <p>Afinstallation (via Windows «Tilføj/fjern programmer») fjerner selve programmet: <code>CaseTrace.exe</code>, programikon og programmappen, samt installerens registry-værdier under <code>HKCU\Software\CaseTrace</code>.</p>
+      <p>Afinstallation fjerner <strong>ikke</strong> brugerens data. For fuldstændig datasletning slettes desuden manuelt:</p>
+      <ul>
+        <li>Datamappen: <code>%APPDATA%\CaseTrace\</code> (database, licens, indstillinger, backups, logs)</li>
+        <li>Eventuel autostart-værdi: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> → værdien <code>CaseTrace</code> (findes kun hvis brugeren har slået «Start med Windows» til)</li>
+        <li>Eventuelle backups på de destinationer brugeren har valgt (netværksdrev/cloud-mappe)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. PERSONDATA — DPO ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">5 · Til DPO'en</span><h2>Persondata &amp; GDPR</h2></div>
+    <div class="prose reveal">
+      <ul>
+        <li><strong>Hvilke persondata behandles:</strong> CaseTrace gemmer vinduestitler samt fil- og mappenavne fra de overvågede mapper. Indeholder disse navne personoplysninger (fx klientnavne, sagsnumre eller CPR i et filnavn), behandles de oplysninger lokalt i databasen. <strong>Organisationen er dataansvarlig</strong> for denne behandling; CaseTrace er ikke databehandler, da leverandøren ikke modtager data.</li>
+        <li><strong>Data forlader ikke maskinen</strong> medmindre brugeren selv eksporterer en rapport eller vælger en synkroniseret backup-destination (afsnit 3–4).</li>
+        <li><strong>Sletning/indsigt:</strong> Brugeren kan slette registreringer i programmet — pr. aktivitet/vinduestitel (for en dag), pr. manuel post, pr. tidslinje-post, og pr. overvåget mappe (fjernelse af en mappe sletter al registreret tid for den). Hele datasættet kan desuden fjernes ved at slette datamappen (afsnit 4). Dataformatet er åbent (SQLite), så indsigt og udtræk altid er muligt.</li>
+        <li><strong>Ingen profilering hos leverandøren:</strong> da ingen data sendes til CaseTrace, sker der ingen ekstern profilering eller automatiseret beslutningstagning.</li>
+      </ul>
+      <div class="note"><strong>Anbefaling:</strong> medtag CaseTrace i artikel 30-fortegnelsen som et internt tidsregistreringsværktøj med lokal databehandling. Bemærk at registrering af medarbejderes arbejdstid kan være omfattet af <a href="/tidsregistrering-lov.html">arbejdstidsloven</a> og bør beskrives i personalepolitik/oplysningspligt. Denne side er teknisk dokumentation, ikke juridisk rådgivning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. INSTALLATION & DRIFT ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">6 · Installation</span><h2>Installation &amp; drift</h2></div>
+    <div class="prose reveal">
+      <table>
+        <tr><td><strong>Platform</strong></td><td>Windows 10 / 11, 64-bit (x64)</td></tr>
+        <tr><td><strong>Installer-størrelse</strong></td><td>ca. 64 MB (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
+        <tr><td><strong>Installationssti</strong></td><td>Brugerens egen profil: <code>%LOCALAPPDATA%\Programs\CaseTrace\</code> (ingen skrivning til <code>Program Files</code>)</td></tr>
+        <tr><td><strong>Administrator-rettigheder</strong></td><td>Nej — installeres og kører som almindelig bruger (lowest privileges, ingen UAC)</td></tr>
+        <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere downloaden via SHA-256-tjeksum (kan oplyses på forespørgsel)</td></tr>
+        <tr><td><strong>Autostart</strong></td><td>Frravalgt som standard. Kan slås til af brugeren («Start med Windows»), hvilket skriver én værdi under <code>HKCU\...\Run</code></td></tr>
+        <tr><td><strong>Opdateringer</strong></td><td>Manuelt initieret af brugeren (ingen tvungen/baggrunds-opdatering). Henter fra GitHub-releases og installerer i brugerens egen profil</td></tr>
+        <tr><td><strong>Licensmodel</strong></td><td>Gratis. Hardware-bundet licens pr. arbejdsstation (fingerprint-bundet, valideret offline via embedded Ed25519-nøgle)</td></tr>
+      </table>
+      <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. KONTAKT ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">7 · Kontakt</span><h2>Tekniske &amp; sikkerhedsmæssige henvendelser</h2></div>
+    <div class="prose reveal">
+      <p>Spørgsmål til denne dokumentation, anmodning om SHA-256-tjeksum, eller andre sikkerhedshenvendelser:<br>
+      <strong><a href="mailto:info@casetrace.dk">info@casetrace.dk</a></strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="sec cta" id="download">
+  <div class="wrap reveal">
+    <h2 class="serif">Klar til evaluering.</h2>
+    <p>Download CaseTrace og test det i et kontrolleret miljø. Ingen konto, intet kreditkort, installeres pr. bruger uden admin.</p>
+    <div class="cta-actions">
+      <a class="btn btn-dark btn-lg" data-dl href="#download">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download gratis — Windows</a>
+      <a class="btn btn-ghost btn-lg" href="/#sikkerhed">Sikkerhed &amp; data</a>
+    </div>
+    <div class="dl-status" id="dl-status"></div>
+    <div class="cta-note">Windows 10 / 11 · ca. 64 MB · installeres pr. bruger · ingen admin</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+      <div class="cp" style="margin-top:.8rem">© 2026 · Gratis automatisk tidsregistrering til danske professionelle</div>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h3>Brancher</h3>
+        <a href="/advokater.html">Advokater</a>
+        <a href="/revisorer.html">Revisorer</a>
+        <a href="/konsulenter.html">Konsulenter</a>
+        <a href="/arkitekter-ingenioerer.html">Arkitekter &amp; ingeniører</a>
+        <a href="/bureauer.html">Bureauer</a>
+        <a href="/freelancere.html">Freelancere</a>
+        <a href="/oversaettere.html">Oversættere</a>
+        <a href="/patentbureauer.html">Patentbureauer</a>
+        <a href="/taksatorer.html">Taksatorer</a>
+        <a href="/byggesagkyndige.html">Byggesagkyndige</a>
+        <a href="/computertid.html">Overblik over computertid</a>
+      </div>
+      <div class="foot-col">
+        <h3>CaseTrace</h3>
+        <a href="/#funktioner">Funktioner</a>
+        <a href="/#hvordan">Sådan virker det</a>
+        <a href="/#pris">Pris</a>
+        <a href="/#kontakt">Support</a>
+        <a href="/tidsregistrering-lov.html">Lovkrav til tidsregistrering</a>
+        <a href="/it-dokumentation.html">IT- &amp; sikkerhedsdokumentation</a>
+        <a href="/artikler/">Artikler &amp; guides</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>
