@@ -225,6 +225,14 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .feat h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:.6rem}
 .feat p{font-size:.92rem;color:var(--ink-2);line-height:1.65}
 
+/* ── Screenshots ("See the app") ── */
+.shots{gap:2.5rem}
+.shot{display:flex;flex-direction:column;gap:.9rem;margin:0}
+.shot picture,.shot img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);box-shadow:0 24px 50px -30px rgba(21,24,31,.3)}
+.shot-ph{aspect-ratio:16/10;border-radius:14px;border:1px dashed var(--gold-soft);background:var(--cream-2);display:flex;align-items:center;justify-content:center}
+.shot-ph span{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.shot figcaption{font-size:.9rem;color:var(--ink-2);text-align:center;line-height:1.5}
+
 /* ── Security ── */
 .sec-dark{background:var(--ink);color:var(--cream)}
 .sec-dark h2{color:var(--cream)}
@@ -372,12 +380,13 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <nav class="nav-links">
       <a href="#hvem">Who it&#39;s for</a>
       <a href="#hvordan">How it works</a>
+      <a href="#screenshots">See the app</a>
       <a href="#funktioner">Features</a>
       <a href="#sikkerhed">Security</a>
       <a href="#kontakt">Support</a>
     </nav>
     <a class="btn btn-ghost" href="/" style="padding:.55rem .9rem;font-size:.8rem" title="Dansk">DA</a>
-    <a class="btn btn-dark" id="nav-dl">Download
+    <a class="btn btn-dark" id="nav-dl" href="#download">Download
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
@@ -392,7 +401,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <h1 class="hero-title">Automatic time tracking<br><em class="gi">that proves every minute.</em></h1>
     <p class="lead">CaseTrace is free time tracking for lawyers, accountants and consultants. It automatically logs your time per case, client and document — no timers, no manual entry. Away for more than 5 minutes? The break is registered automatically — and you decide whether it counts. Full documentation, fewer unrecorded hours, and invoices that hold up.</p>
     <div class="hero-actions">
-      <a class="btn btn-dark btn-lg" id="hero-dl">
+      <a class="btn btn-dark btn-lg" id="hero-dl" href="#download">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download free</a>
       <a class="btn btn-ghost btn-lg" href="#hvordan">See how it works →</a>
@@ -433,8 +442,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
 <!-- ── MARQUEE ── -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Built for law firms</span><span>Designed for accountants</span><span>GDPR-compliant by design</span><span>100% free — no credit card</span><span>Your data never leaves your machine</span>
-    <span>Built for law firms</span><span>Designed for accountants</span><span>GDPR-compliant by design</span><span>100% free — no credit card</span><span>Your data never leaves your machine</span>
+    <span>Built for law firms</span><span>Designed for accountants</span><span>GDPR-compliant by design</span><span>100% free — no credit card</span><span>Automatic time per case and document</span>
+    <span>Built for law firms</span><span>Designed for accountants</span><span>GDPR-compliant by design</span><span>100% free — no credit card</span><span>Automatic time per case and document</span>
   </div>
 </div>
 
@@ -473,7 +482,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <h2 style="margin-top:1rem">Document your time — <em class="gi">objectively and automatically.</em></h2>
       <p style="color:var(--ink-2);font-size:1.05rem;line-height:1.7">Passive computer tracking gives an objective, reliable picture of where your time went — with no manual entry. Useful when you need to document your hours to a client, or simply keep track yourself.</p>
       <div class="stats">
-        <div class="stat"><div class="n">100%</div><div class="l">Local — nothing sent to the cloud</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">Objective — measured, not estimated</div></div>
         <div class="stat"><div class="n">0</div><div class="l">Manual clicks per day</div></div>
         <div class="stat"><div class="n">&lt;2 min</div><div class="l">From setup to first entry</div></div>
       </div>
@@ -497,6 +506,39 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <div class="step reveal"><div class="num">02</div><h3>Set a time budget per case</h3><p>Assign hours and an hourly rate to a case. CaseTrace calculates costs automatically and alerts you at 25, 50, 75 and 100% of budget.</p></div>
     <div class="step reveal"><div class="num">03</div><h3>Work as you normally do</h3><p>Open files, write, edit, read. CaseTrace logs passively at file and folder level. No buttons. No interruptions.</p></div>
     <div class="step reveal"><div class="num">04</div><h3>Report ready for invoicing</h3><p>Export a case-specific report as PDF or CSV. Time spent, hourly rate, total — ready to attach to an invoice.</p></div>
+  </div>
+</section>
+
+<!-- ── SEE THE APP (screenshots) ── -->
+<section class="wrap sec" id="screenshots">
+  <div class="sec-head center reveal">
+    <span class="eyebrow">See the app</span>
+    <h2>What it looks like <em class="gi">in practice.</em></h2>
+    <p>Two screenshots from CaseTrace: the billing-ready case report and the time budget that warns you before you blow the limit.</p>
+  </div>
+  <div class="split shots">
+    <figure class="shot reveal">
+      <div class="shot-ph" role="img" aria-label="Screenshot of the case report coming soon"><span>Report screenshot</span></div>
+      <!-- READY TO USE — remove this comment (and delete the <div class="shot-ph"> above) once /screenshots/rapport.webp + rapport.png are in place. Export at 16:10, e.g. 1280×800, and match width/height below:
+      <picture>
+        <source srcset="/screenshots/rapport.webp" type="image/webp">
+        <img src="/screenshots/rapport.png" width="1280" height="800" loading="lazy" decoding="async"
+             alt="CaseTrace PDF case report with time, hourly rate and total per document — ready for billing">
+      </picture>
+      -->
+      <figcaption>Case report as PDF — time, hourly rate and total per document.</figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="shot-ph" role="img" aria-label="Screenshot of the time budget coming soon"><span>Budget screenshot</span></div>
+      <!-- READY TO USE — remove this comment (and delete the <div class="shot-ph"> above) once /screenshots/budget.webp + budget.png are in place. Export at 16:10, e.g. 1280×800, and match width/height below:
+      <picture>
+        <source srcset="/screenshots/budget.webp" type="image/webp">
+        <img src="/screenshots/budget.png" width="1280" height="800" loading="lazy" decoding="async"
+             alt="CaseTrace time budget per case with a colour alert as usage approaches the limit">
+      </picture>
+      -->
+      <figcaption>Time budget per case — alerts at 25, 50, 75 and 100%.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -527,9 +569,9 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <p style="color:#b6bcc8;font-size:1.05rem;line-height:1.7">Passive computer tracking gives an objective, reliable picture of where your time went — with no manual entry. Practical when you need to document your hours to a client, or just keep track yourself.</p>
       <div style="margin-top:2rem">
         <div class="pill"><h3>Keep your data as long as you like</h3><p>You decide how many backups to keep — data is stored safely on your own machine and drives.</p></div>
-        <div class="pill"><h3>Your data — yours alone</h3><p>You always have full access to your own records — locally on your machine, nothing in the cloud, nobody looking over your shoulder.</p></div>
+        <div class="pill"><h3>Your data — yours alone</h3><p>You always have full access to your own records in an open format — nobody looking over your shoulder, nobody locking them away.</p></div>
       </div>
-      <div class="sec-note">Designed with attorney-client confidentiality in mind — all data stays on your machine</div>
+      <div class="sec-note">Designed with attorney-client confidentiality in mind.</div>
     </div>
     <div class="reveal">
       <div class="sec-list">
@@ -559,9 +601,9 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Cloud backup (any number)</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>PDF, CSV &amp; email reports</li>
       </ul>
-      <a class="btn btn-gold" id="price-dl">Download free →</a>
+      <a class="btn btn-gold" id="price-dl" href="#download">Download free →</a>
     </div>
-    <div class="price-guarantee">Free software · No lock-in · Your data stays on your own machine</div>
+    <div class="price-guarantee">Free software · No lock-in · No account required</div>
   </div>
 </section>
 
@@ -571,7 +613,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <h2 class="serif">Open a file.<br><em class="gi">The rest happens automatically.</em></h2>
     <p>Download CaseTrace and be up and running in under 2 minutes. No account. No credit card. Completely free.</p>
     <div class="cta-actions">
-      <a class="btn btn-dark btn-lg" id="cta-dl">
+      <a class="btn btn-dark btn-lg" id="cta-dl" href="#download">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download free — Windows</a>
       <a class="btn btn-ghost btn-lg" href="#funktioner">Learn more</a>
