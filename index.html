@@ -225,6 +225,14 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .feat h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:.6rem}
 .feat p{font-size:.92rem;color:var(--ink-2);line-height:1.65}
 
+/* ── Screenshots ("Se appen") ── */
+.shots{gap:2.5rem}
+.shot{display:flex;flex-direction:column;gap:.9rem;margin:0}
+.shot picture,.shot img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);box-shadow:0 24px 50px -30px rgba(21,24,31,.3)}
+.shot-ph{aspect-ratio:16/10;border-radius:14px;border:1px dashed var(--gold-soft);background:var(--cream-2);display:flex;align-items:center;justify-content:center}
+.shot-ph span{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.shot figcaption{font-size:.9rem;color:var(--ink-2);text-align:center;line-height:1.5}
+
 /* ── Security ── */
 .sec-dark{background:var(--ink);color:var(--cream)}
 .sec-dark h2{color:var(--cream)}
@@ -372,6 +380,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <nav class="nav-links">
       <a href="#hvem">Målgruppe</a>
       <a href="#hvordan">Sådan virker det</a>
+      <a href="#screenshots">Se appen</a>
       <a href="#funktioner">Funktioner</a>
       <a href="#sikkerhed">Sikkerhed</a>
       <a href="/tidsregistrering-lov.html">Lovkrav</a>
@@ -498,6 +507,39 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <div class="step reveal"><div class="num">02</div><h3>Sæt tidsbudget pr. sag</h3><p>Tildel timer og en timepris til en sag. CaseTrace beregner automatisk omkostninger og advarer ved 25, 50, 75 og 100% af budgettet.</p></div>
     <div class="step reveal"><div class="num">03</div><h3>Arbejd som du plejer</h3><p>Åbn filer, skriv, redigér, læs. CaseTrace logger passivt på fil- og mappeniveau. Ingen knapper. Ingen forstyrrelser.</p></div>
     <div class="step reveal"><div class="num">04</div><h3>Rapport klar til faktura</h3><p>Eksportér en sagsspecifik rapport som PDF eller CSV. Tid brugt, timepris, total — klar til at vedhæfte en faktura.</p></div>
+  </div>
+</section>
+
+<!-- ── SE APPEN (screenshots) ── -->
+<section class="wrap sec" id="screenshots">
+  <div class="sec-head center reveal">
+    <span class="eyebrow">Se appen</span>
+    <h2>Sådan ser det ud <em class="gi">i praksis.</em></h2>
+    <p>To skærmbilleder fra CaseTrace: den faktureringsklare sagsrapport og tidsbudgettet der advarer, før du sprænger grænsen.</p>
+  </div>
+  <div class="split shots">
+    <figure class="shot reveal">
+      <div class="shot-ph" role="img" aria-label="Skærmbillede af sagsrapport kommer snart"><span>Rapport-skærmbillede</span></div>
+      <!-- KLAR TIL BRUG — fjern denne kommentar (og slet <div class="shot-ph"> ovenfor) når /screenshots/rapport.webp + rapport.png ligger klar. Eksportér i 16:10, fx 1280×800, og match da width/height nedenfor:
+      <picture>
+        <source srcset="/screenshots/rapport.webp" type="image/webp">
+        <img src="/screenshots/rapport.png" width="1280" height="800" loading="lazy" decoding="async"
+             alt="CaseTrace PDF-sagsrapport med tid, timepris og total pr. dokument — klar til fakturering">
+      </picture>
+      -->
+      <figcaption>Sagsrapport som PDF — tid, timepris og total pr. dokument.</figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <div class="shot-ph" role="img" aria-label="Skærmbillede af tidsbudget kommer snart"><span>Budget-skærmbillede</span></div>
+      <!-- KLAR TIL BRUG — fjern denne kommentar (og slet <div class="shot-ph"> ovenfor) når /screenshots/budget.webp + budget.png ligger klar. Eksportér i 16:10, fx 1280×800, og match da width/height nedenfor:
+      <picture>
+        <source srcset="/screenshots/budget.webp" type="image/webp">
+        <img src="/screenshots/budget.png" width="1280" height="800" loading="lazy" decoding="async"
+             alt="CaseTrace tidsbudget pr. sag med farvet advarsel når forbruget nærmer sig grænsen">
+      </picture>
+      -->
+      <figcaption>Tidsbudget pr. sag — advarsel ved 25, 50, 75 og 100%.</figcaption>
+    </figure>
   </div>
 </section>
 
