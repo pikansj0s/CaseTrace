@@ -142,6 +142,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(250,249,245,.82);backdr
 .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green2)}
 h1.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,5.4vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:1.6rem}
 .hero p.lead{font-size:1.12rem;color:var(--ink-2);max-width:30rem;margin-bottom:2.2rem;line-height:1.7}
+/* Lovkrav-flag (hero) — kort hook øverst; uddybes i #lovkrav-sektionen */
+.law-flag{display:inline-flex;align-items:flex-start;gap:.6rem;max-width:33rem;margin-bottom:1.2rem;padding:.6rem .95rem;background:var(--cream-2);border:1px solid var(--gold-soft);border-radius:12px}
+.law-flag svg{color:var(--gold);flex-shrink:0;margin-top:.15rem}
+.law-flag p{font-size:.85rem;color:var(--ink-2);line-height:1.5;margin:0}
+.law-flag a{color:var(--gold-deep);font-weight:600;border-bottom:1px solid var(--gold-soft)}
+.law-flag a:hover{color:var(--gold);border-color:var(--gold)}
+.hero p.lead-law{font-size:.93rem;color:var(--muted);max-width:30rem;margin:-1.2rem 0 2.1rem;padding-left:.85rem;border-left:2px solid var(--gold-soft);line-height:1.6}
 .hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.8rem}
 .trust-row{display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;margin-bottom:.9rem}
 .trust-row span{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:var(--ink-2)}
@@ -398,9 +405,14 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
 <!-- ── HERO ── -->
 <section class="wrap hero">
   <div>
+    <div class="law-flag">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 21h8M3 7h18M7.5 7 5 13a2.5 2.5 0 0 0 5 0L7.5 7Zm9 0L14 13a2.5 2.5 0 0 0 5 0L16.5 7Z"/></svg>
+      <p><a href="/tidsregistrering-lov.html">Arbejdstidsloven</a> kræver tidsregistrering siden 1. juli 2024 — CaseTrace gør det automatisk, lokalt og gratis.</p>
+    </div>
     <div class="badge"><span class="dot"></span>100% gratis · Windows 10/11 · Ingen kreditkort</div>
     <h1 class="hero-title">Automatisk tidsregistrering<br><em class="gi">der beviser hver minut.</em></h1>
     <p class="lead">CaseTrace er gratis tidsregistrering til advokater, revisorer og rådgivere. Den logger automatisk din tid pr. sag, klient og dokument — uden timere, uden manuel indtastning. Holder du pause i mere end 5 minutter, registrerer den det automatisk — og du vælger selv, om tiden tæller med. Så får du fuld dokumentation, færre uregistrerede timer og fakturaer der holder vand.</p>
+    <p class="lead-law">Objektiv, pålidelig registrering gemt i 5 år — som arbejdstidsloven kræver, uden timere og uden abonnement.</p>
     <div class="hero-actions">
       <a class="btn btn-dark btn-lg" id="hero-dl" href="#download">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
