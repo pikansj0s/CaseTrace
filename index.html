@@ -244,6 +244,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .sec-dark{background:var(--ink);color:var(--cream)}
 .sec-dark h2{color:var(--cream)}
 .sec-dark .eyebrow{color:var(--gold-2)}
+.sec-dark .stat .l{color:#b6bcc8}
 .sec-dark .sec-head p{color:#b6bcc8}
 .sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
 .sec-list{display:flex;flex-direction:column;gap:.2rem}
@@ -387,7 +388,6 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <nav class="nav-links">
       <a href="#hvem">Målgruppe</a>
       <a href="#hvordan">Sådan virker det</a>
-      <a href="#screenshots">Se appen</a>
       <a href="#funktioner">Funktioner</a>
       <a href="#sikkerhed">Sikkerhed</a>
       <a href="/tidsregistrering-lov.html">Lovkrav</a>
@@ -423,7 +423,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Windows 10/11</span>
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Gratis i øjeblikket</span>
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ingen konto</span>
-      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>GDPR-venlig</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Privatlivsvenlig</span>
     </div>
     <div class="install-note">Installer: ~<span class="dl-size">63 MB</span> · Ingen binding · Data bliver på din maskine</div>
   </div>
@@ -487,26 +487,6 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   <p style="margin-top:1.9rem;color:var(--ink-2);font-size:1.02rem;max-width:44rem">Også til <a href="/arkitekter-ingenioerer.html" style="color:var(--gold);font-weight:600">arkitekter &amp; ingeniører</a>, <a href="/bureauer.html" style="color:var(--gold);font-weight:600">bureauer</a>, <a href="/freelancere.html" style="color:var(--gold);font-weight:600">freelancere</a>, <a href="/oversaettere.html" style="color:var(--gold);font-weight:600">oversættere</a>, <a href="/patentbureauer.html" style="color:var(--gold);font-weight:600">patentbureauer</a>, <a href="/taksatorer.html" style="color:var(--gold);font-weight:600">taksatorer</a> og <a href="/byggesagkyndige.html" style="color:var(--gold);font-weight:600">byggesagkyndige</a> — eller bare <a href="/computertid.html" style="color:var(--gold);font-weight:600">overblik over din computertid</a>.</p>
 </section>
 
-<!-- ── VALUE / problem-solution ── -->
-<section class="wrap sec" style="padding-top:0">
-  <div class="split">
-    <div class="reveal">
-      <span class="eyebrow">Mindre administration</span>
-      <h2 style="margin-top:1rem">Dokumentér din tid — <em class="gi">objektivt og automatisk.</em></h2>
-      <div class="stats">
-        <div class="stat"><div class="n">100%</div><div class="l">Objektivt — målt, ikke skønnet</div></div>
-        <div class="stat"><div class="n">0</div><div class="l">Manuelle klik pr. dag</div></div>
-        <div class="stat"><div class="n">&lt;2 min</div><div class="l">Setup til første registrering</div></div>
-      </div>
-    </div>
-    <div class="ps reveal">
-      <div class="ps-item"><div class="q">Glemte at starte timeren igen efter pausen.</div><div class="a">Pause registreret automatisk. Tid pr. dokument logget.</div></div>
-      <div class="ps-item"><div class="q">Klienten spørger: »Hvad gik der 4 timer på?«</div><div class="a">PDF-rapport pr. sag med fil-for-fil dokumentation.</div></div>
-      <div class="ps-item"><div class="q">Sagen sprængte budgettet — opdaget for sent.</div><div class="a">Advisering ved 25%, 50%, 75% og 100% af budget.</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- ── HVORDAN ── -->
 <section class="wrap sec" id="hvordan" style="background:var(--cream-2);border-radius:24px;padding:5rem 3rem;margin:0 auto">
   <div class="sec-head reveal">
@@ -521,8 +501,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   </div>
 </section>
 
-<!-- ── SE APPEN (screenshots) ── -->
-<section class="wrap sec" id="screenshots">
+<!-- ── SE APPEN (screenshots) — SKJULT indtil rigtige billeder er klar: fjern style="display:none", tilføj /screenshots/*.png, udkommentér <picture>-blokkene ── -->
+<section class="wrap sec" id="screenshots" style="display:none">
   <div class="sec-head center reveal">
     <span class="eyebrow">Se appen</span>
     <h2>Sådan ser det ud <em class="gi">i praksis.</em></h2>
@@ -578,7 +558,11 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <div class="reveal">
       <span class="eyebrow">Pålidelig dokumentation</span>
       <h2 style="margin-top:1rem">Passiv tracking er mere <em class="gi">objektivt</em> end manuel indtastning.</h2>
-      <p style="color:#b6bcc8;font-size:1.05rem;line-height:1.7">Passiv computer-tracking giver et objektivt, pålideligt billede af hvor din tid gik hen — uden manuel indtastning. Praktisk når du skal dokumentere dine timer over for en klient, eller bare selv holde styr på dem.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">100%</div><div class="l">Objektivt — målt, ikke skønnet</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Manuelle klik pr. dag</div></div>
+        <div class="stat"><div class="n">&lt;2 min</div><div class="l">Setup til første registrering</div></div>
+      </div>
       <div style="margin-top:2rem">
         <div class="pill"><h3>Behold data så længe du vil</h3><p>Du bestemmer hvor mange backups der gemmes — data gemmes sikkert på din egen maskine og drev.</p></div>
         <div class="pill"><h3>Dine data — kun dine</h3><p>Du har altid fuld adgang til dine egne registreringer i et åbent format — ingen der kigger over skulderen, ingen der låser dem inde.</p></div>
@@ -586,6 +570,11 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <div class="sec-note">Designet med advokaters tavshedspligt for øje.</div>
     </div>
     <div class="reveal">
+      <div class="ps" style="margin-bottom:2rem">
+        <div class="ps-item"><div class="q">Glemte at starte timeren igen efter pausen.</div><div class="a">Pause registreret automatisk. Tid pr. dokument logget.</div></div>
+        <div class="ps-item"><div class="q">Klienten spørger: »Hvad gik der 4 timer på?«</div><div class="a">PDF-rapport pr. sag med fil-for-fil dokumentation.</div></div>
+        <div class="ps-item"><div class="q">Sagen sprængte budgettet — opdaget for sent.</div><div class="a">Advisering ved 25%, 50%, 75% og 100% af budget.</div></div>
+      </div>
       <div class="sec-list">
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Data lagres lokalt — aldrig i andres cloud</div>
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Hardware-bundet licens pr. arbejdsstation</div>
