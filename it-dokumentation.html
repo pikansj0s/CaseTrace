@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#15181f">
 
 <title>IT- &amp; sikkerhedsdokumentation · CaseTrace</title>
-<meta name="description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: hvad CaseTrace gør og ikke gør, komplet liste over netværkstrafik, datalagring, persondata og installation. Verificeret mod kildekoden.">
+<meta name="description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: hvad CaseTrace gør og ikke gør, komplet liste over netværkstrafik, datalagring, persondata og installation. Afstemt med kildekoden.">
 <link rel="canonical" href="https://casetrace.dk/it-dokumentation.html">
 <link rel="alternate" hreflang="da" href="https://casetrace.dk/it-dokumentation.html">
 <link rel="alternate" hreflang="x-default" href="https://casetrace.dk/it-dokumentation.html">
@@ -20,7 +20,7 @@
 <meta property="og:locale" content="da_DK">
 <meta property="og:url" content="https://casetrace.dk/it-dokumentation.html">
 <meta property="og:title" content="IT- &amp; sikkerhedsdokumentation · CaseTrace">
-<meta property="og:description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: netværkstrafik, datalagring, persondata og installation. Verificeret mod kildekoden.">
+<meta property="og:description" content="Teknisk beslutningsgrundlag for IT, sikkerhed og DPO: netværkstrafik, datalagring, persondata og installation. Afstemt med kildekoden.">
 <meta property="og:image" content="https://casetrace.dk/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -88,7 +88,7 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="crumb"><a href="/">Forside</a> › <span>IT- &amp; sikkerhedsdokumentation</span></div>
-      <div class="badge"><span class="dot"></span>Teknisk beslutningsgrundlag · Verificeret mod kildekoden</div>
+      <div class="badge"><span class="dot"></span>Teknisk beslutningsgrundlag · Afstemt med kildekoden</div>
       <h1>IT- &amp; sikkerhedsdokumentation</h1>
       <p class="lead">Denne side er skrevet til IT-afdelinger, sikkerhedsansvarlige og DPO'er der skal vurdere CaseTrace før installation i en organisation — privat eller offentlig. Den beskriver præcist hvad programmet gør, hvilken netværkstrafik det kan lave, og hvordan data håndteres. Indholdet er afstemt med den faktiske kildekode. Den kan læses som beslutningsgrundlag på ca. 5 minutter.</p>
     </div>
@@ -228,7 +228,7 @@
     <div class="prose reveal">
       <table>
         <tr><td><strong>Platform</strong></td><td>Windows 10 / 11, 64-bit (x64)</td></tr>
-        <tr><td><strong>Installer-størrelse</strong></td><td>ca. <span class="dl-size">64 MB</span> (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
+        <tr><td><strong>Installer-størrelse</strong></td><td>ca. <span class="dl-size">63 MB</span> (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
         <tr><td><strong>Installationssti</strong></td><td>Brugerens egen profil: <code>%LOCALAPPDATA%\Programs\CaseTrace\</code> (ingen skrivning til <code>Program Files</code>)</td></tr>
         <tr><td><strong>Administrator-rettigheder</strong></td><td>Nej — installeres og kører som almindelig bruger (lowest privileges, ingen UAC)</td></tr>
         <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere integriteten via SHA-256-tjeksummen nedenfor.</td></tr>
@@ -239,8 +239,8 @@
       <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
 
       <h3>Verificér download (SHA-256)</h3>
-      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.0.18</span>):</p>
-      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">2ae92f9e0e4e371d9e880de9fec4a7d54ddae1f5983efb249d4626a076b96463</code></p>
+      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.2.1</span>):</p>
+      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">abdc4605cd32ffcec0b9c128ef2cd53787ac99782a5dce4365d54308022bc115</code></p>
       <p>Beregn tjeksummen af den hentede fil i en kommandoprompt og sammenlign:</p>
       <table>
         <tr><td>Windows (indbygget)</td><td><code>certutil -hashfile CaseTraceSetup_v&lt;version&gt;.exe SHA256</code></td></tr>
@@ -274,7 +274,7 @@
       <a class="btn btn-ghost btn-lg" href="/#sikkerhed">Sikkerhed &amp; data</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
-    <div class="cta-note">Windows 10 / 11 · ca. <span class="dl-size">64 MB</span> · installeres pr. bruger · ingen admin</div>
+    <div class="cta-note">Windows 10 / 11 · ca. <span class="dl-size">63 MB</span> · installeres pr. bruger · ingen admin</div>
   </div>
 </section>
 </main>
@@ -312,6 +312,7 @@
       </div>
     </div>
   </div>
+  <div class="wrap" style="margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid rgba(128,128,128,.2);font-size:.8rem;line-height:1.6;opacity:.6;max-width:60rem">CaseTrace er et hjælpemiddel til tidsregistrering. Kontrollér altid registreringernes rigtighed før fakturering eller lovpligtig brug.</div>
 </footer>
 
 <script src="/landing.js"></script>
