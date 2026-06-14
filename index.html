@@ -203,6 +203,8 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .aud:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(21,24,31,.3);border-color:var(--gold-soft)}
 .aud h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:.9rem}
 .aud p{font-size:.95rem;color:var(--ink-2);line-height:1.7;margin-bottom:1.6rem}
+.aud-more{margin-top:1.7rem;color:var(--muted);font-size:.84rem;line-height:1.7;max-width:48rem}
+.aud-more a{color:var(--gold-deep);font-weight:500}
 .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:.35rem .7rem;border-radius:99px;display:inline-block;margin-top:auto;align-self:flex-start}
 
 /* ── Stats + problem/solution ── */
@@ -231,6 +233,11 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .feat .ic{width:42px;height:42px;border-radius:10px;background:var(--cream-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:1.2rem}
 .feat h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:.6rem}
 .feat p{font-size:.92rem;color:var(--ink-2);line-height:1.65}
+.feat-grid.compact{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.2rem}
+.feat.sm{padding:1.3rem 1.2rem}
+.feat.sm .ic{width:34px;height:34px;margin-bottom:.85rem}
+.feat.sm h3{font-size:1.08rem;margin-bottom:.45rem}
+.feat.sm p{font-size:.85rem;line-height:1.55}
 
 /* ── Screenshots ("Se appen") ── */
 .shots{gap:2.5rem}
@@ -455,8 +462,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
 <!-- ── MARQUEE ── -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Bygget til danske advokatkontorer</span><span>Designet til revisorer</span><span>Privatlivsvenligt by design</span><span>Gratis i øjeblikket — ingen kreditkort</span><span>Automatisk tid pr. sag og dokument</span>
-    <span>Bygget til danske advokatkontorer</span><span>Designet til revisorer</span><span>Privatlivsvenligt by design</span><span>Gratis i øjeblikket — ingen kreditkort</span><span>Automatisk tid pr. sag og dokument</span>
+    <span>Bygget til danske advokatkontorer</span><span>Automatisk tid pr. sag og dokument</span><span>Gratis i øjeblikket</span>
+    <span>Bygget til danske advokatkontorer</span><span>Automatisk tid pr. sag og dokument</span><span>Gratis i øjeblikket</span>
   </div>
 </div>
 
@@ -484,7 +491,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <span class="tag">Tidsregistrering for rådgivere →</span>
     </a>
   </div>
-  <p style="margin-top:1.9rem;color:var(--ink-2);font-size:1.02rem;max-width:44rem">Også til <a href="/arkitekter-ingenioerer.html" style="color:var(--gold);font-weight:600">arkitekter &amp; ingeniører</a>, <a href="/bureauer.html" style="color:var(--gold);font-weight:600">bureauer</a>, <a href="/freelancere.html" style="color:var(--gold);font-weight:600">freelancere</a>, <a href="/oversaettere.html" style="color:var(--gold);font-weight:600">oversættere</a>, <a href="/patentbureauer.html" style="color:var(--gold);font-weight:600">patentbureauer</a>, <a href="/taksatorer.html" style="color:var(--gold);font-weight:600">taksatorer</a> og <a href="/byggesagkyndige.html" style="color:var(--gold);font-weight:600">byggesagkyndige</a> — eller bare <a href="/computertid.html" style="color:var(--gold);font-weight:600">overblik over din computertid</a>.</p>
+  <p class="aud-more">Også til <a href="/arkitekter-ingenioerer.html">arkitekter &amp; ingeniører</a>, <a href="/bureauer.html">bureauer</a>, <a href="/freelancere.html">freelancere</a>, <a href="/oversaettere.html">oversættere</a>, <a href="/patentbureauer.html">patentbureauer</a>, <a href="/taksatorer.html">taksatorer</a> og <a href="/byggesagkyndige.html">byggesagkyndige</a> — eller bare <a href="/computertid.html">overblik over din computertid</a>.</p>
 </section>
 
 <!-- ── HVORDAN ── -->
@@ -498,6 +505,15 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <div class="step reveal"><div class="num">02</div><h3>Sæt tidsbudget pr. sag</h3><p>Tildel timer og en timepris til en sag. CaseTrace beregner automatisk omkostninger og advarer ved 25, 50, 75 og 100% af budgettet.</p></div>
     <div class="step reveal"><div class="num">03</div><h3>Arbejd som du plejer</h3><p>Åbn filer, skriv, redigér, læs. CaseTrace logger passivt på fil- og mappeniveau. Ingen knapper. Ingen forstyrrelser.</p></div>
     <div class="step reveal"><div class="num">04</div><h3>Rapport klar til faktura</h3><p>Eksportér en sagsspecifik rapport som PDF eller CSV. Tid brugt, timepris, total — klar til at vedhæfte en faktura.</p></div>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.8rem">
+    <div class="ps-item"><div class="q">Glemte at starte timeren igen efter pausen.</div><div class="a">Pause registreret automatisk. Tid pr. dokument logget.</div></div>
+    <div class="ps-item"><div class="q">Klienten spørger: »Hvad gik der 4 timer på?«</div><div class="a">PDF-rapport pr. sag med fil-for-fil dokumentation.</div></div>
+    <div class="ps-item"><div class="q">Sagen sprængte budgettet — opdaget for sent.</div><div class="a">Advisering ved 25%, 50%, 75% og 100% af budget.</div></div>
+  </div>
+  <div class="stats reveal" style="margin-top:2.2rem;justify-content:center;gap:3.5rem">
+    <div class="stat"><div class="n">0</div><div class="l">Manuelle klik pr. dag</div></div>
+    <div class="stat"><div class="n">&lt;2 min</div><div class="l">Setup til første registrering</div></div>
   </div>
 </section>
 
@@ -544,11 +560,13 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
   <div class="feat-grid">
     <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><h3>Mappe- & filtracking</h3><p>Registrerer automatisk hvad du arbejder med på filniveau. Mapper, undermapper, hver fil du åbner — logget passivt uden du gør noget.</p></div>
     <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Tidsbudget med advarsler</h3><p>Sæt en tidsgrænse og timepris på en sag. CaseTrace advarer ved 25, 50, 75 og 100% — så du aldrig sprænger et budget.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.4 18.4A5 5 0 0 0 18 9h-1.3A8 8 0 1 0 3 16.3"/></svg></div><h3>Backup — så mange du vil</h3><p>Du bestemmer hvor mange backups der gemmes. Vil du have 1.000? Intet problem. Roteres automatisk til OneDrive, Google Drive eller dit eget netværksdrev.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>CVR-opslag indbygget</h3><p>Søg danske virksomheder via CVR-nummer eller navn direkte i appen. Kopier formateret adresse og kontaktinfo med ét klik.</p></div>
     <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Rapporter & eksport</h3><p>PDF, CSV og e-mail-rapporter pr. mappe, pr. sag, pr. dag. Direkte faktureringsdokumentation. Send rapporter automatisk via e-mail.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Lokal database & privat</h3><p>Alle data gemmes lokalt på din maskine i en SQLite-database. Hardware-bunden licens. Ingen cloud-forpligtelse. Ingen telemetri.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="10" y1="9" x2="10" y2="15"/><line x1="14" y1="9" x2="14" y2="15"/></svg></div><h3>Registrerer pauser automatisk</h3><p>Har du været væk i mere end 5 minutter, vælger du selv om tiden tæller med. Så dokumenterer du faktisk arbejdet tid — ikke bare åbne vinduer.</p></div>
+  </div>
+  <div class="feat-grid compact">
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.4 18.4A5 5 0 0 0 18 9h-1.3A8 8 0 1 0 3 16.3"/></svg></div><h3>Backup — så mange du vil</h3><p>Du bestemmer hvor mange backups der gemmes. Vil du have 1.000? Intet problem. Roteres automatisk til OneDrive, Google Drive eller dit eget netværksdrev.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>CVR-opslag indbygget</h3><p>Søg danske virksomheder via CVR-nummer eller navn direkte i appen. Kopier formateret adresse og kontaktinfo med ét klik.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Lokal database & privat</h3><p>Alle data gemmes lokalt på din maskine i en SQLite-database. Hardware-bunden licens. Ingen cloud-forpligtelse. Ingen telemetri.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="10" y1="9" x2="10" y2="15"/><line x1="14" y1="9" x2="14" y2="15"/></svg></div><h3>Registrerer pauser automatisk</h3><p>Har du været væk i mere end 5 minutter, vælger du selv om tiden tæller med. Så dokumenterer du faktisk arbejdet tid — ikke bare åbne vinduer.</p></div>
   </div>
 </section>
 
@@ -558,11 +576,6 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
     <div class="reveal">
       <span class="eyebrow">Pålidelig dokumentation</span>
       <h2 style="margin-top:1rem">Passiv tracking er mere <em class="gi">objektivt</em> end manuel indtastning.</h2>
-      <div class="stats">
-        <div class="stat"><div class="n">100%</div><div class="l">Objektivt — målt, ikke skønnet</div></div>
-        <div class="stat"><div class="n">0</div><div class="l">Manuelle klik pr. dag</div></div>
-        <div class="stat"><div class="n">&lt;2 min</div><div class="l">Setup til første registrering</div></div>
-      </div>
       <div style="margin-top:2rem">
         <div class="pill"><h3>Behold data så længe du vil</h3><p>Du bestemmer hvor mange backups der gemmes — data gemmes sikkert på din egen maskine og drev.</p></div>
         <div class="pill"><h3>Dine data — kun dine</h3><p>Du har altid fuld adgang til dine egne registreringer i et åbent format — ingen der kigger over skulderen, ingen der låser dem inde.</p></div>
@@ -570,11 +583,6 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0}
       <div class="sec-note">Designet med advokaters tavshedspligt for øje.</div>
     </div>
     <div class="reveal">
-      <div class="ps" style="margin-bottom:2rem">
-        <div class="ps-item"><div class="q">Glemte at starte timeren igen efter pausen.</div><div class="a">Pause registreret automatisk. Tid pr. dokument logget.</div></div>
-        <div class="ps-item"><div class="q">Klienten spørger: »Hvad gik der 4 timer på?«</div><div class="a">PDF-rapport pr. sag med fil-for-fil dokumentation.</div></div>
-        <div class="ps-item"><div class="q">Sagen sprængte budgettet — opdaget for sent.</div><div class="a">Advisering ved 25%, 50%, 75% og 100% af budget.</div></div>
-      </div>
       <div class="sec-list">
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Data lagres lokalt — aldrig i andres cloud</div>
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Hardware-bundet licens pr. arbejdsstation</div>
