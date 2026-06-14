@@ -105,7 +105,7 @@
         <li><strong>Mappe- og filtid:</strong> Brugeren udvælger selv et antal rodmapper. CaseTrace registrerer aktiv tid pr. mappe og fil, når en fil fra en overvåget mappe er åben i det aktive vindue. Detektionen sker via vinduestitler, åbne fil-handles og Windows' filsystem-hændelser (ReadDirectoryChangesW) — der læses <strong>kun metadata</strong> (filnavn, sti, tidsstempler), aldrig filindhold.</li>
         <li><strong>Aktivitetstid:</strong> Programmet aflæser titlen på det aktive vindue for at kategorisere tid (fx «Word», «Browser», «Mail»). Der gemmes vinduestitler og tidsstempler.</li>
         <li><strong>Inaktivitet (idle):</strong> Fravær af tastatur/mus-input ud over en grænse (standard 300 sekunder = 5 minutter, kan ændres til 1–120 min) registreres som pause. Brugeren vælger selv, om pausen skal tælle med. Idle måles via Windows' <code>GetLastInputInfo</code>, som kun returnerer <em>tid siden sidste input</em> — ikke hvad der blev tastet.</li>
-        <li><strong>Lagring:</strong> Alle registreringer skrives til en lokal SQLite-database på brugerens egen maskine:<br><code>%APPDATA%\CaseTrace\tracking.db</code> (typisk <code>C:\Users\&lt;bruger&gt;\AppData\Roaming\CaseTrace\)</code>.</li>
+        <li><strong>Lagring:</strong> Alle registreringer skrives til en lokal SQLite-database på brugerens egen maskine:<br><code>%LOCALAPPDATA%\CaseTrace\tracking.db</code> (typisk <code>C:\Users\&lt;bruger&gt;\AppData\Local\CaseTrace\)</code>.</li>
       </ul>
     </div>
   </div>
@@ -117,7 +117,7 @@
     <div class="sec-head reveal"><span class="eyebrow">2 · Afgrænsning</span><h2>Hvad CaseTrace ikke gør</h2></div>
     <div class="prose reveal">
       <ul>
-        <li><strong>Ingen telemetri eller analytics.</strong> Programmet indeholder ingen analytics-, telemetri- eller fejlrapporterings-biblioteker, og sender ikke brugs- eller registreringsdata til CaseTrace eller andre. En fejllog skrives <em>lokalt</em> til <code>%APPDATA%\CaseTrace\crash.log</code> og forlader aldrig maskinen.</li>
+        <li><strong>Ingen telemetri eller analytics.</strong> Programmet indeholder ingen analytics-, telemetri- eller fejlrapporterings-biblioteker, og sender ikke brugs- eller registreringsdata til CaseTrace eller andre. En fejllog skrives <em>lokalt</em> til <code>%LOCALAPPDATA%\CaseTrace\crash.log</code> og forlader aldrig maskinen.</li>
         <li><strong>Ingen registreringsdata sendes nogensteds.</strong> Tidsregistreringer, mappenavne og aktiviteter ligger udelukkende i den lokale database. De forlader kun maskinen, hvis brugeren <em>selv</em> eksporterer (PDF/CSV/e-mail) eller vælger en synkroniseret backup-mappe (se afsnit 4).</li>
         <li><strong>Ingen keylogging, ingen skærmbilleder.</strong> Der opsættes ingen tastatur-/muse-hooks der opfanger indhold, og der tages ingen screenshots. Der læses metadata: vinduestitler, filnavne, stier og tidsstempler.</li>
         <li><strong>Ingen forhøjede rettigheder.</strong> Programmet installeres og kører som almindelig bruger. Installeren kører med <code>PrivilegesRequired=lowest</code> (ingen UAC-elevation), og den kørende .exe anmoder ikke om administrator-rettigheder. Alle filer ligger i brugerens egen profil; al registry-skrivning sker under <code>HKEY_CURRENT_USER</code>.</li>
@@ -179,7 +179,7 @@
     <div class="sec-head reveal"><span class="eyebrow">4 · Data</span><h2>Datalagring, kryptering og sletning</h2></div>
     <div class="prose reveal">
       <h3>Placering</h3>
-      <p>Al data ligger under brugerens profil i <code>%APPDATA%\CaseTrace\</code>:</p>
+      <p>Al data ligger under brugerens profil i <code>%LOCALAPPDATA%\CaseTrace\</code>:</p>
       <ul>
         <li><code>tracking.db</code> — SQLite-database med alle registreringer</li>
         <li><code>license.key</code> — licensnøgle · <code>settings.json</code> — indstillinger · <code>categorize_rules.json</code> — kategoriregler</li>
@@ -197,7 +197,7 @@
       <p>Afinstallation (via Windows «Tilføj/fjern programmer») fjerner selve programmet: <code>CaseTrace.exe</code>, programikon og programmappen, samt installerens registry-værdier under <code>HKCU\Software\CaseTrace</code>.</p>
       <p>Afinstallation fjerner <strong>ikke</strong> brugerens data. For fuldstændig datasletning slettes desuden manuelt:</p>
       <ul>
-        <li>Datamappen: <code>%APPDATA%\CaseTrace\</code> (database, licens, indstillinger, backups, logs)</li>
+        <li>Datamappen: <code>%LOCALAPPDATA%\CaseTrace\</code> (database, licens, indstillinger, backups, logs)</li>
         <li>Eventuel autostart-værdi: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> → værdien <code>CaseTrace</code> (findes kun hvis brugeren har slået «Start med Windows» til)</li>
         <li>Eventuelle backups på de destinationer brugeren har valgt (netværksdrev/cloud-mappe)</li>
       </ul>
@@ -239,8 +239,8 @@
       <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
 
       <h3>Verificér download (SHA-256)</h3>
-      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.2.5</span>):</p>
-      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">b9ccd1a0544cffcfc07a918595642121fadbe29ce07d4b85393a68f9da2d46c3</code></p>
+      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.2.6</span>):</p>
+      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">ecf289ae3355892ecfbec9dce7804078e38563f30820713d462d977da9baca6c</code></p>
       <p>Beregn tjeksummen af den hentede fil i en kommandoprompt og sammenlign:</p>
       <table>
         <tr><td>Windows (indbygget)</td><td><code>certutil -hashfile CaseTraceSetup_v&lt;version&gt;.exe SHA256</code></td></tr>
