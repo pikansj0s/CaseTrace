@@ -9,6 +9,7 @@
 
   async function startDownload(){
     if(busy) return; busy = true;
+    try { if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'download-exe', title:'Download (exe)', event:true}); } catch(e){}
     var status = document.getElementById('dl-status');
     if(status){ status.classList.remove('error'); status.textContent = 'Forbereder download …'; }
     try{

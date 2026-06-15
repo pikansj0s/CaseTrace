@@ -667,6 +667,7 @@ const DL_RELEASES_PAGE = 'https://github.com/' + DL_OWNER + '/' + DL_REPO + '/re
 let _dlBusy = false;
 async function startDownload(){
   if(_dlBusy) return; _dlBusy = true;
+  try { if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'download-exe', title:'Download (exe)', event:true}); } catch(e){}
   const status = document.getElementById('dl-status');
   if(status){ status.classList.remove('error'); status.textContent = 'Preparing download …'; }
   try{
