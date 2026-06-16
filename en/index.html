@@ -673,7 +673,10 @@ async function startDownload(){
   try{
     const r = await fetch('https://api.github.com/repos/' + DL_OWNER + '/' + DL_REPO + '/releases/latest', {headers:{'Accept':'application/vnd.github+json'}});
     const data = await r.json();
-    const asset = (data.assets || []).find(a => /\.exe$/i.test(a.name));
+    const exes = (data.assets || []).filter(a => /\.exe$/i.test(a.name));
+    // Grab the REGULAR installer, not the '_update' file (reserved for the
+    // app's auto-updater, so GitHub's two download counters stay separate).
+    const asset = exes.find(a => !/_update/i.test(a.name)) || exes[0];
     if(asset && asset.browser_download_url){
       const a = document.createElement('a');
       a.href = asset.browser_download_url; a.download = asset.name;

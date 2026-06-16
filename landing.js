@@ -15,7 +15,10 @@
     try{
       var r = await fetch('https://api.github.com/repos/' + DL_OWNER + '/' + DL_REPO + '/releases/latest', {headers:{'Accept':'application/vnd.github+json'}});
       var data = await r.json();
-      var asset = (data.assets || []).find(function(a){ return /\.exe$/i.test(a.name); });
+      var exes = (data.assets || []).filter(function(a){ return /\.exe$/i.test(a.name); });
+      // Hent den ALMINDELIGE installer, ikke '_update'-filen (forbeholdt appens
+      // auto-opdaterer, saa GitHubs to download-taellere ikke blandes).
+      var asset = exes.find(function(a){ return !/_update/i.test(a.name); }) || exes[0];
       if(asset && asset.browser_download_url){
         var a = document.createElement('a');
         a.href = asset.browser_download_url; a.download = asset.name;
