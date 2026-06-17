@@ -701,7 +701,7 @@ async function startDownload(){
       const a = document.createElement('a');
       a.href = asset.browser_download_url; a.download = asset.name;
       document.body.appendChild(a); a.click(); a.remove();
-      if(status) status.innerHTML = 'Download started — check your downloads folder.<br><span style="color:var(--muted);font-size:.85em">Windows shows a blue warning («Windows protected your PC»)? Click <b>More info → Run anyway</b> — the app isn't code-signed yet, but it's safe.</span>';
+      if(status) status.innerHTML = 'Download started — check your downloads folder.<br><span style="color:var(--muted);font-size:.85em">Windows shows a blue warning («Windows protected your PC»)? Click <b>More info → Run anyway</b> — the app isn\'t code-signed yet, but it\'s safe.</span>';
       _dlBusy = false; return;
     }
   }catch(e){}
