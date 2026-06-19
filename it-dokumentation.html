@@ -221,7 +221,7 @@
     <div class="prose reveal">
       <table>
         <tr><td><strong>Platform</strong></td><td>Windows 10 / 11, 64-bit (x64)</td></tr>
-        <tr><td><strong>Installer-størrelse</strong></td><td>ca. <span class="dl-size">63 MB</span> (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
+        <tr><td><strong>Installer-størrelse</strong></td><td>ca. <span class="dl-size">64 MB</span> (selvstændig — ingen separate runtime-afhængigheder; Python og biblioteker er bundtet)</td></tr>
         <tr><td><strong>Installationssti</strong></td><td>Brugerens egen profil: <code>%LOCALAPPDATA%\Programs\CaseTrace\</code> (ingen skrivning til <code>Program Files</code>)</td></tr>
         <tr><td><strong>Administrator-rettigheder</strong></td><td>Nej — installeres og kører som almindelig bruger (lowest privileges, ingen UAC)</td></tr>
         <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere integriteten via SHA-256-tjeksummen nedenfor.</td></tr>
@@ -232,8 +232,8 @@
       <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
 
       <h3>Verificér download (SHA-256)</h3>
-      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.2.15</span>):</p>
-      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">9b700d755171a189c28f0791650fb9dd8b115ec20016ebc6bab32882fbea3ca8</code></p>
+      <p>Da installeren ikke er kodesigneret, kan IT bekræfte at den hentede fil er uændret ved at sammenligne dens SHA-256-tjeksum med den officielle værdi for den aktuelle udgivelse (<span class="dl-version">v1.2.16</span>):</p>
+      <p style="margin:.4rem 0"><strong>SHA-256:</strong> <code class="dl-sha256">f6f418017528ab2fb2632022a460ae94d1e190c14509e8900873beb68bcd9ddb</code></p>
       <p>Beregn tjeksummen af den hentede fil i en kommandoprompt og sammenlign:</p>
       <table>
         <tr><td>Windows (indbygget)</td><td><code>certutil -hashfile CaseTraceSetup_v&lt;version&gt;.exe SHA256</code></td></tr>
@@ -267,7 +267,7 @@
       <a class="btn btn-ghost btn-lg" href="/#sikkerhed">Sikkerhed &amp; data</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
-    <div class="cta-note">Windows 10 / 11 · ca. <span class="dl-size">63 MB</span> · installeres pr. bruger · ingen admin</div>
+    <div class="cta-note">Windows 10 / 11 · ca. <span class="dl-size">64 MB</span> · installeres pr. bruger · ingen admin</div>
   </div>
 </section>
 </main>
