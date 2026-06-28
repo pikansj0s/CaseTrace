@@ -149,7 +149,7 @@ h1.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,5.
 .law-flag a{color:var(--gold-deep);font-weight:600;border-bottom:1px solid var(--gold-soft)}
 .law-flag a:hover{color:var(--gold);border-color:var(--gold)}
 .hero p.lead-law{font-size:.93rem;color:var(--muted);max-width:30rem;margin:-1.2rem 0 2.1rem;padding-left:.85rem;border-left:2px solid var(--gold-soft);line-height:1.6}
-.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;margin-bottom:1.8rem}
 .trust-row{display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;margin-bottom:.9rem}
 .trust-row span{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:var(--ink-2)}
 .trust-row svg{color:var(--gold);flex-shrink:0}
@@ -288,7 +288,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .cta{text-align:center;padding:7rem 0}
 .cta h2{font-size:clamp(2.3rem,4.4vw,3.6rem);margin-bottom:1.3rem}
 .cta p{font-size:1.1rem;color:var(--ink-2);max-width:34rem;margin:0 auto 2.2rem;line-height:1.7}
-.cta-actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.3rem}
+.cta-actions{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:1.3rem}
 .dl-status{min-height:1.3rem;font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-top:.4rem}
 .dl-status.error{color:#c2554d}
 .dl-status a{color:var(--gold);text-decoration:underline}
@@ -382,6 +382,47 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   html{scroll-behavior:auto}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* ── Front-page conversion: illustration + CTA + social proof (ported from DA) ── */
+.fi-wrap{display:flex;flex-direction:column;gap:.7rem}
+.fi-panel{border-radius:14px;overflow:hidden}
+.fi-folders{background:var(--dark-2);box-shadow:0 30px 60px -32px rgba(21,24,31,.45),0 0 0 1px rgba(21,24,31,.05)}
+.fi-bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;border-bottom:1px solid #20262f}
+.fi-bar .dots{display:flex;gap:.4rem}.fi-bar .dots i{width:10px;height:10px;border-radius:50%;background:#39404b;display:block}
+.fi-bar .path{font-family:var(--mono);font-size:.74rem;color:#8b93a1;margin-left:.3rem}
+.fi-frows{padding:.55rem .5rem}
+.fi-frow{display:flex;align-items:center;gap:.5rem;padding:.5rem .55rem;border-radius:7px;font-family:var(--mono);font-size:.8rem}
+.fi-frow+.fi-frow{margin-top:.15rem}
+.fi-frow .nm{color:#e9edf2;font-weight:500;white-space:nowrap}
+.fi-frow .tg{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-2);border:1px solid rgba(194,160,92,.35);border-radius:99px;padding:.1rem .45rem}
+.fi-frow .tm{margin-left:auto;color:#7e8794}
+.fi-ffoot{display:flex;align-items:center;gap:.45rem;padding:.6rem .9rem;border-top:1px solid #20262f;font-family:var(--mono);font-size:.7rem;color:#7d8694}
+.fi-ffoot .d{width:7px;height:7px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px var(--green2)}
+.fi-arrow{display:flex;align-items:center;justify-content:center;gap:.7rem;color:var(--gold);padding:.05rem 0}
+.fi-arrow .lbl{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.fi-invoice{background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 60px -32px rgba(21,24,31,.18)}
+.fi-ihead{display:flex;justify-content:space-between;align-items:baseline;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+.fi-ihead .t{font-family:var(--serif);font-weight:500;font-size:1.05rem}
+.fi-ihead .dt{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.fi-irows{padding:.4rem .35rem}
+.fi-irow{display:flex;align-items:center;padding:.48rem .65rem;font-size:.84rem}
+.fi-irow .nm{flex:1;font-weight:500;color:var(--ink)}
+.fi-irow .hr{width:3.2rem;text-align:right;color:var(--muted);font-family:var(--mono);font-size:.76rem}
+.fi-irow .am{width:5rem;text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink)}
+.fi-itot{display:flex;align-items:center;padding:.65rem 1rem;border-top:1px solid var(--line);background:#fbf8f1}
+.fi-itot .l{flex:1;font-family:var(--serif);font-weight:500}
+.fi-itot .hr{width:3.2rem;text-align:right;font-family:var(--mono);font-size:.76rem;color:var(--gold-deep)}
+.fi-itot .am{width:5rem;text-align:right;font-family:var(--mono);font-weight:600;color:var(--gold)}
+.fi-ifoot{padding:.5rem 1rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--muted);text-align:center}
+.fi-note{margin:0;font-size:.74rem;color:var(--ink-2);text-align:center;font-style:italic;letter-spacing:.01em}
+.dl-verified{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;font-weight:500;color:#2f7d3f}
+.dl-verified svg{color:var(--green2);flex-shrink:0}
+.exe-link{font-size:.86rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.exe-link:hover{color:var(--ink)}
+.social-proof{display:flex;justify-content:center;padding:1.6rem 0 .2rem}
+.sp-inner{display:inline-flex;align-items:center;gap:.7rem;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:.5rem 1.1rem .5rem .5rem;font-size:.92rem;color:var(--ink-2)}
+.sp-av{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.85rem;flex-shrink:0}
+.sp-inner strong{color:var(--ink);font-weight:600}
 </style>
 </head>
 <body>
@@ -398,7 +439,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
       <a href="#kontakt">Support</a>
     </nav>
     <a class="btn btn-ghost" href="/" style="padding:.55rem .9rem;font-size:.8rem" title="Dansk">DA</a>
-    <a class="btn btn-dark" id="nav-dl" href="#download">Download
+    <a class="btn btn-dark" id="nav-dl" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">Download
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
@@ -411,15 +452,14 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div>
     <div class="badge"><span class="dot"></span>Windows 10/11 · Local data · No account</div>
     <h1 class="hero-title">Automatic time tracking<br><em class="gi">that proves every minute.</em></h1>
-    <p class="lead">CaseTrace is free time tracking for lawyers, accountants and consultants — it runs passively and automatically captures everything you do on your computer in a detailed timeline. Work in a folder structure? It even breaks the time down per case and file — so you capture the billable hours that otherwise slip away. Without a single click.</p>
+    <p class="lead">CaseTrace is free time tracking for everyone who bills their time — lawyers, architects, accountants, translators and more. It runs passively and automatically captures everything you do on your computer in a detailed timeline. Work in a folder structure? It even breaks the time down per case and file — so you capture the billable hours that otherwise slip away. Without a single click.</p>
     <p class="lead-law">Objective, reliable records kept for 5 years — as Danish law requires, with no timers and no subscription.</p>
     <div class="hero-actions">
       <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
-        Microsoft Store</a>
-      <a class="btn btn-ghost btn-lg" id="hero-dl" href="#download">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .exe</a>
+        Get it from Microsoft Store</a>
+      <span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verified — no SmartScreen warning</span>
+      <a class="exe-link" id="hero-dl" href="#download">or download the .exe installer directly</a>
     </div>
     <div class="trust-row">
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Windows 10/11</span>
@@ -434,29 +474,38 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     </div>
   </div>
 
-  <div class="mock reveal">
-    <div class="mock-bar"><span class="tl"><i></i><i></i><i></i></span><span class="ttl">CaseTrace — Folder time today</span></div>
-    <div class="mock-body">
-      <div class="mock-top">
-        <div><div class="mock-lbl">Time tracked</div><div class="mock-clock" id="mockClock">03:47:23</div></div>
-        <div><div class="mock-lbl" style="text-align:right">Today</div><div class="mock-today">+2h 14min</div></div>
+  <div class="fi-wrap reveal">
+    <div class="fi-panel fi-folders">
+      <div class="fi-bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">C:\Cases</span></div>
+      <div class="fi-frows">
+        <div class="fi-frow"><span class="nm">📁 Case-758340</span><span class="tg">lawyer</span><span class="tm">3:31:42</span></div>
+        <div class="fi-frow"><span class="nm">📁 Project Nord</span><span class="tg">architect</span><span class="tm">5:12:08</span></div>
+        <div class="fi-frow"><span class="nm">📁 Client Ltd</span><span class="tg">accountant</span><span class="tm">2:00:55</span></div>
       </div>
-      <div class="mock-rows">
-        <div class="mrow folder"><span class="nm">📁 clients</span><span class="tm">03:47:22</span></div>
-        <div class="mrow file"><span class="nm">↳ Case-758340</span><span class="tm">01:36:12</span></div>
-        <div class="mrow file"><span class="nm">↳ contract_v3.docx</span><span class="tm">01:22:04</span></div>
-        <div class="mrow file"><span class="nm">↳ exhibit_01.jpg</span><span class="tm">00:14:08</span></div>
-        <div class="mrow budget"><span class="nm">📁 Case 2026-0142 · Property sale</span><span class="right"><span class="warn">⚠ 24,300 / 29,500 DKK</span><span class="tm">02:11:10</span></span></div>
-        <div class="mrow file"><span class="nm">↳ deed_draft_v2.pdf</span><span class="tm">01:47:03</span></div>
-        <div class="mrow file"><span class="nm">↳ settlement_statement.xlsx</span><span class="tm">00:24:07</span></div>
-      </div>
-      <div class="mock-foot">
-        <span class="live"><span class="d"></span>LIVE · 124 activities · saved 19:41:11</span>
-        <span class="rec">+2h 14min of unbilled time recovered</span>
-      </div>
+      <div class="fi-ffoot"><span class="d"></span>LIVE · tracking in the background</div>
     </div>
+    <div class="fi-arrow">
+      <span class="lbl">time</span>
+      <svg width="22" height="34" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="0" x2="11" y2="28"/><polyline points="5 21 11 28 17 21"/></svg>
+      <span class="lbl">passive tracking</span>
+    </div>
+    <div class="fi-panel fi-invoice">
+      <div class="fi-ihead"><span class="t">Time record</span><span class="dt">June 2026</span></div>
+      <div class="fi-irows">
+        <div class="fi-irow"><span class="nm">Case-758340</span><span class="hr">3.5 h</span><span class="am">6,300 kr</span></div>
+        <div class="fi-irow"><span class="nm">Project Nord</span><span class="hr">5.2 h</span><span class="am">4,940 kr</span></div>
+        <div class="fi-irow"><span class="nm">Client Ltd</span><span class="hr">2.0 h</span><span class="am">2,500 kr</span></div>
+      </div>
+      <div class="fi-itot"><span class="l">Total</span><span class="hr">10.7 h</span><span class="am">13,740 kr</span></div>
+      <div class="fi-ifoot">per file, per day · PDF · CSV</div>
+    </div>
+    <p class="fi-note">Example figures — not a promise of earnings.</p>
   </div>
 </section>
+
+<div class="social-proof wrap">
+  <span class="sp-inner"><span class="sp-av">B</span><span>In active use at e.g. the consultancy <strong>Byg og Brand</strong></span></span>
+</div>
 
 <!-- ── HVEM ── -->
 <section class="wrap sec" id="hvem">
@@ -627,12 +676,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
       <div class="pd">Full access to every feature. No limits, no hidden fees.</div>
       <ul class="price-feats">
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Every feature included</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Unlimited case &amp; folder tracking</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Time budget per folder &amp; alerts</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Unlimited case &amp; file tracking</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Time budget per case &amp; alerts</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Cloud backup (any number)</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>PDF, CSV &amp; email reports</li>
       </ul>
-      <a class="btn btn-gold" id="price-dl" href="#download">Download free →</a>
+      <a class="btn btn-gold" id="price-dl" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">Download free →</a>
     </div>
     <div class="price-guarantee">Free software · No lock-in · No account required</div>
   </div>
@@ -646,14 +695,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <div class="cta-actions">
       <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
-        Microsoft Store</a>
-      <a class="btn btn-ghost btn-lg" id="cta-dl" href="#download">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .exe</a>
+        Get it from Microsoft Store</a>
+      <span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verified — no SmartScreen warning</span>
+      <a class="exe-link" id="cta-dl" href="#download">or download the .exe installer directly</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
     <div class="cta-note">Windows 10 / 11 · ~<span class="dl-size">64 MB</span> installer · Everything stored locally · No account required</div>
-    <div class="cta-note" style="margin-top:.55rem;color:var(--ink-2)">The Store version is Microsoft-verified — no SmartScreen prompt.</div>
   </div>
 </section>
 
