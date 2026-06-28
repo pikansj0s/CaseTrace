@@ -149,11 +149,19 @@ h1.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,5.
 .law-flag a{color:var(--gold-deep);font-weight:600;border-bottom:1px solid var(--gold-soft)}
 .law-flag a:hover{color:var(--gold);border-color:var(--gold)}
 .hero p.lead-law{font-size:.93rem;color:var(--muted);max-width:30rem;margin:-1.2rem 0 2.1rem;padding-left:.85rem;border-left:2px solid var(--gold-soft);line-height:1.6}
-.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;margin-bottom:1.8rem}
 .trust-row{display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;margin-bottom:.9rem}
 .trust-row span{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:var(--ink-2)}
 .trust-row svg{color:var(--gold);flex-shrink:0}
 .install-note{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.02em}
+.dl-verified{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;font-weight:500;color:#2f7d3f}
+.dl-verified svg{color:var(--green2);flex-shrink:0}
+.exe-link{font-size:.86rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.exe-link:hover{color:var(--ink)}
+.social-proof{display:flex;justify-content:center;padding:1.6rem 0 .2rem}
+.sp-inner{display:inline-flex;align-items:center;gap:.7rem;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:.5rem 1.1rem .5rem .5rem;font-size:.92rem;color:var(--ink-2)}
+.sp-av{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.85rem;flex-shrink:0}
+.sp-inner strong{color:var(--ink);font-weight:600}
 
 /* ── App window mockup ── */
 .mock{background:var(--dark);border-radius:16px;box-shadow:0 40px 90px -30px rgba(21,24,31,.45),0 0 0 1px rgba(21,24,31,.06);overflow:hidden;font-family:var(--mono)}
@@ -291,7 +299,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .cta{text-align:center;padding:7rem 0}
 .cta h2{font-size:clamp(2.3rem,4.4vw,3.6rem);margin-bottom:1.3rem}
 .cta p{font-size:1.1rem;color:var(--ink-2);max-width:34rem;margin:0 auto 2.2rem;line-height:1.7}
-.cta-actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.3rem}
+.cta-actions{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:1.3rem}
 .dl-status{min-height:1.3rem;font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-top:.4rem}
 .dl-status.error{color:#c2554d}
 .dl-status a{color:var(--gold);text-decoration:underline}
@@ -462,14 +470,13 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div>
     <div class="badge"><span class="dot"></span>Windows 10/11 · Lokal data · Ingen konto</div>
     <h1 class="hero-title">Automatisk tidsregistrering<br><em class="gi">der dokumenterer hvert minut.</em></h1>
-    <p class="lead">CaseTrace er gratis tidsregistrering til advokater, revisorer og rådgivere — den kører passivt og fanger automatisk alt hvad du laver på computeren i en detaljeret tidslinje. Arbejder du i en mappestruktur, deler den oven i købet tiden ned pr. sag og fil — så du fanger de fakturerbare timer, der ellers går tabt. Uden et eneste klik.</p>
+    <p class="lead">CaseTrace er gratis tidsregistrering til alle, der fakturerer deres tid — advokater, arkitekter, revisorer, oversættere og flere. Den kører passivt og fanger automatisk alt hvad du laver på computeren i en detaljeret tidslinje. Arbejder du i en mappestruktur, deler den oven i købet tiden ned pr. sag og fil — så du fanger de fakturerbare timer, der ellers går tabt. Uden et eneste klik.</p>
     <div class="hero-actions">
       <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
-        Microsoft Store</a>
-      <a class="btn btn-ghost btn-lg" id="hero-dl" href="#download">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .exe</a>
+        Hent fra Microsoft Store</a>
+      <span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verificeret — ingen SmartScreen-advarsel</span>
+      <a class="exe-link" id="hero-dl" href="#download">eller download .exe-installeren direkte</a>
     </div>
     <div class="trust-row">
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Windows 10/11</span>
@@ -512,6 +519,10 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <p class="fi-note">Eksempeltal — ikke et løfte om indtjening.</p>
   </div>
 </section>
+
+<div class="social-proof wrap">
+  <span class="sp-inner"><span class="sp-av">B</span><span>I aktiv brug hos bl.a. rådgivningshuset <strong>Byg og Brand</strong></span></span>
+</div>
 
 <!-- ── HVEM ── -->
 <section class="wrap sec" id="hvem">
@@ -708,14 +719,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <div class="cta-actions">
       <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
-        Microsoft Store</a>
-      <a class="btn btn-ghost btn-lg" id="cta-dl" href="#download">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .exe</a>
+        Hent fra Microsoft Store</a>
+      <span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verificeret — ingen SmartScreen-advarsel</span>
+      <a class="exe-link" id="cta-dl" href="#download">eller download .exe-installeren direkte</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
     <div class="cta-note">Windows 10 / 11 · ~<span class="dl-size">64 MB</span> installer · Ingen konto påkrævet</div>
-    <div class="cta-note" style="margin-top:.55rem;color:var(--ink-2)">Store-versionen er Microsoft-verificeret — ingen SmartScreen-advarsel.</div>
   </div>
 </section>
 
