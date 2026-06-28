@@ -166,3 +166,11 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0;background:var(--cream)
 /* ── Inline code (IT-dokumentation m.fl.) ── */
 .prose code{font-family:var(--mono);font-size:.88em;background:var(--cream-2);border:1px solid var(--line);border-radius:4px;padding:.05em .35em;word-break:break-word}
 code.dl-sha256{word-break:break-all}
+
+/* ── Store-primaer CTA (delt med forsiden) ── */
+.dl-sub{flex-basis:100%;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;margin-top:.5rem}
+.cta-actions .dl-sub{align-items:center}
+.dl-verified{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;font-weight:500;color:#2f7d3f}
+.dl-verified svg{color:var(--green2);flex-shrink:0}
+.exe-link{font-size:.86rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.exe-link:hover{color:var(--ink)}

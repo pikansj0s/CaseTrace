@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15181f">
+
+<title>Tidsregistrering uden cloud — lokal &amp; privat · CaseTrace</title>
+<meta name="description" content="Tidsregistrering uden cloud: CaseTrace kører lokalt på din egen maskine — gratis, ingen konto, ingen telemetri. Dine registreringer forlader aldrig din pc.">
+<link rel="canonical" href="https://casetrace.dk/tidsregistrering-uden-cloud.html">
+<link rel="alternate" hreflang="da" href="https://casetrace.dk/tidsregistrering-uden-cloud.html">
+<link rel="alternate" hreflang="x-default" href="https://casetrace.dk/tidsregistrering-uden-cloud.html">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CaseTrace">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://casetrace.dk/tidsregistrering-uden-cloud.html">
+<meta property="og:title" content="Tidsregistrering uden cloud — lokal &amp; privat">
+<meta property="og:description" content="CaseTrace kører lokalt på din egen maskine — gratis, ingen konto, ingen telemetri. Dine registreringer forlader aldrig din pc.">
+<meta property="og:image" content="https://casetrace.dk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tidsregistrering uden cloud — lokal &amp; privat">
+<meta name="twitter:description" content="CaseTrace kører lokalt på din egen maskine — gratis, ingen konto, ingen telemetri. Dine registreringer forlader aldrig din pc.">
+<meta name="twitter:image" content="https://casetrace.dk/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/landing.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://casetrace.dk/tidsregistrering-uden-cloud.html#webpage",
+      "url": "https://casetrace.dk/tidsregistrering-uden-cloud.html",
+      "name": "Tidsregistrering uden cloud — lokal & privat · CaseTrace",
+      "inLanguage": "da-DK",
+      "isPartOf": { "@id": "https://casetrace.dk/#website" },
+      "about": { "@id": "https://casetrace.dk/#organization" },
+      "description": "Lokal tidsregistrering uden cloud: CaseTrace kører på din egen maskine, gratis og uden konto, og sender aldrig dine registreringer nogen steder."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://casetrace.dk/" },
+        { "@type": "ListItem", "position": 2, "name": "Tidsregistrering uden cloud", "item": "https://casetrace.dk/tidsregistrering-uden-cloud.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Sender CaseTrace mine data til skyen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nej. Dine tidsregistreringer, mappe- og filnavne ligger udelukkende i en lokal SQLite-database på din egen maskine. Programmet indeholder ingen telemetri eller analytics og har ingen kode til at sende dine registreringer nogen steder. De eneste udgående kald er et versions-tjek mod GitHub (som ikke sender noget om dig eller din maskine) og handlinger du selv starter — ingen af dem sender dine tidsdata." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan jeg bruge CaseTrace uden konto?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Der er ingen konto og intet login. Du downloader programmet og er i gang. Den gratis licens er bundet til arbejdsstationen og valideres offline, så du behøver hverken bruger, adgangskode eller internetforbindelse for at registrere din tid." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvor ligger mine tidsdata?",
+          "acceptedAnswer": { "@type": "Answer", "text": "I en almindelig SQLite-fil på din egen maskine: %LOCALAPPDATA%\\CaseTrace\\tracking.db. Du ejer filen. Tager du backup, skrives den kun til en destination du selv vælger — et lokalt drev, et netværksdrev eller din egen cloud-mappe — aldrig til CaseTraces servere." }
+        },
+        {
+          "@type": "Question",
+          "name": "Er CaseTrace GDPR-venligt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fordi data bliver på din maskine og leverandøren ikke modtager noget, forbliver du (eller din organisation) dataansvarlig, og CaseTrace er ikke databehandler. Det betyder, at der ikke skal indgås en databehandleraftale med os. Indeholder fil- og mappenavne personoplysninger, behandles de lokalt — som dine øvrige dokumenter på maskinen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Fungerer det offline?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, fuldt ud. CaseTrace kræver ikke internet for at registrere tid. Vil din IT-afdeling blokere al udgående trafik i firewall, fortsætter den lokale tidsregistrering uændret — kun ekstrafunktioner som opdaterings-tjek og e-mail-rapport bliver utilgængelige." }
+        },
+        {
+          "@type": "Question",
+          "name": "Er det gratis?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. CaseTrace er gratis i øjeblikket — ingen abonnement pr. bruger, intet kreditkort og ingen binding. Du downloader til Windows 10 eller 11 og er i gang på under to minutter." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+    <nav class="nav-links">
+      <a href="/#hvordan">Sådan virker det</a>
+      <a href="/#funktioner">Funktioner</a>
+      <a href="/#sikkerhed">Sikkerhed</a>
+      <a href="/#pris">Pris</a>
+      <a href="/tidsregistrering-lov.html">Lovkrav</a>
+      <a href="/#kontakt">Support</a>
+    </nav>
+    <a class="btn btn-ghost" href="/en/" style="padding:.55rem .9rem;font-size:.8rem" title="English">EN</a>
+    <a class="btn btn-dark" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">Download
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ── HERO ── -->
+<section class="sec sec-hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="crumb"><a href="/">Forside</a> › <span>Tidsregistrering uden cloud</span></div>
+      <div class="badge"><span class="dot"></span>100% lokal · Ingen cloud · Ingen konto</div>
+      <h1>Tidsregistrering uden cloud</h1>
+      <p class="lead">Hele markedet er flyttet i skyen — abonnement pr. bruger, dine data på en udbyders server, endnu et login. CaseTrace gør det modsatte: den kører lokalt på din egen maskine, helt gratis og uden konto. Dine registreringer ligger i en almindelig fil på din pc og forlader den aldrig. Ingen telemetri, intet at logge ind på, fungerer offline.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg> Hent fra Microsoft Store</a>
+        <a class="btn btn-ghost btn-lg" href="/it-dokumentation.html">Se hvad den sender (og ikke sender) →</a><div class="dl-sub"><span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verificeret — ingen SmartScreen-advarsel</span><a class="exe-link" data-dl href="#download">eller download .exe-installeren direkte</a></div>
+      </div>
+      <div class="trust-row">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lokal SQLite-fil</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ingen telemetri</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Virker offline &amp; uden konto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DERFOR ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Derfor lokalt</span>
+      <h2>Dine timer er dine — <em class="gi">ikke en udbyders.</em></h2>
+    </div>
+    <div class="prose reveal">
+      <p>Næsten alle tidsregistreringsprogrammer er i dag det samme: en cloud-tjeneste, du betaler for pr. bruger pr. måned, hvor din aktivitet — hvilke klienter, hvilke sager, hvilke filer du arbejder i — havner på en udbyders server bag deres login. For mange er det fint. Men arbejder du med <strong>fortrolige oplysninger</strong> — klientnavne, sagsnumre, persondata i et filnavn — eller vil du bare ikke have dit arbejdsmønster liggende hos en tredjepart, så er skyen en reel omkostning, ikke en bekvemmelighed.</p>
+      <p>CaseTrace er bygget den modsatte vej. Den kører <strong>lokalt på din egen maskine</strong>, og dine registreringer skrives til en almindelig SQLite-fil under <code>%LOCALAPPDATA%\CaseTrace</code>. Der er ingen konto, ingen telemetri og ingen analytics — programmet indeholder simpelthen ikke kode til at sende dine data nogen steder. Det fungerer fuldt offline; du kan trække netværksstikket og registrere tid hele dagen.</p>
+      <p>De eneste gange, programmet rører internettet, er ting du kan forudse og efterprøve: et versions-tjek mod GitHub (som <strong>ikke sender noget om dig</strong> — intet maskin-ID, ingen nøgle, intet navn) og handlinger du selv starter, som at hente en gratis licensnøgle eller sende en rapport via din <strong>egen</strong> mailserver. Ingen af dem sender dine tidsdata. Det hele står — kald for kald — i <a href="/it-dokumentation.html">IT- &amp; sikkerhedsdokumentationen</a>, afstemt med den faktiske kildekode.</p>
+    </div>
+    <div class="checks reveal">
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Registreringer i en lokal SQLite-fil på din egen maskine — ikke i skyen</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Ingen telemetri, ingen analytics — programmet har ingen kode til at sende dine data</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Fungerer fuldt offline; de få netværkskald sender aldrig dine tidsregistreringer</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Ingen konto, intet abonnement, ingen leverandør-lock-in — du ejer filen</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GENKENDER DU DET ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Genkender du det?</span>
+      <h2>Når »i skyen« bliver et problem.</h2>
+    </div>
+    <div class="ps reveal">
+      <div class="ps-item"><div class="q">Skal mine klienters navne og sagsnumre virkelig ligge på en udbyders server?</div><div class="a">Hos CaseTrace forlader de aldrig din maskine — kun du kan vælge at eksportere dem.</div></div>
+      <div class="ps-item"><div class="q">Endnu et abonnement pr. bruger pr. måned, bare for at tælle mine egne timer.</div><div class="a">CaseTrace er gratis. Ingen licens pr. bruger, intet kreditkort, ingen binding.</div></div>
+      <div class="ps-item"><div class="q">Hvad sker der med mine data, hvis tjenesten lukker eller tredobler prisen?</div><div class="a">Din database er en almindelig fil, du selv ejer — uafhængig af om CaseTrace findes i morgen.</div></div>
+      <div class="ps-item"><div class="q">Endnu en konto, endnu et login, endnu en samtykke-dialog.</div><div class="a">Ingen konto og intet login. Du downloader programmet og er i gang på under to minutter.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SÅDAN ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sådan virker det</span>
+      <h2>Lokalt af design — <em class="gi">ikke som tilvalg.</em></h2>
+    </div>
+    <div class="fgrid">
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+        <h3>Alt skrives lokalt</h3>
+        <p>Dine registreringer ligger i en SQLite-database på din egen maskine (<code>%LOCALAPPDATA%\CaseTrace</code>). CaseTrace læser kun metadata — vinduestitler og fil- og mappenavne — aldrig selve filindholdet. Ingen keylogging, ingen skærmbilleder.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/><line x1="2" y1="2" x2="22" y2="22"/></svg></div>
+        <h3>Ingen telemetri, virker offline</h3>
+        <p>Programmet indeholder ingen analytics- eller telemetri-biblioteker og fungerer fuldt offline. De eneste udgående kald er et versions-tjek mod GitHub (sender intet om dig) og ting du selv starter — og ingen af dem sender dine tidsdata.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Du ejer dine data</h3>
+        <p>Ingen konto, intet login. Vil du have backup, peger du selv på et drev eller en mappe — kopien ligger der, du vælger, aldrig på vores servere. Skal IT blokere al udgående trafik, virker den lokale tidsregistrering uændret. <a href="/it-dokumentation.html">Se den komplette netværksliste →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GDPR ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">GDPR</span>
+      <h2>Lokal behandling gør GDPR <em class="gi">enklere.</em></h2>
+    </div>
+    <div class="prose reveal">
+      <p>Når data aldrig forlader maskinen, og leverandøren ikke modtager noget, forbliver <strong>du (eller din organisation) dataansvarlig</strong> — og CaseTrace er <strong>ikke databehandler</strong>. Konkret betyder det, at der ikke skal indgås en databehandleraftale med os, og ingen data sendes videre til en underdatabehandler. Indeholder dine fil- og mappenavne personoplysninger — et klientnavn, et sagsnummer — behandles de lokalt, præcis som dine øvrige dokumenter på maskinen.</p>
+      <p>Skal IT, en sikkerhedsansvarlig eller en DPO vurdere programmet, er der et teknisk beslutningsgrundlag afstemt med kildekoden: komplet netværkstrafik, datalagring og persondatabehandling. Bruger du tidsregistrering til at dokumentere ansattes arbejdstid, kan det desuden være omfattet af arbejdstidsloven — det er en separat, men beslægtet, problemstilling.</p>
+    </div>
+    <div class="checks reveal">
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><a href="/it-dokumentation.html" style="color:inherit">IT- &amp; sikkerhedsdokumentation — afstemt med kildekoden →</a></div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><a href="/artikler/tidsregistrering-gdpr.html" style="color:inherit">Tidsregistrering &amp; GDPR — hvad må du registrere? →</a></div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><a href="/tidsregistrering-lov.html" style="color:inherit">Lovpligtig tidsregistrering — kravene forklaret →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ANDRE BRANCHER ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Også til</span>
+      <h2>Lokal tidsregistrering til din faggruppe.</h2>
+    </div>
+    <div class="aud-grid reveal">
+      <a class="aud-link" href="/advokater.html">Advokater &amp; jurister <span class="arr">→</span></a>
+      <a class="aud-link" href="/revisorer.html">Revisorer &amp; bogholdere <span class="arr">→</span></a>
+      <a class="aud-link" href="/konsulenter.html">Konsulenter &amp; rådgivere <span class="arr">→</span></a>
+      <a class="aud-link" href="/arkitekter-ingenioerer.html">Arkitekter &amp; ingeniører <span class="arr">→</span></a>
+      <a class="aud-link" href="/bureauer.html">Bureauer (reklame, design, web) <span class="arr">→</span></a>
+      <a class="aud-link" href="/freelancere.html">Freelancere <span class="arr">→</span></a>
+      <a class="aud-link" href="/oversaettere.html">Oversættere &amp; bureauer <span class="arr">→</span></a>
+      <a class="aud-link" href="/patentbureauer.html">Patent- &amp; varemærkebureauer <span class="arr">→</span></a>
+      <a class="aud-link" href="/taksatorer.html">Taksatorer &amp; skadesbehandlere <span class="arr">→</span></a>
+      <a class="aud-link" href="/byggesagkyndige.html">Byggesagkyndige &amp; energikonsulenter <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Ofte stillede spørgsmål.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Sender CaseTrace mine data til skyen?</summary><div class="ans">Nej. Dine tidsregistreringer, mappe- og filnavne ligger udelukkende i en lokal SQLite-database på din egen maskine. Programmet indeholder ingen telemetri eller analytics og har ingen kode til at sende dine registreringer nogen steder. De eneste udgående kald er et versions-tjek mod GitHub (som ikke sender noget om dig eller din maskine) og handlinger du selv starter — ingen af dem sender dine tidsdata.</div></details>
+      <details><summary>Kan jeg bruge CaseTrace uden konto?</summary><div class="ans">Ja. Der er ingen konto og intet login. Du downloader programmet og er i gang. Den gratis licens er bundet til arbejdsstationen og valideres offline, så du behøver hverken bruger, adgangskode eller internetforbindelse for at registrere din tid.</div></details>
+      <details><summary>Hvor ligger mine tidsdata?</summary><div class="ans">I en almindelig SQLite-fil på din egen maskine: <code>%LOCALAPPDATA%\CaseTrace\tracking.db</code>. Du ejer filen. Tager du backup, skrives den kun til en destination du selv vælger — et lokalt drev, et netværksdrev eller din egen cloud-mappe — aldrig til CaseTraces servere.</div></details>
+      <details><summary>Er CaseTrace GDPR-venligt?</summary><div class="ans">Fordi data bliver på din maskine og leverandøren ikke modtager noget, forbliver du (eller din organisation) dataansvarlig, og CaseTrace er ikke databehandler. Det betyder, at der ikke skal indgås en databehandleraftale med os. Indeholder fil- og mappenavne personoplysninger, behandles de lokalt — som dine øvrige dokumenter på maskinen.</div></details>
+      <details><summary>Fungerer det offline?</summary><div class="ans">Ja, fuldt ud. CaseTrace kræver ikke internet for at registrere tid. Vil din IT-afdeling blokere al udgående trafik i firewall, fortsætter den lokale tidsregistrering uændret — kun ekstrafunktioner som opdaterings-tjek og e-mail-rapport bliver utilgængelige.</div></details>
+      <details><summary>Er det gratis?</summary><div class="ans">Ja. CaseTrace er gratis i øjeblikket — ingen abonnement pr. bruger, intet kreditkort og ingen binding. Du downloader til Windows 10 eller 11 og er i gang på under to minutter.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="sec cta" id="download">
+  <div class="wrap reveal">
+    <h2 class="serif">Tidsregistrering der <em class="gi">bliver hos dig.</em></h2>
+    <p>Download CaseTrace — lokalt, gratis og uden konto. Dine registreringer forlader aldrig din maskine.</p>
+    <div class="cta-actions">
+      <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg> Hent fra Microsoft Store</a>
+      <a class="btn btn-ghost btn-lg" href="/it-dokumentation.html">Læs sikkerhedsdokumentationen</a><div class="dl-sub"><span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verificeret — ingen SmartScreen-advarsel</span><a class="exe-link" data-dl href="#download">eller download .exe-installeren direkte</a></div>
+    </div>
+    <div class="dl-status" id="dl-status"></div>
+    <div class="cta-note">Windows 10 / 11 · ~<span class="dl-size">64 MB</span> installer · Alt gemmes lokalt · Ingen konto</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="/" class="logo"><span class="mark">C</span>CaseTrace</a>
+      <div class="cp" style="margin-top:.8rem">© 2026 · Gratis automatisk tidsregistrering til danske professionelle</div>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h3>Brancher</h3>
+        <a href="/advokater.html">Advokater</a>
+        <a href="/revisorer.html">Revisorer</a>
+        <a href="/konsulenter.html">Konsulenter</a>
+        <a href="/arkitekter-ingenioerer.html">Arkitekter &amp; ingeniører</a>
+        <a href="/bureauer.html">Bureauer</a>
+        <a href="/freelancere.html">Freelancere</a>
+        <a href="/oversaettere.html">Oversættere</a>
+        <a href="/patentbureauer.html">Patentbureauer</a>
+        <a href="/taksatorer.html">Taksatorer</a>
+        <a href="/byggesagkyndige.html">Byggesagkyndige</a>
+        <a href="/computertid.html">Overblik over computertid</a>
+      </div>
+      <div class="foot-col">
+        <h3>CaseTrace</h3>
+        <a href="/#funktioner">Funktioner</a>
+        <a href="/#hvordan">Sådan virker det</a>
+        <a href="/#pris">Pris</a>
+        <a href="/#kontakt">Support</a>
+        <a href="/tidsregistrering-lov.html">Lovkrav til tidsregistrering</a>
+        <a href="/tidsregistrering-uden-cloud.html">Tidsregistrering uden cloud</a>
+        <a href="/it-dokumentation.html">IT- &amp; sikkerhedsdokumentation</a>
+        <a href="/artikler/">Artikler &amp; guides</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid rgba(128,128,128,.2);font-size:.8rem;line-height:1.6;opacity:.6">CaseTrace er et hjælpemiddel til tidsregistrering. Kontrollér altid registreringernes rigtighed før fakturering eller lovpligtig brug.</div>
+</footer>
+
+<script src="/landing.js"></script>
+<script data-goatcounter="https://casetrace.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
