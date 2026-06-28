@@ -387,6 +387,50 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   html{scroll-behavior:auto}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* ── Hero "mappe → timeunderlag"-illustration (erstatter app-mockup) ── */
+.fi-wrap{display:flex;flex-direction:column;gap:.7rem}
+.fi-panel{border-radius:14px;overflow:hidden}
+.fi-folders{background:var(--dark-2);box-shadow:0 30px 60px -32px rgba(21,24,31,.45),0 0 0 1px rgba(21,24,31,.05)}
+.fi-bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;border-bottom:1px solid #20262f}
+.fi-bar .dots{display:flex;gap:.4rem}.fi-bar .dots i{width:10px;height:10px;border-radius:50%;background:#39404b;display:block}
+.fi-bar .path{font-family:var(--mono);font-size:.74rem;color:#8b93a1;margin-left:.3rem}
+.fi-frows{padding:.55rem .5rem}
+.fi-frow{display:flex;align-items:center;gap:.5rem;padding:.5rem .55rem;border-radius:7px;font-family:var(--mono);font-size:.8rem}
+.fi-frow+.fi-frow{margin-top:.15rem}
+.fi-frow .nm{color:#e9edf2;font-weight:500;white-space:nowrap}
+.fi-frow .tg{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-2);border:1px solid rgba(194,160,92,.35);border-radius:99px;padding:.1rem .45rem}
+.fi-frow .tm{margin-left:auto;color:#7e8794}
+.fi-ffoot{display:flex;align-items:center;gap:.45rem;padding:.6rem .9rem;border-top:1px solid #20262f;font-family:var(--mono);font-size:.7rem;color:#7d8694}
+.fi-ffoot .d{width:7px;height:7px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px var(--green2)}
+.fi-arrow{display:flex;align-items:center;justify-content:center;gap:.7rem;color:var(--gold);padding:.05rem 0}
+.fi-arrow .lbl{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.fi-invoice{background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 60px -32px rgba(21,24,31,.18)}
+.fi-ihead{display:flex;justify-content:space-between;align-items:baseline;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+.fi-ihead .t{font-family:var(--serif);font-weight:500;font-size:1.05rem}
+.fi-ihead .dt{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.fi-irows{padding:.4rem .35rem}
+.fi-irow{display:flex;align-items:center;padding:.48rem .65rem;font-size:.84rem}
+.fi-irow .nm{flex:1;font-weight:500;color:var(--ink)}
+.fi-irow .hr{width:3.2rem;text-align:right;color:var(--muted);font-family:var(--mono);font-size:.76rem}
+.fi-irow .am{width:5rem;text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink)}
+.fi-itot{display:flex;align-items:center;padding:.65rem 1rem;border-top:1px solid var(--line);background:#fbf8f1}
+.fi-itot .l{flex:1;font-family:var(--serif);font-weight:500}
+.fi-itot .hr{width:3.2rem;text-align:right;font-family:var(--mono);font-size:.76rem;color:var(--gold-deep)}
+.fi-itot .am{width:5rem;text-align:right;font-family:var(--mono);font-weight:600;color:var(--gold)}
+.fi-ifoot{padding:.5rem 1rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--muted);text-align:center}
+
+/* ── "Hvorfor CaseTrace" — personlig historie ── */
+.why-sec{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-inner{max-width:44rem;margin:0 auto}
+.why-inner .eyebrow{display:block;margin-bottom:1.1rem}
+.why-inner h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:1.4rem}
+.why-inner p{font-size:1.05rem;color:var(--ink-2);line-height:1.78;margin-bottom:1rem}
+.why-inner p:first-of-type{color:var(--ink)}
+.why-sign{display:flex;align-items:center;gap:.85rem;margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid var(--line)}
+.why-av{width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;font-size:1.15rem;flex-shrink:0}
+.why-by{font-size:.92rem;color:var(--ink);font-weight:600}
+.why-by .s{display:block;font-weight:400;color:var(--muted);font-size:.83rem}
 </style>
 </head>
 <body>
@@ -439,26 +483,30 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     </div>
   </div>
 
-  <div class="mock reveal">
-    <div class="mock-bar"><span class="tl"><i></i><i></i><i></i></span><span class="ttl">CaseTrace — Mappetid i dag</span></div>
-    <div class="mock-body">
-      <div class="mock-top">
-        <div><div class="mock-lbl">Tid registreret</div><div class="mock-clock" id="mockClock">03:47:23</div></div>
-        <div><div class="mock-lbl" style="text-align:right">I dag</div><div class="mock-today">+2t 14min</div></div>
+  <div class="fi-wrap reveal">
+    <div class="fi-panel fi-folders">
+      <div class="fi-bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">C:\Sager</span></div>
+      <div class="fi-frows">
+        <div class="fi-frow"><span class="nm">📁 Sag-758340</span><span class="tg">advokat</span><span class="tm">3:31:42</span></div>
+        <div class="fi-frow"><span class="nm">📁 Projekt Nord</span><span class="tg">arkitekt</span><span class="tm">5:12:08</span></div>
+        <div class="fi-frow"><span class="nm">📁 Klient ApS</span><span class="tg">revisor</span><span class="tm">2:00:55</span></div>
       </div>
-      <div class="mock-rows">
-        <div class="mrow folder"><span class="nm">📁 firma</span><span class="tm">03:47:22</span></div>
-        <div class="mrow file"><span class="nm">↳ Sag-758340</span><span class="tm">01:36:12</span></div>
-        <div class="mrow file"><span class="nm">↳ kontrakt_v3.docx</span><span class="tm">01:22:04</span></div>
-        <div class="mrow file"><span class="nm">↳ bilag_01.jpg</span><span class="tm">00:14:08</span></div>
-        <div class="mrow budget"><span class="nm">📁 Sag 2026-0142 · Ejendomshandel</span><span class="right"><span class="warn">⚠ 24.300 kr / 29.500 kr</span><span class="tm">02:11:10</span></span></div>
-        <div class="mrow file"><span class="nm">↳ skøde_udkast_v2.pdf</span><span class="tm">01:47:03</span></div>
-        <div class="mrow file"><span class="nm">↳ refusionsopgørelse.xlsx</span><span class="tm">00:24:07</span></div>
+      <div class="fi-ffoot"><span class="d"></span>LIVE · sporer i baggrunden</div>
+    </div>
+    <div class="fi-arrow">
+      <span class="lbl">tid</span>
+      <svg width="22" height="34" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="0" x2="11" y2="28"/><polyline points="5 21 11 28 17 21"/></svg>
+      <span class="lbl">passiv tracking</span>
+    </div>
+    <div class="fi-panel fi-invoice">
+      <div class="fi-ihead"><span class="t">Timeunderlag</span><span class="dt">juni 2026</span></div>
+      <div class="fi-irows">
+        <div class="fi-irow"><span class="nm">Sag-758340</span><span class="hr">3,5 t</span><span class="am">6.300 kr</span></div>
+        <div class="fi-irow"><span class="nm">Projekt Nord</span><span class="hr">5,2 t</span><span class="am">4.940 kr</span></div>
+        <div class="fi-irow"><span class="nm">Klient ApS</span><span class="hr">2,0 t</span><span class="am">2.500 kr</span></div>
       </div>
-      <div class="mock-foot">
-        <span class="live"><span class="d"></span>LIVE · 124 aktiviteter · gemt 19:41:11</span>
-        <span class="rec">+2t 14min ufaktureret tid genfundet</span>
-      </div>
+      <div class="fi-itot"><span class="l">I alt</span><span class="hr">10,7 t</span><span class="am">13.740 kr</span></div>
+      <div class="fi-ifoot">pr. fil, pr. dag · PDF · CSV</div>
     </div>
   </div>
 </section>
@@ -613,6 +661,20 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bygget til dansk lovgivning</span>
   </div>
   <div class="sec-note" style="text-align:center;margin-top:1.3rem"><a href="/it-dokumentation.html">Læs den tekniske IT- &amp; sikkerhedsdokumentation →</a></div>
+</section>
+
+<!-- ── HVORFOR (personlig historie) ── -->
+<section class="sec why-sec" id="hvorfor">
+  <div class="wrap">
+    <div class="why-inner reveal">
+      <span class="eyebrow">Hvorfor CaseTrace</span>
+      <h2>Hej — jeg hedder <em class="gi">Julian.</em></h2>
+      <p>Jeg er udvikler, ikke advokat eller revisor. Men jeg har selv siddet med en faktura og prøvet at regne ud, hvad ugen egentlig gik med — og hver gang manglede der timer. Arbejde jeg vidste jeg havde lavet, men havde glemt at skrive ned, forsvundet et sted mellem to opgaver.</p>
+      <p>Jeg ville bare have noget, der kørte stille i baggrunden og samlede tiden op for mig. Det jeg kunne finde, krævede enten et abonnement, en konto, eller at mine data lå på en andens server. Så jeg byggede selv det, jeg manglede — og bruger det stadig hver dag.</p>
+      <p>CaseTrace er gratis, fordi jeg lavede det til mig selv først. Hjælper det dig med den samme ærgrelse — uanset om du fakturerer som advokat, revisor, rådgiver eller noget helt fjerde — er jeg glad.</p>
+      <div class="why-sign"><span class="why-av">J</span><span class="why-by">Julian<span class="s">Bygger CaseTrace</span></span></div>
+    </div>
+  </div>
 </section>
 
 <!-- ── PRIS ── -->
