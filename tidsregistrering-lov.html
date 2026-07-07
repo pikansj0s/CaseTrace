@@ -205,8 +205,47 @@
   </div>
 </section>
 
+<!-- ── SELVTJEK (quiz) ── -->
+<section class="sec" id="selvtjek">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Selvtjek</span>
+      <h2>Lever jeres tidsregistrering op til <em class="gi">loven?</em></h2>
+      <p>Fem hurtige spørgsmål. Svarene beregnes i din browser og sendes ingen steder.</p>
+    </div>
+    <div class="quiz-card reveal">
+      <div class="qz" data-q="1">
+        <div class="qz-q"><span class="qz-num">1</span>Har din virksomhed mindst én ansat (lønmodtager)?</div>
+        <div class="qz-opts"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej — selvstændig uden ansatte</button></div>
+      </div>
+      <div class="qz" data-q="2">
+        <div class="qz-q"><span class="qz-num">2</span>Registrerer I hver medarbejders daglige arbejdstid — hver dag?</div>
+        <div class="qz-opts"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej / kun nogle gange</button></div>
+      </div>
+      <div class="qz" data-q="3">
+        <div class="qz-q"><span class="qz-num">3</span>Kan hver medarbejder selv se sine egne registreringer?</div>
+        <div class="qz-opts"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej / ved ikke</button></div>
+      </div>
+      <div class="qz" data-q="4">
+        <div class="qz-q"><span class="qz-num">4</span>Gemmer I registreringerne i mindst 5 år?</div>
+        <div class="qz-opts"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej / ved ikke</button></div>
+      </div>
+      <div class="qz" data-q="5">
+        <div class="qz-q"><span class="qz-num">5</span>Er eventuelle undtagne medarbejdere (selvtilrettelæggere) undtaget skriftligt i et tillæg til ansættelseskontrakten?</div>
+        <div class="qz-opts"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej</button><button type="button" data-v="ingen">Vi har ingen undtagne</button></div>
+      </div>
+      <div class="qz-result" id="qzResult" hidden aria-live="polite">
+        <div class="rl" id="qzStatus"></div>
+        <ul id="qzGaps"></ul>
+        <p class="qz-note" id="qzNote"></p>
+      </div>
+      <p class="qz-foot">Vejledende selvtjek — generel information, ikke juridisk rådgivning. Er du i tvivl om din konkrete situation, så spørg en advokat eller din arbejdsgiverforening.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── SÅDAN MED CASETRACE ── -->
-<section class="sec tinted">
+<section class="sec tinted" id="hjaelp">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Hjælp til kravene — gratis</span>
@@ -319,6 +358,53 @@
 </footer>
 
 <script src="/landing.js"></script>
+<script>
+// ── Lovkravs-selvtjek: 5 spørgsmål, beregnes lokalt i browseren ──
+(function(){
+  const root = document.getElementById('selvtjek');
+  if(!root) return;
+  const answers = {};
+  const TOTAL = 5;
+  root.querySelectorAll('.qz').forEach(function(q){
+    const id = q.getAttribute('data-q');
+    q.querySelectorAll('.qz-opts button').forEach(function(b){
+      b.addEventListener('click', function(){
+        q.querySelectorAll('.qz-opts button').forEach(function(x){ x.classList.remove('sel'); });
+        b.classList.add('sel');
+        answers[id] = b.getAttribute('data-v');
+        if(Object.keys(answers).length === TOTAL) render();
+      });
+    });
+  });
+  function render(){
+    const res  = document.getElementById('qzResult');
+    const st   = document.getElementById('qzStatus');
+    const gaps = document.getElementById('qzGaps');
+    const note = document.getElementById('qzNote');
+    gaps.innerHTML = '';
+    if(answers['1'] === 'nej'){
+      st.textContent = 'Loven stiller ikke krav til din egen tid.';
+      note.innerHTML = 'Selvstændige uden ansatte er ikke omfattet af arbejdstidslovens registreringskrav. Fakturerer du pr. time, er der alligevel kontante grunde til at registrere — læs <a href="/artikler/tidsregistrering-selvstaendig.html">Skal selvstændige tidsregistrere?</a> CaseTrace registrerer computertiden automatisk og er gratis i øjeblikket.';
+    } else {
+      const g = [];
+      if(answers['2'] === 'nej') g.push('<strong>Daglig registrering mangler:</strong> loven kræver, at hver medarbejders faktiske daglige arbejdstid måles — et bagudrettet skøn er ikke nok.');
+      if(answers['3'] === 'nej') g.push('<strong>Medarbejder-adgang mangler:</strong> hver medarbejder skal selv kunne tilgå sine registreringer i hele opbevaringsperioden.');
+      if(answers['4'] === 'nej') g.push('<strong>5-års opbevaring mangler:</strong> registreringerne skal gemmes i 5 år.');
+      if(answers['5'] === 'nej') g.push('<strong>Undtagelse uden aftale:</strong> selvtilrettelægger-undtagelsen gælder kun, når den fremgår af et tillæg til ansættelseskontrakten.');
+      if(g.length === 0){
+        st.textContent = 'Det ser solidt ud.';
+        note.innerHTML = 'I registrerer dagligt, medarbejderne kan se deres egne tal, I gemmer i 5 år, og undtagelser er på skrift. Husk at holde det kørende — huller i registreringen svækker dokumentationen. CaseTrace kan hjælpe med at dokumentere computertiden automatisk — <a href="#hjaelp">se hvordan →</a>';
+      } else {
+        st.textContent = g.length === 1 ? 'Ét hul i dokumentationen.' : 'Der er huller i dokumentationen.';
+        g.forEach(function(t){ const li = document.createElement('li'); li.innerHTML = t; gaps.appendChild(li); });
+        note.innerHTML = 'Hullerne er til at lukke. CaseTrace kan hjælpe med at dokumentere computertiden automatisk — dagligt, tilgængeligt for medarbejderen og med eksport til jeres 5-års arkiv. <a href="#hjaelp">Se hvordan →</a>';
+      }
+    }
+    res.hidden = false;
+    res.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+})();
+</script>
 <script data-goatcounter="https://casetrace.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
