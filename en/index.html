@@ -308,7 +308,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
 .foot{display:flex;flex-direction:column;align-items:center;gap:1.1rem}
 .foot .cp{font-size:.82rem;color:var(--muted)}
-.foot-links{display:flex;gap:1.6rem;font-size:.85rem;color:var(--ink-2)}
+.foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 1.6rem;font-size:.85rem;color:var(--ink-2)}
 .foot-links a:hover{color:var(--gold)}
 
 /* ── Reveal ── */
@@ -429,6 +429,29 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
 .sp-inner{display:inline-flex;align-items:center;gap:.7rem;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:.5rem 1.1rem .5rem .5rem;font-size:.92rem;color:var(--ink-2)}
 .sp-av{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.85rem;flex-shrink:0}
 .sp-inner strong{color:var(--ink);font-weight:600}
+
+/* ── Loss calculator ("what do the forgotten hours cost you?") ── */
+.calc-card{max-width:860px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:2.6rem 2.4rem;box-shadow:0 30px 60px -35px rgba(21,24,31,.22)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-bottom:2.1rem}
+.calc-field .lbl{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);display:block;margin-bottom:.55rem}
+.calc-field .val{font-family:var(--serif);font-weight:500;font-size:2.1rem;line-height:1;margin-bottom:1.1rem}
+.calc-field .val .u{font-family:var(--sans);font-weight:400;font-size:.95rem;color:var(--muted);margin-left:.3rem}
+.calc-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--gold) var(--fill,50%),var(--line-2) var(--fill,50%))}
+.calc-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--panel);border:3px solid var(--gold);box-shadow:0 2px 10px rgba(21,24,31,.2)}
+.calc-range::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--panel);border:3px solid var(--gold);box-shadow:0 2px 10px rgba(21,24,31,.2)}
+.calc-range:focus-visible{box-shadow:0 0 0 4px rgba(194,160,92,.35)}
+.calc-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.66rem;color:var(--muted);margin-top:.5rem}
+.calc-result{background:var(--ink);color:var(--cream);border-radius:16px;padding:2rem 1.6rem;text-align:center}
+.calc-result .rl{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.75rem}
+.calc-result .rn{font-family:var(--serif);font-weight:500;font-size:clamp(2.7rem,5.5vw,4rem);line-height:1;color:var(--gold-2);letter-spacing:-.01em}
+.calc-result .rs{font-size:.9rem;color:#aab0bd;margin-top:.9rem;line-height:1.5}
+.calc-note{margin-top:1.3rem;text-align:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:var(--muted);line-height:1.7}
+.calc-cta{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-top:2.2rem}
+@media(max-width:700px){
+  .calc-card{padding:1.8rem 1.3rem}
+  .calc-grid{grid-template-columns:1fr;gap:1.8rem}
+  .calc-cta .btn{width:100%;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -560,6 +583,44 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div class="stats reveal" style="margin-top:2.2rem;justify-content:center;gap:3.5rem">
     <div class="stat"><div class="n">0</div><div class="l">Manual clicks per day</div></div>
     <div class="stat"><div class="n">&lt;2 min</div><div class="l">From setup to first entry</div></div>
+  </div>
+</section>
+
+<!-- ── LOSS CALCULATOR ── -->
+<section class="wrap sec" id="beregner">
+  <div class="sec-head center reveal">
+    <span class="eyebrow">Do the math</span>
+    <h2>What do the forgotten hours <em class="gi">cost you?</em></h2>
+    <p>Drag the sliders and see what the time that never reaches an invoice adds up to over a year.</p>
+  </div>
+  <div class="calc-card reveal">
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label class="lbl" for="calcRate">Your hourly rate</label>
+        <div class="val"><span id="calcRateVal">750</span><span class="u">kr/h</span></div>
+        <input class="calc-range" type="range" id="calcRate" min="100" max="2500" step="50" value="750">
+        <div class="calc-scale"><span>100</span><span>2,500</span></div>
+      </div>
+      <div class="calc-field">
+        <label class="lbl" for="calcHours">Forgotten hours per week</label>
+        <div class="val"><span id="calcHoursVal">2</span><span class="u">h/week</span></div>
+        <input class="calc-range" type="range" id="calcHours" min="0" max="15" step="0.5" value="2">
+        <div class="calc-scale"><span>0</span><span>15</span></div>
+      </div>
+    </div>
+    <div class="calc-result" aria-live="polite">
+      <div class="rl">Potential loss per year</div>
+      <div class="rn" id="calcOut">69,000 kr</div>
+      <div class="rs">CaseTrace is free at the moment — all it costs is a 2-minute install.</div>
+    </div>
+    <p class="calc-note">Example calculation: rate × forgotten hours × 46 working weeks — not a promise.<br>Calculated in your browser; nothing is sent anywhere.</p>
+  </div>
+  <div class="calc-cta reveal">
+    <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
+      Get it from Microsoft Store</a>
+    <span class="dl-verified"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"/></svg>Microsoft-verified — no SmartScreen warning</span>
+    <a class="exe-link" id="calc-dl" href="#download">or download the .exe installer directly</a>
   </div>
 </section>
 
@@ -732,6 +793,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
       <a href="#kontakt">Support</a>
       <a href="#sikkerhed">Privacy</a>
       <a href="#pris">Price</a>
+      <a href="#beregner">Calculate your loss</a>
     </div>
   </div>
   <div class="wrap" style="margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid rgba(128,128,128,.2);font-size:.8rem;line-height:1.6;opacity:.6;max-width:60rem">CaseTrace is a time-tracking aid. Always verify the accuracy of records before invoicing or statutory use.</div>
@@ -771,10 +833,35 @@ async function startDownload(){
   window.open(DL_RELEASES_PAGE, '_blank', 'noopener');
   _dlBusy = false;
 }
-['hero-dl','cta-dl'].forEach(function(id){
+['hero-dl','cta-dl','calc-dl'].forEach(function(id){
   const el = document.getElementById(id);
   if(el) el.addEventListener('click', function(e){ e.preventDefault(); startDownload(); });
 });
+
+// ── Loss calculator: yearly loss = rate × forgotten hours × 46 working weeks ──
+(function(){
+  const rate = document.getElementById('calcRate');
+  if(!rate) return;
+  const hours    = document.getElementById('calcHours');
+  const rateVal  = document.getElementById('calcRateVal');
+  const hoursVal = document.getElementById('calcHoursVal');
+  const out      = document.getElementById('calcOut');
+  const WEEKS = 46; // 52 weeks minus vacation and public holidays
+  function fill(el){
+    const min = +el.min, max = +el.max;
+    el.style.setProperty('--fill', ((+el.value - min) / (max - min) * 100) + '%');
+  }
+  function upd(){
+    const r = +rate.value, h = +hours.value;
+    rateVal.textContent  = r.toLocaleString('en-GB');
+    hoursVal.textContent = h.toLocaleString('en-GB');
+    out.textContent = Math.round(r * h * WEEKS).toLocaleString('en-GB') + ' kr';
+    fill(rate); fill(hours);
+  }
+  rate.addEventListener('input', upd);
+  hours.addEventListener('input', upd);
+  upd();
+})();
 
 // ── Live clock in the mockup (counts up from 03:47:23) ──
 (function(){
