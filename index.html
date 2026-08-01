@@ -149,7 +149,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(250,249,245,.82);backdr
 .btn-lg{padding:.95rem 1.7rem;font-size:.98rem;border-radius:11px}
 
 /* ── Hero ── */
-.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:4rem;align-items:center;padding:5.5rem 0 4rem}
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:4rem;align-items:center;padding:4rem 0 3rem}
 .badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink-2);background:var(--cream-2);border:1px solid var(--line);padding:.4rem .85rem;border-radius:99px;margin-bottom:1.8rem}
 .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green2)}
 h1.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,5.4vw,4.6rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:1.6rem}
@@ -210,7 +210,7 @@ h1.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,5.
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* ── Generic section ── */
-.sec{padding:6.5rem 0}
+.sec{padding:4.4rem 0}
 .sec-head{max-width:42rem;margin-bottom:3.5rem}
 .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .sec-head .eyebrow{margin-bottom:1rem;display:block}
@@ -308,7 +308,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.05rem);
 .price-guarantee{text-align:center;margin-top:1.6rem;font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
 
 /* ── CTA ── */
-.cta{text-align:center;padding:7rem 0}
+.cta{text-align:center;padding:4.6rem 0}
 .cta h2{font-size:clamp(2.3rem,4.4vw,3.6rem);margin-bottom:1.3rem}
 .cta p{font-size:1.1rem;color:var(--ink-2);max-width:34rem;margin:0 auto 2.2rem;line-height:1.7}
 .cta-actions{display:flex;flex-direction:column;align-items:center;gap:.55rem;margin-bottom:1.3rem}
@@ -350,7 +350,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   .hero p.lead{max-width:none}
   .split,.sec-grid{grid-template-columns:1fr;gap:2.6rem}
   .steps{grid-template-columns:1fr 1fr}
-  .sec{padding:4.5rem 0}
+  .sec{padding:3.2rem 0}
   .stats{gap:1.6rem}
   /* #hvordan has inline padding:5rem 3rem — tame the sides on smaller screens */
   #hvordan{padding-left:1.7rem!important;padding-right:1.7rem!important}
@@ -561,42 +561,35 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
 
 <!-- ── HVEM ── -->
 <section class="wrap sec" id="hvem">
-  <div class="sec-head reveal">
+  <div class="sec-head center reveal">
     <span class="eyebrow">Hvem er det til</span>
-    <h2>Perfekt til alle der <em class="gi">fakturerer deres tid.</em></h2>
-    <p>Fælles for dem alle: tiden skal dokumenteres og faktureres. Det klarer CaseTrace automatisk i baggrunden — så timesedlen nærmest skriver sig selv, uanset hvilken faggruppe du tilhører.</p>
+    <h2>Til alle der <em class="gi">fakturerer deres tid.</em></h2>
   </div>
-  <div class="aud-grid">
-    <a class="aud reveal" href="/advokater.html">
-      <h3>Advokatkontorer</h3>
-      <p>Automatisk tid pr. klient, sag og dokument — objektiv dokumentation bag hvert faktureringskrav.</p>
-      <span class="tag">Tidsregistrering for advokater →</span>
-    </a>
-    <a class="aud reveal" href="/revisorer.html">
-      <h3>Revisorer & bogholdere</h3>
-      <p>Objektivt overblik over forbrugt tid pr. klient — automatisk og passivt, uden et eneste klik.</p>
-      <span class="tag">Tidsregistrering for revisorer →</span>
-    </a>
-    <a class="aud reveal" href="/konsulenter.html">
-      <h3>Rådgivere & konsulenter</h3>
-      <p>Tidsbudget pr. sag med advarsler før du sprænger grænsen — ærlige fakturaer uden overraskelser.</p>
-      <span class="tag">Tidsregistrering for rådgivere →</span>
-    </a>
-  </div>
-  <p class="aud-more">Også til <a href="/arkitekter-ingenioerer.html">arkitekter &amp; ingeniører</a>, <a href="/bureauer.html">bureauer</a>, <a href="/freelancere.html">freelancere</a>, <a href="/oversaettere.html">oversættere</a>, <a href="/patentbureauer.html">patentbureauer</a>, <a href="/taksatorer.html">taksatorer</a> og <a href="/byggesagkyndige.html">byggesagkyndige</a> — eller bare <a href="/computertid.html">overblik over din computertid</a>.</p>
+  <p class="aud-more" style="text-align:center;max-width:52rem;margin:1.4rem auto 0;font-size:1.02rem;line-height:2">
+    <a href="/advokater.html">Advokater</a> &middot;
+    <a href="/revisorer.html">Revisorer &amp; bogholdere</a> &middot;
+    <a href="/konsulenter.html">Rådgivere &amp; konsulenter</a> &middot;
+    <a href="/arkitekter-ingenioerer.html">Arkitekter &amp; ingeniører</a> &middot;
+    <a href="/bureauer.html">Bureauer</a> &middot;
+    <a href="/freelancere.html">Freelancere</a> &middot;
+    <a href="/oversaettere.html">Oversættere</a> &middot;
+    <a href="/patentbureauer.html">Patentbureauer</a> &middot;
+    <a href="/taksatorer.html">Taksatorer</a> &middot;
+    <a href="/byggesagkyndige.html">Byggesagkyndige</a> &middot;
+    <a href="/computertid.html">Overblik over din computertid</a>
+  </p>
 </section>
 
 <!-- ── HVORDAN ── -->
-<section class="wrap sec" id="hvordan" style="background:var(--cream-2);border-radius:24px;padding:5rem 3rem;margin:0 auto">
+<section class="wrap sec" id="hvordan" style="background:var(--cream-2);border-radius:24px;padding:3rem 3rem;margin:0 auto">
   <div class="sec-head reveal">
     <span class="eyebrow">Sådan virker det</span>
     <h2>Installér én gang — <em class="gi">så passer den sig selv.</em></h2>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="num">01</div><h3>Installér og arbejd som du plejer</h3><p>Hent CaseTrace og fortsæt præcis som før. Den kører passivt fra første minut — ingen knapper at trykke på, ingen opsætning at lave.</p></div>
-    <div class="step reveal"><div class="num">02</div><h3>Peg på en mappe — valgfrit</h3><p>Arbejder du i sags- eller klientmapper? Vis CaseTrace hovedmappen (fx C:\Sager), så deler den tiden automatisk ned pr. sag og fil. Resten finder den selv.</p></div>
-    <div class="step reveal"><div class="num">03</div><h3>Sæt tidsbudget pr. sag — valgfrit</h3><p>Tildel timer og en timepris. CaseTrace beregner omkostninger og advarer ved 25, 50, 75 og 100% af budgettet.</p></div>
-    <div class="step reveal"><div class="num">04</div><h3>Rapport klar til faktura</h3><p>Eksportér en oversigt pr. sag eller dag som PDF eller CSV. Tid brugt, timepris, total — klar til at vedhæfte en faktura.</p></div>
+    <div class="step reveal"><div class="num">01</div><h3>Installér og arbejd som du plejer</h3><p>Den kører passivt fra første minut. Ingen knapper, ingen opsætning.</p></div>
+    <div class="step reveal"><div class="num">02</div><h3>Peg på en mappe — valgfrit</h3><p>Vis CaseTrace din hovedmappe, så deles tiden automatisk ned pr. sag og fil. Sæt eventuelt timer og timepris på, så advarer den undervejs.</p></div>
+    <div class="step reveal"><div class="num">03</div><h3>Rapport klar til faktura</h3><p>PDF eller CSV pr. sag eller dag — klar til at vedhæfte fakturaen.</p></div>
   </div>
   <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.8rem">
     <div class="ps-item"><div class="q">Glemte at starte timeren igen efter pausen.</div><div class="a">Pause registreret automatisk. Tid pr. dokument logget.</div></div>
@@ -652,7 +645,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div class="sec-head center reveal">
     <span class="eyebrow">Se appen</span>
     <h2>Se CaseTrace <em class="gi">i praksis.</em></h2>
-    <p>En kort gennemgang: lad CaseTrace fange din tid automatisk — og se hvordan du kan dele den ned pr. sag, hvis du arbejder i mapper.</p>
+    
   </div>
   <div class="reveal" style="max-width:920px;margin:0 auto">
     <video controls preload="metadata" playsinline
@@ -669,23 +662,19 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div class="sec-head center reveal">
     <span class="eyebrow">Funktioner</span>
     <h2>Alt du har brug for.<br>Intet du ikke har.</h2>
-    <p>Bygget til professionelle der nægter at spilde tid på at registrere tid.</p>
+    
   </div>
   <div class="feat-grid">
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><h3>Fanger alt automatisk</h3><p>Hvert program, vindue og dokument logges passivt i en detaljeret tidslinje — og lokale filer helt ned på fil- og mappeniveau. Uden et klik.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Se teamets tid — helt valgfrit</h3><p>Slå deling til på en fælles projektmappe, og se hvor lang tid hver kollega har brugt på hver enkelt fil, side om side med din egen. Ingen server og ingen konto: den OneDrive-mappe, I allerede deler, er hele transporten.</p></div>
-    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Rapporter & eksport</h3><p>PDF, CSV og fakturalinjer klar til at sætte ind i dit regnskabsprogram — plus en kunde-rapport i én HTML-fil, du kan maile direkte.</p></div>
+    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><h3>Fanger alt automatisk</h3><p>Hvert program, vindue og dokument logges passivt — og lokale filer helt ned på fil- og mappeniveau. Uden et klik.</p></div>
+    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Se teamets tid — helt valgfrit</h3><p>Se hvor lang tid hver kollega har brugt på hver fil i en fælles OneDrive-mappe. Ingen server, ingen konto.</p></div>
+    <div class="feat reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Rapporter & eksport</h3><p>PDF, CSV og fakturalinjer til regnskabsprogrammet — plus en kunde-rapport du kan maile direkte.</p></div>
   </div>
   <div class="feat-grid compact">
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Tidsbudget & klippekort</h3><p>Timegrænse og timepris pr. sag — som estimeret budget eller forudbetalt klippekort. Advarsler ved 25, 50, 75 og 100%.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></div><h3>Afregning i hele enheder</h3><p>Afregner du i 6, 15 eller 30 minutter? Sæt enheden pr. sag, så rundes dagens tid op ét sted — og evidens, rapport og fakturalinje viser præcis det samme tal.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div><h3>Salær-dokumentation med ét klik</h3><p>Kronologisk log pr. dag og fil for en sag — som PDF, når salæret skal dokumenteres over for klienten eller i en salærklage.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Foreslår selv sagen — også møderne</h3><p>Genkender hvilken sag tiden hører til ud fra dine egne sagsnavne. Møder kan hentes fra Outlook eller en .ics-fil — læst lokalt på din maskine.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><h3>Ugeoverblik & påmindelser</h3><p>En kort opsummering af ugen fredag eftermiddag, og en diskret besked hvis der ligger ufordelt tid — så intet fakturerbart bliver glemt.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div><h3>Du bestemmer hvad der logges</h3><p>Blokér et domæne, et program eller en vinduestitel med et højreklik, så det aldrig registreres igen. Og er du væk i mere end 5 minutter, vælger du selv om pausen tæller med.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.4 18.4A5 5 0 0 0 18 9h-1.3A8 8 0 1 0 3 16.3"/></svg></div><h3>Dine timer er sikret</h3><p>Automatisk backup til OneDrive, Google Drive eller netværksdrev — du vælger hvor og hvor ofte. Går databasen i stykker, gendanner CaseTrace selv fra nyeste kontrollerede backup.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>CVR-opslag indbygget</h3><p>Slå danske virksomheder op på CVR eller navn, og kopiér adresse + kontaktinfo med ét klik.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Har du selv to computere?</h3><p>Flet tiden fra din anden pc med få klik. Du kopierer selv databasefilen — den forlader aldrig dine egne maskiner.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Tidsbudget & klippekort</h3><p>Timegrænse og timepris pr. sag. Advarsel ved 25, 50, 75 og 100%.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></div><h3>Afregning i hele enheder</h3><p>6, 15 eller 30 minutter pr. sag — evidens, rapport og faktura viser samme tal.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Foreslår selv sagen</h3><p>Genkender sagen ud fra dine egne mappenavne. Møder kan hentes fra Outlook.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div><h3>Du bestemmer hvad der logges</h3><p>Blokér et domæne eller program med et højreklik. Pauser tæller kun hvis du vil.</p></div>
+    
   </div>
 </section>
 
@@ -694,12 +683,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
   <div class="sec-head center reveal">
     <span class="eyebrow">Flere om samme projekt</span>
     <h2>Se hele teamets tid — <em class="gi">hvis I vil.</em></h2>
-    <p>Arbejder I flere i den samme projektmappe i OneDrive, kan CaseTrace lægge jeres timer sammen. Det er frivilligt pr. mappe, og det kræver hverken server, konto eller abonnement — mappen, I allerede deler, er hele transporten.</p>
+    <p>Arbejder I flere i samme OneDrive-mappe, kan CaseTrace lægge jeres timer sammen. Frivilligt pr. mappe — og uden server eller konto.</p>
   </div>
   <div class="feat-grid compact">
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><h3>Tid pr. fil, pr. person</h3><p>Højreklik på den delte mappe og åbn tids-loggen: én række pr. fil, én kolonne pr. kollega. Hvem sad på ankestævningen, hvor mange timer gik der på bilagene — og hvad projektet kostede i alt.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Alle navngiver kun sig selv</h3><p>Hver enkelt vælger sit eget navn i sin egen CaseTrace. Man kan sætte sit navn på sin egen tid — aldrig på andres, og ingen kan omdøbe dig.</p></div>
-    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Kun den mappe, I har valgt</h3><p>Der deles tid pr. dag og pr. fil for netop den ene mappe. Aldrig filernes indhold, aldrig vinduestitler, og aldrig noget som helst fra resten af din computer. Slår du delingen fra, fjernes din tid igen.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><h3>Tid pr. fil, pr. person</h3><p>Én række pr. fil, én kolonne pr. kollega — og hvad projektet kostede i alt.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Alle navngiver kun sig selv</h3><p>Hver enkelt vælger sit eget navn. Aldrig på andres — og ingen kan omdøbe dig.</p></div>
+    <div class="feat sm reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Kun den mappe, I har valgt</h3><p>Kun tid pr. dag og fil for den ene mappe. Aldrig indhold, titler eller resten af din computer.</p></div>
   </div>
   <div class="sec-note" style="text-align:center;margin-top:1.6rem">Kræver CaseTrace på hver maskine. Opdateres nogle få minutter forsinket, i takt med at OneDrive synkroniserer.</div>
 </section>
@@ -715,18 +704,16 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <div class="reveal">
       <div class="sec-list">
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Data lagres lokalt — aldrig i andres cloud</div>
-        <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Intet går tabt ved nedbrud — løbende skrivning til disk</div>
-        <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Hardware-bundet licens pr. arbejdsstation</div>
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Åbent dataformat (SQLite) — fuld indsigt, altid</div>
-        <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Fuld dataportabilitet & sletteret</div>
         <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Ingen tracking, ingen telemetri</div>
-        <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Compliance-ready dokumentation</div>
+        <div class="li"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Fuld dataportabilitet &amp; sletteret</div>
+      
       </div>
     </div>
   </div>
   <div class="wrap" style="margin-top:2.4rem;border-top:1px solid rgba(255,255,255,.12);padding-top:1.8rem">
     <h3 style="font-family:var(--serif);font-weight:500;font-size:1.25rem;color:#fff">Kan min IT-afdeling godkende CaseTrace?</h3>
-    <p style="color:#b6bcc8;font-size:1.02rem;line-height:1.7;max-width:46rem;margin-top:.6rem">Ja. Data ligger lokalt, der sendes ingen registreringsdata til os, og programmet installeres pr. bruger uden administrator-rettigheder. Til IT, sikkerhedsansvarlige og DPO'er har vi en teknisk one-pager med komplet netværksliste, datalagring og persondata — afstemt med kildekoden.</p>
+    <p style="color:#b6bcc8;font-size:1.02rem;line-height:1.7;max-width:46rem;margin-top:.6rem">Data ligger lokalt, intet sendes til os, og der kræves ingen administrator-rettigheder. Til IT og DPO'er ligger der en teknisk one-pager.</p>
     <a class="btn btn-gold" href="/it-dokumentation.html" style="margin-top:1.1rem">Teknisk dokumentation til IT-afdelinger →</a>
     <a href="/tidsregistrering-uden-cloud.html" style="display:inline-block;margin-top:1.1rem;margin-left:1.2rem;color:var(--gold-2);text-decoration:underline;text-underline-offset:3px;font-size:.96rem">Tidsregistrering uden cloud →</a>
   </div>
@@ -734,28 +721,16 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
 
 <!-- ── LOVKRAV ── -->
 <section class="wrap sec" id="lovkrav">
-  <div class="sec-head reveal">
+  <div class="sec-head center reveal">
     <span class="eyebrow">Lovpligtig tidsregistrering</span>
     <h2>Arbejdstidsloven kræver <em class="gi">tidsregistrering.</em></h2>
-    <p>Siden 1. juli 2024 skal alle danske arbejdsgivere registrere medarbejdernes daglige arbejdstid — objektivt, pålideligt og tilgængeligt, gemt i 5 år. CaseTrace fanger din computertid passivt mens du arbejder — et automatisk udgangspunkt, du selv færdiggør og kontrollerer som din lovpligtige arbejdstidsregistrering, uden timere eller manuel notering.</p>
+    <p>Siden 1. juli 2024 skal dansk arbejdstid registreres objektivt og gemmes i 5 år. CaseTrace fanger computertiden automatisk — et udgangspunkt, du selv kontrollerer.</p>
   </div>
-  <div class="aud-grid">
-    <a class="aud reveal" href="/tidsregistrering-lov.html">
-      <h3>Lovkravene — den korte guide</h3>
-      <p>Hvem er omfattet, hvad systemet skal kunne, 5-års kravet og undtagelsen for selvtilrettelæggere — arbejdstidsloven forklaret på almindeligt dansk.</p>
-      <span class="tag">Læs guiden →</span>
-    </a>
-    <a class="aud reveal" href="/artikler/tidsregistrering-selvstaendig.html">
-      <h3>Selvstændig uden ansatte?</h3>
-      <p>Loven gælder ikke din egen tid — men der er tre kontante grunde til at registrere den alligevel. Især når du fakturerer pr. time.</p>
-      <span class="tag">Læs artiklen →</span>
-    </a>
-    <a class="aud reveal" href="/artikler/">
-      <h3>Artikler &amp; guides</h3>
-      <p>Glemte fakturerbare timer, GDPR, manuel vs. automatisk registrering og valg af system — korte, konkrete guides til professionelle.</p>
-      <span class="tag">Se alle artikler →</span>
-    </a>
-  </div>
+  <p class="aud-more" style="text-align:center;margin-top:1.2rem">
+    <a href="/tidsregistrering-lov.html">Lovkravene forklaret</a> &middot;
+    <a href="/artikler/tidsregistrering-selvstaendig.html">Selvstændig uden ansatte?</a> &middot;
+    <a href="/artikler/">Artikler &amp; guides</a>
+  </p>
 </section>
 
 <!-- ── HVORFOR (personlig historie) ── -->
@@ -764,40 +739,24 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
     <div class="why-inner reveal">
       <span class="eyebrow">Hvorfor CaseTrace</span>
       <h2>Hej — jeg hedder <em class="gi">Julian.</em></h2>
-      <p>Jeg er udvikler, ikke advokat eller revisor. Men jeg har selv siddet med en faktura og prøvet at regne ud, hvad ugen egentlig gik med — og hver gang manglede der timer. Arbejde jeg vidste jeg havde lavet, men havde glemt at skrive ned, forsvundet et sted mellem to opgaver.</p>
-      <p>Jeg ville bare have noget, der kørte stille i baggrunden og samlede tiden op for mig. Det jeg kunne finde, krævede enten et abonnement, en konto, eller at mine data lå på en andens server. Så jeg byggede selv det, jeg manglede — og bruger det stadig hver dag.</p>
-      <p>CaseTrace er gratis, fordi jeg lavede det til mig selv først. Hjælper det dig med den samme ærgrelse — uanset om du fakturerer som advokat, revisor, rådgiver eller noget helt fjerde — er jeg glad.</p>
+      <p>Jeg er udvikler, ikke advokat eller revisor. Men jeg har selv siddet med en faktura og prøvet at regne ud, hvad ugen gik med — og hver gang manglede der timer, jeg havde glemt at skrive ned.</p>
+      
+      <p>Alt jeg kunne finde krævede abonnement, konto eller at mine data lå på en andens server. Så byggede jeg selv det, jeg manglede — og bruger det hver dag. Det er gratis, fordi jeg lavede det til mig selv først.</p>
       <div class="why-sign"><span class="why-av">J</span><span class="why-by">Julian<span class="s">Bygger CaseTrace</span></span></div>
     </div>
   </div>
 </section>
 
 <!-- ── PRIS ── -->
-<section class="wrap sec" id="pris">
-  <div class="sec-head center reveal"><span class="eyebrow">Pris</span><h2>Gratis lige nu — og vi siger til i god tid, hvis det ændrer sig.</h2><p>CaseTrace er gratis software uden abonnement, kreditkort eller binding. Skulle vi en dag indføre betaling, gælder din nuværende licens uændret.</p></div>
-  <div class="price-wrap reveal">
-    <div class="price-card">
-      <div class="pe">Gratis licens</div>
-      <div class="amt"><span class="n">0</span><span class="k">kr</span></div>
-      <div class="pd">Fuld adgang til alle funktioner. Ingen begrænsninger, ingen skjulte gebyrer.</div>
-      <ul class="price-feats">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Alle funktioner inkluderet</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Ubegrænset sag- & filtracking</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Tidsbudget pr. sag & advarsler</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Cloud-backup (valgfrit antal)</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>PDF, CSV & e-mail-rapporter</li>
-      </ul>
-      <a class="btn btn-gold" id="price-dl" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">Download gratis →</a>
-    </div>
-    <div class="price-guarantee">Gratis software · Ingen binding · Ingen konto påkrævet</div>
-  </div>
-</section>
+
 
 <!-- ── CTA ── -->
+<a id="pris"></a>
 <section class="wrap cta" id="download">
   <div class="reveal">
+    <span class="eyebrow">Gratis — 0 kr.</span>
     <h2 class="serif">Tænd den.<br><em class="gi">Resten sker automatisk.</em></h2>
-    <p>Download CaseTrace og vær oppe at køre på under 2 minutter. Ingen konto. Helt gratis.</p>
+    <p>Alle funktioner, ingen begrænsninger. Ingen konto, intet kreditkort, ingen binding — og indfører vi en dag betaling, gælder din licens uændret.</p>
     <div class="cta-actions">
       <a class="btn btn-dark btn-lg" href="https://apps.microsoft.com/detail/9P96JCMB522V" target="_blank" rel="noopener">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
@@ -806,7 +765,6 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center}
       <a class="exe-link" id="cta-dl" href="#download">eller download .exe-installeren direkte</a>
     </div>
     <div class="dl-status" id="dl-status"></div>
-    <div class="cta-note">Windows 10 / 11 · ~<span class="dl-size">67 MB</span> installer · Ingen konto påkrævet</div>
   </div>
 </section>
 
