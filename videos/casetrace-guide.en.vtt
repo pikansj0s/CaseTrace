@@ -1,411 +1,481 @@
 WEBVTT
 
-1
-00:00:00.440 --> 00:00:01.440
-Hello.
-
-2
-00:00:02.360 --> 00:00:06.480
-To install CaseTrace, go to
-casetrace.dk. Press download.
-
-3
-00:00:07.870 --> 00:00:08.910
-It downloads the program.
-
-4
-00:00:09.270 --> 00:00:10.750
-I have already downloaded it.
-
-5
-00:00:11.610 --> 00:00:13.356
-Then you install in
-the language you want.
-
-6
-00:00:13.380 --> 00:00:14.200
-Press next.
-
-7
-00:00:14.350 --> 00:00:15.350
-Install it.
-
-8
-00:00:15.590 --> 00:00:17.510
-I'm canceling here
-because I already have it.
-
-9
-00:00:18.080 --> 00:00:19.960
-Then you open the program CaseTrace.
-
-10
-00:00:20.670 --> 00:00:22.070
-Then I will show how it works.
-
-11
-00:00:22.960 --> 00:00:26.000
-There are activities that log
-everything you do on your computer.
-
-12
-00:00:26.970 --> 00:00:28.680
-Then you have folder time,
-which is probably interesting.
-
-13
-00:00:29.940 --> 00:00:32.060
-Here you can go in and add a folder.
-
-14
-00:00:32.180 --> 00:00:33.180
-I add show.
-
-15
-00:00:34.990 --> 00:00:39.080
-So when I have added a show, I
-can, for example, give it a budget.
-
-16
-00:00:40.520 --> 00:00:42.920
-I can call that case number 1.
-
-17
-00:00:43.590 --> 00:00:47.000
-And then say there are 10
-hours and an hourly rate of 750.
-
-18
-00:00:48.540 --> 00:00:51.820
-Now this entire folder
-has a budget of DKK 7,500.
-
-19
-00:00:53.020 --> 00:00:54.020
-and we have 10 hours.
-
-20
-00:00:54.980 --> 00:00:56.260
-Then I will try to open the folder.
-
-21
-00:00:57.200 --> 00:00:58.200
-In here in the folder.
-
-22
-00:00:58.680 --> 00:00:59.680
-I have two folders there.
-
-23
-00:00:59.900 --> 00:01:00.900
-This one is empty.
-
-24
-00:01:02.140 --> 00:01:03.180
-There is a file here.
-
-25
-00:01:04.120 --> 00:01:04.980
-A text file.
-
-26
-00:01:05.140 --> 00:01:06.440
-We are trying to open the text file.
-
-27
-00:01:07.660 --> 00:01:09.540
-It's just to test.
-
-28
-00:01:10.480 --> 00:01:11.600
-As soon as I open it.
-
-29
-00:01:12.120 --> 00:01:14.220
-Then you can see the
-program here starts to log.
-
-30
-00:01:15.390 --> 00:01:17.120
-It's open right now and
-it's counting seconds.
-
-31
-00:01:18.590 --> 00:01:23.360
-When it counts up enough, it shows
-how much money you have spent
-
-32
-00:01:23.510 --> 00:01:25.500
-out of the 7500 and how much time
-you have spent out of the 10 hours.
-
-33
-00:01:26.610 --> 00:01:28.090
-And it also gives you notifications.
-
-34
-00:01:32.120 --> 00:01:35.660
-I have already made two folders here.
-
-35
-00:01:36.360 --> 00:01:37.220
-As I have added below.
-
-36
-00:01:37.300 --> 00:01:38.300
-You can remove them again.
-
-37
-00:01:39.140 --> 00:01:40.180
-There is one called test.
-
-38
-00:01:41.620 --> 00:01:44.120
-Where I have some different
-folders with subfolders.
-
-39
-00:01:44.450 --> 00:01:47.420
-It even finds the subfolders
-every time you open a document.
-
-40
-00:01:49.170 --> 00:01:51.880
-Here you can see that I
-have customer number 10.
-
-41
-00:01:52.140 --> 00:01:52.900
-Case X.
-
-42
-00:01:53.060 --> 00:01:54.360
-And there I have used 19%.
-
-43
-00:01:57.630 --> 00:01:58.910
-And here is a folder with 19%.
-
-44
-00:01:59.135 --> 00:02:05.000
-So you can also put a budget on
-the subfolders if that's what you want.
-
-45
-00:02:07.120 --> 00:02:11.860
-In addition, we still have a program that
-logs all files you open on your computer.
-
-46
-00:02:12.440 --> 00:02:14.580
-How many times each file has been opened.
-
-47
-00:02:14.700 --> 00:02:16.000
-And for what period of time.
-
-48
-00:02:17.080 --> 00:02:18.580
-And you can go in and
-look in the dashboard.
-
-49
-00:02:18.940 --> 00:02:21.100
-How many hours you spent in your day.
-
-50
-00:02:22.140 --> 00:02:23.460
-Then you can go into settings.
-
-51
-00:02:24.580 --> 00:02:25.620
-Sorry, help.
-
-52
-00:02:26.120 --> 00:02:28.620
-In here you can make a database backup.
-
-53
-00:02:30.210 --> 00:02:32.760
-You can see when it
-needs to make a backup.
-
-54
-00:02:34.090 --> 00:02:35.610
-In which days or hours and minutes.
-
-55
-00:02:35.680 --> 00:02:37.000
-How many backups there should be.
-
-56
-00:02:37.510 --> 00:02:38.200
-And then they are down here.
-
-57
-00:02:38.280 --> 00:02:39.320
-So you always have a backup.
-
-58
-00:02:39.840 --> 00:02:42.080
-You can store the backup
-on OneDrive if you want.
-
-59
-00:02:42.960 --> 00:02:44.120
-Or locally on your computer.
-
-60
-00:02:45.600 --> 00:02:46.740
-Last but not least.
-
-61
-00:02:46.815 --> 00:02:49.460
-Then we have billable hours per day.
-
-62
-00:02:49.660 --> 00:02:50.600
-Here we can go in.
-
-63
-00:02:50.660 --> 00:02:51.960
-So we'll just start today.
-
-64
-00:02:52.710 --> 00:02:53.870
-Then we can print here as a PDF.
-
-65
-00:02:55.780 --> 00:02:56.900
-Then it pops up here.
-
-66
-00:02:59.650 --> 00:03:01.650
-Then we can see that these are
-the hours we saw inside folder time.
-
-67
-00:03:02.280 --> 00:03:03.600
-Here are the hours used.
-
-68
-00:03:05.785 --> 00:03:07.220
-They are then inside the document.
-
-69
-00:03:11.480 --> 00:03:14.820
-We also have up here, you
-can see we have 3 folders.
-
-70
-00:03:15.840 --> 00:03:17.440
-And 3 files have been selected in total.
-
-71
-00:03:17.520 --> 00:03:20.180
-And we have spent 10
-minutes and 9 seconds in total.
-
-72
-00:03:22.350 --> 00:03:23.920
-If you enter the menu.
-
-73
-00:03:24.600 --> 00:03:25.600
-And press settings.
-
-74
-00:03:25.920 --> 00:03:27.520
-And then press show today's overview.
-
-75
-00:03:28.360 --> 00:03:30.180
-So every morning when
-the computer turns on.
-
-76
-00:03:30.260 --> 00:03:33.900
-Then what you have spent the most
-time in folder time comes up here.
-
-77
-00:03:34.240 --> 00:03:36.800
-And in activities what
-you spent the most time on.
-
-78
-00:03:37.750 --> 00:03:40.700
-It's just a little quick
-informational info.
-
-79
-00:03:42.880 --> 00:03:44.780
-And then we have the new one over here.
-
-80
-00:03:44.860 --> 00:03:46.060
-It's called unallocated time.
-
-81
-00:03:46.910 --> 00:03:50.340
-It is simply the time
-you spend on files.
-
-82
-00:03:51.050 --> 00:03:53.320
-Which is not in folder time.
-
-83
-00:03:53.970 --> 00:03:55.250
-It could be some other things.
-
-84
-00:03:56.150 --> 00:03:57.420
-It could be anything.
-
-85
-00:03:57.575 --> 00:04:00.280
-Then you can simply go in and assign.
-
-86
-00:04:01.110 --> 00:04:03.216
-If you have done
-something special.
-
-87
-00:04:03.240 --> 00:04:04.740
-But it is not during the folder time.
-
-88
-00:04:04.820 --> 00:04:05.820
-Then you can assign it.
-
-89
-00:04:07.410 --> 00:04:08.690
-What case it should be under.
-
-90
-00:04:09.290 --> 00:04:11.276
-Or what subfolder
-if it's not in there.
-
-91
-00:04:11.300 --> 00:04:12.300
-And then press OK.
-
-92
-00:04:14.140 --> 00:04:15.140
-So we'll see here.
-
-93
-00:04:16.350 --> 00:04:17.460
-Then it fell under here.
-
-94
-00:04:20.070 --> 00:04:21.670
-And then the seconds also fell in there.
-
-95
-00:04:22.420 --> 00:04:23.420
-Thank you for watching.
+00:00:00.960 --> 00:00:03.400
+Hello, and welcome to CaseTrace.
+
+00:00:04.040 --> 00:00:08.560
+This is a time-tracking program certified by Microsoft,
+
+00:00:08.820 --> 00:00:13.380
+and you can get it from the Microsoft Store — you click here, and CaseTrace downloads.
+
+00:00:14.680 --> 00:00:18.500
+I already have the program, so let me just start it up.
+
+00:00:19.900 --> 00:00:23.640
+Here we see the program and its features.
+
+00:00:23.640 --> 00:00:29.480
+It has Activities, Folder Time, Timeline, Dashboard and Unallocated Time.
+
+00:00:30.440 --> 00:00:33.720
+You can also have it in Danish if you choose Danish.
+
+00:00:36.140 --> 00:00:38.700
+Activities logs everything you do.
+
+00:00:38.860 --> 00:00:44.200
+For example, right now I'm in CaseTrace, and you can see
+
+00:00:45.820 --> 00:00:52.320
+that gradually the program or window you have active
+
+00:00:52.360 --> 00:00:56.280
+appears in here, and it updates itself automatically.
+
+00:00:58.840 --> 00:01:03.320
+And then we have Folder Time.
+
+00:01:03.460 --> 00:01:08.140
+Here you can add folders or remove folders.
+
+00:01:08.200 --> 00:01:10.280
+Up here you add, down here you remove.
+
+00:01:10.420 --> 00:01:13.360
+I've added a folder called Josefine.
+
+00:01:13.960 --> 00:01:16.980
+Then I can add a budget.
+
+00:01:17.920 --> 00:01:25.760
+I can enter that it's client number 25, and that I need 10 hours.
+
+00:01:25.760 --> 00:01:29.640
+And I charge 750 an hour, then we confirm it.
+
+00:01:29.740 --> 00:01:34.600
+Then we can see some figures appear here, showing how much time has been spent.
+
+00:01:34.680 --> 00:01:40.680
+The clever thing about this folder is that now I go into the Josefine folder,
+
+00:01:40.740 --> 00:01:43.140
+and then I open a subfolder.
+
+00:01:44.880 --> 00:01:47.340
+Inside the folder there are two documents.
+
+00:01:48.040 --> 00:01:52.720
+I'll try opening one here, and then I'll try opening the other one here.
+
+00:01:53.000 --> 00:01:55.040
+So now I have two open.
+
+00:01:55.540 --> 00:01:57.460
+Of course only one can be active at a time.
+
+00:01:57.620 --> 00:02:00.740
+But now I have one open, and then I'll try having the other one open.
+
+00:02:02.020 --> 00:02:04.240
+Then we go back into the program here.
+
+00:02:04.360 --> 00:02:05.600
+Then we can refresh.
+
+00:02:05.900 --> 00:02:11.240
+Then we can see it has already recorded that I've spent a few seconds.
+
+00:02:12.040 --> 00:02:15.700
+For example 13 seconds in the folder, and how much I've spent on each file.
+
+00:02:16.260 --> 00:02:19.160
+What it then does is add the time up here.
+
+00:02:19.280 --> 00:02:24.960
+And then you can see how much time you've spent in total, on all the files in that folder and its subfolders.
+
+00:02:25.040 --> 00:02:29.380
+And how much money you've spent so far.
+
+00:02:31.200 --> 00:02:37.680
+I've also built a feature where you can share the folder.
+
+00:02:37.780 --> 00:02:39.920
+So you choose yourself which folder you want to share.
+
+00:02:40.060 --> 00:02:46.800
+If I share the Josefine folder, I can share it here, if this were a OneDrive.
+
+00:02:47.160 --> 00:02:48.800
+If you're on Business.
+
+00:02:49.200 --> 00:02:53.740
+If there are several of you working in the same folders in OneDrive, you can share it.
+
+00:02:54.340 --> 00:02:59.940
+And the clever part is that you can then see how many machines it's shared with.
+
+00:03:00.320 --> 00:03:05.720
+How much time has been spent in total, across the different computers.
+
+00:03:06.580 --> 00:03:09.220
+And then you can open Shared Time.
+
+00:03:09.520 --> 00:03:12.500
+Here it shows that 13 seconds have been spent in total.
+
+00:03:12.880 --> 00:03:16.560
+My name here is John. I can enter a different name.
+
+00:03:16.560 --> 00:03:18.440
+I can write Hanne and save it as that.
+
+00:03:18.720 --> 00:03:22.160
+Then the others who also use that folder can go in and see
+
+00:03:22.560 --> 00:03:24.400
+how long you've spent on it.
+
+00:03:24.480 --> 00:03:26.620
+And you can see the others' time.
+
+00:03:26.720 --> 00:03:27.900
+And they can see your time.
+
+00:03:28.040 --> 00:03:29.800
+And you can see the total time for it.
+
+00:03:30.260 --> 00:03:31.740
+When, and how much.
+
+00:03:33.420 --> 00:03:36.680
+I've also built some reports you can pull here.
+
+00:03:37.220 --> 00:03:40.600
+For internal use, for example, you can choose the date.
+
+00:03:41.180 --> 00:03:42.420
+The period you want the report from.
+
+00:03:42.640 --> 00:03:44.620
+And then you can choose whether it should be chronological.
+
+00:03:44.700 --> 00:03:47.060
+So you can see how much time was spent per day.
+
+00:03:47.700 --> 00:03:49.620
+Per file — but that can get very long.
+
+00:03:49.660 --> 00:03:50.880
+Or you can choose the total.
+
+00:03:51.260 --> 00:03:52.520
+If I choose the total here.
+
+00:03:53.000 --> 00:03:53.640
+Then we can see.
+
+00:03:54.440 --> 00:03:56.560
+Client number 25 comes up.
+
+00:03:56.680 --> 00:03:58.280
+And the date I've chosen.
+
+00:03:58.380 --> 00:03:59.700
+Then you can see how much time you've spent.
+
+00:03:59.760 --> 00:04:00.780
+And how much money you've spent.
+
+00:04:00.920 --> 00:04:02.620
+And you can add your company logo.
+
+00:04:03.200 --> 00:04:04.260
+And whatever you're called.
+
+00:04:04.360 --> 00:04:05.620
+And then you can pull reports.
+
+00:04:08.280 --> 00:04:11.660
+Otherwise, you can go in and pull client reports.
+
+00:04:11.880 --> 00:04:13.120
+It's the same.
+
+00:04:13.580 --> 00:04:16.080
+And you can choose the same things in here.
+
+00:04:16.140 --> 00:04:17.320
+It looks slightly different.
+
+00:04:17.500 --> 00:04:19.340
+It can be attached as documentation.
+
+00:04:19.340 --> 00:04:24.460
+So clients can follow along with how much time you've spent.
+
+00:04:24.820 --> 00:04:26.400
+On files and so on.
+
+00:04:28.300 --> 00:04:34.520
+I forgot to mention that you can add notes in here.
+
+00:04:34.640 --> 00:04:37.580
+So we can write: test with the client.
+
+00:04:38.940 --> 00:04:40.640
+Or into Activities.
+
+00:04:40.740 --> 00:04:42.360
+If you do something out of the ordinary.
+
+00:04:42.400 --> 00:04:44.720
+Then you can write a note in there.
+
+00:04:45.020 --> 00:04:48.220
+No — test, erm.
+
+00:04:48.220 --> 00:04:50.140
+And you can also block things.
+
+00:04:50.220 --> 00:04:52.060
+If there's a program you don't want
+
+00:04:52.100 --> 00:04:53.540
+it to track.
+
+00:04:53.640 --> 00:04:54.900
+Or a file.
+
+00:04:55.100 --> 00:04:55.600
+Or something.
+
+00:04:55.800 --> 00:04:56.580
+And then up in the menu.
+
+00:04:56.760 --> 00:04:57.900
+You can go into Files.
+
+00:04:57.920 --> 00:04:58.920
+Then you can go into Notes.
+
+00:04:59.160 --> 00:05:00.780
+And then you can see, for each day,
+
+00:05:01.640 --> 00:05:03.080
+the notes that have been written.
+
+00:05:03.220 --> 00:05:04.540
+And change them.
+
+00:05:04.660 --> 00:05:05.440
+Or delete them.
+
+00:05:06.680 --> 00:05:08.980
+The same applies in Timeline.
+
+00:05:09.000 --> 00:05:10.340
+Or Timeline in here.
+
+00:05:10.360 --> 00:05:12.880
+It's simply broken down in detail.
+
+00:05:13.500 --> 00:05:14.660
+You can add notes here too.
+
+00:05:15.440 --> 00:05:17.300
+What you've done and spent the time on.
+
+00:05:17.300 --> 00:05:18.240
+You can go into,
+
+00:05:18.440 --> 00:05:19.640
+for example, CaseTrace.
+
+00:05:19.900 --> 00:05:20.220
+There you can see
+
+00:05:20.240 --> 00:05:21.740
+I've had something open 24 times.
+
+00:05:21.880 --> 00:05:22.380
+Then you can see
+
+00:05:22.780 --> 00:05:23.500
+the time of day,
+
+00:05:23.620 --> 00:05:24.800
+and how long.
+
+00:05:25.320 --> 00:05:25.680
+Simply,
+
+00:05:25.740 --> 00:05:26.680
+across a whole day.
+
+00:05:27.280 --> 00:05:28.760
+So that's really useful.
+
+00:05:28.980 --> 00:05:30.460
+And you can go back in time.
+
+00:05:30.600 --> 00:05:31.580
+Or forward in time.
+
+00:05:31.740 --> 00:05:32.160
+And look.
+
+00:05:33.720 --> 00:05:35.080
+And then we have Dashboard.
+
+00:05:35.580 --> 00:05:37.520
+There's a chart
+
+00:05:37.540 --> 00:05:38.040
+that shows
+
+00:05:38.360 --> 00:05:39.460
+which browsers
+
+00:05:39.640 --> 00:05:42.660
+you've used most today, and how many hours
+
+00:05:42.680 --> 00:05:43.120
+you've spent
+
+00:05:43.120 --> 00:05:43.780
+over the week.
+
+00:05:43.840 --> 00:05:49.240
+And various other information — and up here you can also
+
+00:05:49.940 --> 00:05:52.300
+add time manually in Activities.
+
+00:05:52.320 --> 00:05:53.480
+If you're in a meeting.
+
+00:05:53.560 --> 00:05:54.400
+Or something special.
+
+00:05:54.460 --> 00:05:55.440
+That didn't get picked up.
+
+00:05:55.540 --> 00:05:56.560
+And you can add it
+
+00:05:56.620 --> 00:06:01.260
+to a specific case under Folder Time, if
+
+00:06:01.660 --> 00:06:02.640
+it's some program
+
+00:06:02.820 --> 00:06:03.900
+it can't see
+
+00:06:04.020 --> 00:06:04.740
+what you're doing in.
+
+00:06:07.740 --> 00:06:10.840
+And then we have the interesting one here, it's called
+
+00:06:11.320 --> 00:06:15.520
+Unallocated Time — it simply tracks
+
+00:06:15.820 --> 00:06:17.200
+everything over 30 seconds
+
+00:06:17.280 --> 00:06:18.340
+you've spent time on
+
+00:06:18.420 --> 00:06:19.200
+that isn't in
+
+00:06:19.460 --> 00:06:19.740
+Folder Time.
+
+00:06:19.820 --> 00:06:20.560
+If it's some
+
+00:06:20.660 --> 00:06:21.200
+particular program
+
+00:06:21.420 --> 00:06:22.160
+that can't be
+
+00:06:22.240 --> 00:06:23.460
+in Folder Time, but you'd like
+
+00:06:23.480 --> 00:06:24.360
+to have it added
+
+00:06:24.440 --> 00:06:24.980
+to your case.
+
+00:06:25.080 --> 00:06:25.780
+Then you can go in.
+
+00:06:26.520 --> 00:06:27.160
+And then you can
+
+00:06:27.200 --> 00:06:29.220
+press assign.
+
+00:06:29.280 --> 00:06:29.860
+And then you can
+
+00:06:29.960 --> 00:06:33.380
+drop it into the folder it belongs to — now I'll try
+
+00:06:33.480 --> 00:06:35.160
+dropping it into Josefine.
+
+00:06:35.300 --> 00:06:35.920
+Then we go in
+
+00:06:35.960 --> 00:06:39.960
+and look, and CaseTrace has been added to
+
+00:06:40.620 --> 00:06:40.980
+Josefine.
+
+00:06:41.080 --> 00:06:41.940
+And then you can see
+
+00:06:42.040 --> 00:06:45.500
+the time spent on it. The program can also do
+
+00:06:45.640 --> 00:06:47.660
+a lot more things
+
+00:06:47.940 --> 00:06:48.980
+that I can't manage
+
+00:06:49.080 --> 00:06:51.100
+to go through in full, but
+
+00:06:51.740 --> 00:06:52.840
+you can, for example,
+
+00:06:53.100 --> 00:06:54.280
+look up a company registration number,
+
+00:06:54.280 --> 00:06:54.980
+if you need to.
+
+00:06:55.040 --> 00:06:59.740
+When you start Windows every
+
+00:06:59.780 --> 00:07:01.220
+day, the machine then comes up.
+
+00:07:07.720 --> 00:07:11.380
+It can send automatic emails every day or every
+
+00:07:11.420 --> 00:07:13.440
+week about the time you've spent, and so
+
+00:07:13.520 --> 00:07:16.320
+you get an overview. Now we can see here.
