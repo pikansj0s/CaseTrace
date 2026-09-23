@@ -118,7 +118,7 @@
     <div class="prose reveal">
       <ul>
         <li><strong>Ingen telemetri eller analytics.</strong> Programmet indeholder ingen analytics-, telemetri- eller fejlrapporterings-biblioteker, og sender ikke brugs- eller registreringsdata til CaseTrace eller andre. En fejllog skrives <em>lokalt</em> til <code>%LOCALAPPDATA%\CaseTrace\crash.log</code> og forlader aldrig maskinen.</li>
-        <li><strong>Ingen registreringsdata sendes nogensteds.</strong> Tidsregistreringer, mappenavne og aktiviteter ligger udelukkende i den lokale database. De forlader kun maskinen, hvis brugeren <em>selv</em> eksporterer (PDF/CSV/e-mail) eller vælger en synkroniseret backup-mappe (se afsnit 4).</li>
+        <li><strong>Ingen registreringsdata sendes nogensteds.</strong> Tidsregistreringer, mappenavne og aktiviteter ligger udelukkende i den lokale database. De forlader kun maskinen, hvis brugeren <em>selv</em> eksporterer (PDF/CSV/e-mail), vælger en synkroniseret backup-mappe (se afsnit 4) eller slår den valgfri deling af mappetid til for en bestemt mappe (se afsnit 5) — og heller ikke da til CaseTrace.</li>
         <li><strong>Ingen keylogging, ingen skærmbilleder.</strong> Der opsættes ingen tastatur-/muse-hooks der opfanger indhold, og der tages ingen screenshots. Der læses metadata: vinduestitler, filnavne, stier og tidsstempler.</li>
         <li><strong>Ingen forhøjede rettigheder.</strong> Programmet installeres og kører som almindelig bruger. Installeren kører med <code>PrivilegesRequired=lowest</code> (ingen UAC-elevation), og den kørende .exe anmoder ikke om administrator-rettigheder. Alle filer ligger i brugerens egen profil; al registry-skrivning sker under <code>HKEY_CURRENT_USER</code>.</li>
       </ul>
@@ -140,7 +140,7 @@
         <tr>
           <td>Opdaterings­tjek</td>
           <td><code>api.github.com</code> (CaseTrace-releases)</td>
-          <td>Ca. 8 sek. efter opstart + når brugeren klikker «Søg efter opdateringer»</td>
+          <td>Ca. 8 sek. efter opstart, derefter automatisk hver 4. time så længe programmet kører — og når brugeren klikker «Søg efter opdateringer»</td>
           <td>Intet (offentligt GET — henter seneste versionsnummer)</td>
         </tr>
         <tr>
@@ -150,12 +150,12 @@
           <td>Intet (downloader installeren)</td>
         </tr>
       </table>
-      <div class="note">Opdateringstjekket <strong>henter kun en versionsfil</strong> fra GitHub og sammenligner versionsnummeret lokalt. Der sendes <strong>ingen oplysninger om dig eller din maskine</strong> — intet maskin-ID, ingen licensnøgle, intet versionsnummer og ingen OS-info. Den eneste HTTP-header er en statisk <code>User-Agent: «CaseTrace-updatecheck»</code> (identificerer ikke brugeren).</div>
+      <div class="note">Opdateringstjekket <strong>henter kun en versionsfil</strong> fra GitHub og sammenligner versionsnummeret lokalt. Der sendes <strong>ingen oplysninger om dig eller din maskine</strong> — intet maskin-ID, ingen licensnøgle, intet versionsnummer og ingen OS-info. Den eneste HTTP-header er en statisk <code>User-Agent: «CaseTrace-updatecheck»</code> (identificerer ikke brugeren). Findes der en nyere version, viser programmet en ikke-modal besked med knappen «Opdater nu» — download og installation sker først, når brugeren klikker.</div>
 
       <h3>Kald der kun sker ved en aktiv brugerhandling</h3>
       <table>
         <tr><th>Kald</th><th>Endpoint</th><th>Udløses af</th></tr>
-        <tr><td>CVR-opslag</td><td><code>cvrapi.dk/api</code></td><td>Brugeren slår et CVR-nummer op (kunde-oprettelse)</td></tr>
+        <tr><td>CVR-opslag</td><td><code>cvrapi.dk/api</code></td><td>Brugeren åbner CVR-opslagsdialogen og slår et CVR-nummer op. Resultatet kan kopieres med en knap — opslaget er ikke knyttet til oprettelse af kunder eller sager</td></tr>
         <tr><td>Hent licens automatisk</td><td>CaseTraces licens-tjeneste (Google Apps Script)</td><td>Brugeren klikker «Hent licens automatisk». Sender e-mail + maskine-fingerprint + version for at få en gratis nøgle</td></tr>
         <tr><td>Send rapport på e-mail</td><td>Brugerens <strong>egen</strong> SMTP-server</td><td>Brugeren sender en rapport. Forbindelsen oprettes til den SMTP-server brugeren selv har konfigureret (vært/port/login). CaseTrace driver ingen mailserver</td></tr>
       </table>
@@ -190,7 +190,7 @@
       <p>Afinstallation fjerner <strong>ikke</strong> brugerens data. For fuldstændig datasletning slettes desuden manuelt:</p>
       <ul>
         <li>Datamappen: <code>%LOCALAPPDATA%\CaseTrace\</code> (database, licens, indstillinger, backups, logs)</li>
-        <li>Eventuel autostart-værdi: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> → værdien <code>CaseTrace</code> (findes kun hvis brugeren har slået «Start med Windows» til)</li>
+        <li>Autostart-værdi: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> → værdien <code>CaseTrace</code>. Den direkte downloadede .exe-udgave slår «Start med Windows» til ved første start, så værdien findes, medmindre brugeren har slået det fra under Indstillinger → «Start med Windows». Store-udgaven skriver ingen Run-værdi (den bruger MSIX-manifestets StartupTask)</li>
         <li>Eventuelle backups på de destinationer brugeren har valgt (netværksdrev/cloud-mappe)</li>
       </ul>
     </div>
@@ -204,7 +204,8 @@
     <div class="prose reveal">
       <ul>
         <li><strong>Hvilke persondata behandles:</strong> CaseTrace gemmer vinduestitler samt fil- og mappenavne fra de overvågede mapper. Indeholder disse navne personoplysninger (fx klientnavne, sagsnumre eller CPR i et filnavn), behandles de oplysninger lokalt i databasen. <strong>Organisationen er dataansvarlig</strong> for denne behandling; CaseTrace er ikke databehandler, da leverandøren ikke modtager data.</li>
-        <li><strong>Data forlader ikke maskinen</strong> medmindre brugeren selv eksporterer en rapport eller vælger en synkroniseret backup-destination (afsnit 3–4).</li>
+        <li><strong>Data forlader ikke maskinen</strong> medmindre brugeren selv eksporterer en rapport, vælger en synkroniseret backup-destination (afsnit 3–4) eller slår «Del mappetid» til (næste punkt).</li>
+        <li><strong>Valgfri «Del mappetid»:</strong> slår brugeren deling til for en overvåget mappe, skriver CaseTrace en lille JSON-fil i selve mappen — <code>&lt;mappe&gt;\.casetrace\tid-&lt;maskinnavn&gt;.json</code> — med dagstotaler for den mappe. Først efter et separat samtykke indeholder filen også tid pr. relativ filsti samt et visningsnavn, brugeren selv vælger. Filen følger blot med organisationens egen OneDrive-/netværksdeling af mappen og sendes aldrig til CaseTrace-servere. Deling er opt-in pr. mappe; slås den fra, slettes filen igen.</li>
         <li><strong>Sletning/indsigt:</strong> Brugeren kan slette registreringer i programmet — pr. aktivitet/vinduestitel (for en dag), pr. manuel post, pr. tidslinje-post, og pr. overvåget mappe (fjernelse af en mappe sletter al registreret tid for den). Hele datasættet kan desuden fjernes ved at slette datamappen (afsnit 4). Dataformatet er åbent (SQLite), så indsigt og udtræk altid er muligt.</li>
         <li><strong>Ingen profilering hos leverandøren:</strong> da ingen data sendes til CaseTrace, sker der ingen ekstern profilering eller automatiseret beslutningstagning.</li>
         <li><strong>Tilsigtet brug &amp; ansvar:</strong> CaseTrace er beregnet til at registrere brugerens egen arbejdstid. Anvendes programmet til at overvåge andre (fx medarbejdere), er den organisation eller person, der udruller det, selv ansvarlig for at overholde gældende lovgivning — herunder GDPR's krav om lovligt grundlag, proportionalitet og oplysningspligt over for de berørte. Leverandøren leverer alene værktøjet og modtager ingen data.</li>
@@ -225,8 +226,8 @@
         <tr><td><strong>Installationssti</strong></td><td>Brugerens egen profil: <code>%LOCALAPPDATA%\Programs\CaseTrace\</code> (ingen skrivning til <code>Program Files</code>)</td></tr>
         <tr><td><strong>Administrator-rettigheder</strong></td><td>Nej — installeres og kører som almindelig bruger (lowest privileges, ingen UAC)</td></tr>
         <tr><td><strong>Code signing</strong></td><td><strong>Installeren er pt. ikke kodesigneret.</strong> Windows SmartScreen kan derfor vise «Windows beskyttede din PC». Brugeren klikker «Mere info → Kør alligevel». Et kodesigneringscertifikat er på vej; indtil da kan IT verificere integriteten via SHA-256-tjeksummen nedenfor.</td></tr>
-        <tr><td><strong>Autostart</strong></td><td>Fravalgt som standard. Kan slås til af brugeren («Start med Windows»), hvilket skriver én værdi under <code>HKCU\...\Run</code></td></tr>
-        <tr><td><strong>Opdateringer</strong></td><td>Manuelt initieret af brugeren (ingen tvungen/baggrunds-opdatering). Henter fra GitHub-releases og installerer i brugerens egen profil</td></tr>
+        <tr><td><strong>Autostart</strong></td><td>Slået til som standard i den direkte downloadede .exe-udgave: ved første start skrives én værdi <code>CaseTrace</code> under <code>HKCU\...\Run</code>. Brugeren kan slå det fra under Indstillinger → «Start med Windows», hvorefter værdien fjernes. Store-udgaven bruger i stedet MSIX-manifestets StartupTask og skriver ingen Run-værdi</td></tr>
+        <tr><td><strong>Opdateringer</strong></td><td>Ingen tvungen eller tavs opdatering. Programmet tjekker selv for nye versioner (ca. 8 sek. efter start og derefter hver 4. time) ved kun at hente en versionsfil fra GitHub — uden identificerende oplysninger. Findes en nyere version, vises en ikke-modal besked med «Opdater nu»; download og installation sker først, når brugeren klikker, og foregår i brugerens egen profil</td></tr>
         <tr><td><strong>Licensmodel</strong></td><td>Gratis. Hardware-bundet licens pr. arbejdsstation (fingerprint-bundet, valideret offline via embedded Ed25519-nøgle)</td></tr>
       </table>
       <p style="margin-top:1rem">CaseTrace kan distribueres til arbejdsstationer ved at køre installeren (interaktivt eller silent: <code>CaseTraceSetup_v&lt;version&gt;.exe /VERYSILENT</code>). Da alt installeres pr. bruger uden admin, er der ingen maskinbrede ændringer.</p>
