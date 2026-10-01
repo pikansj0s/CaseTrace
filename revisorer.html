@@ -78,7 +78,7 @@
         {
           "@type": "Question",
           "name": "Hvor gemmes mine klientdata?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Alt gemmes lokalt på din egen maskine i en SQLite-database. Intet sendes til skyen, og der er ingen telemetri — velegnet til fortrolige regnskabs- og klientoplysninger og GDPR-venligt fra dag ét." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Alt gemmes lokalt på din egen maskine i en SQLite-database. Intet sendes til skyen, medmindre du selv slår e-mail-rapporter til eller sender en fakturakladde til e-conomic/Billy, og der er ingen telemetri — velegnet til fortrolige regnskabs- og klientoplysninger og GDPR-venligt fra dag ét." }
         },
         {
           "@type": "Question",
@@ -193,6 +193,28 @@
   </div>
 </section>
 
+<!-- ── MANGE KLIENTER (automatisk kunde) ── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Mange klienter på én dag</span>
+      <h2>Klientmappen viser vej — <em class="gi">også for <span style="white-space:nowrap">e-conomic</span> og skat.dk.</em></h2>
+    </div>
+    <div class="prose reveal">
+      <p>En bogholder skifter klient mange gange om dagen: et bilag hos én, en momsangivelse hos en anden, et spørgsmål om lønnen hos en tredje. Tiden i klientmappen er let at fordele. Det svære er alt det rundt om — fanen i e-conomic, opslaget på skat.dk, indberetningen på Virk, mailen om det manglende bilag.</p>
+      <p>Åbner du en fil fra en klientmappe — fx «Hansen VVS» — lægger CaseTrace dit øvrige arbejde på den klient: tiden i e-conomic, Dinero eller Visma og på skat.dk og Virk. Det fortsætter, indtil du åbner en fil fra en anden klient. Mails og Teams-chats følger kun med, når afsender, emne eller chatnavn peger på netop den klient. Ligger klientmapperne i mapper som «2025», «A–F» eller «Klienter», springer CaseTrace dem over og finder selve klientmappen.</p>
+      <p>Mails står én for én under Uallokeret tid med et forslag til klienten ud fra emnet — og i Outlook-programmet, hvis du slår det til, også ud fra afsenderen. Dér kan du lave en regel som «mails fra @hansen-vvs.dk → Hansen VVS», så CaseTrace selv lægger dem på klienten fremover.</p>
+      <p>Inden du fakturerer, gennemgår du det hele i Aktiviteter → «Pr. kunde»: hver klient kan foldes ud, og alt, der er fordelt automatisk, er mærket «automatisk». Fjern fluebenet ved det, der ikke hører til, så ligger det i Uallokeret tid igen. Er CaseTrace i tvivl — fx når du har været væk fra computeren — spørger den: «Arbejder du stadig på Hansen VVS?»</p>
+    </div>
+    <div class="checks reveal">
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Klientens fil åben → tiden i e-conomic, på skat.dk og Virk lægges på samme klient</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Mails én for én med forslag til klienten — og regler for faste afsendere i Outlook-programmet</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Mærket «automatisk» og kan fravælges med et flueben, før du fakturerer</div>
+      <div class="c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Fakturerede perioder røres ikke, og netbank og privat browsing lægges ikke på klienten</div>
+    </div>
+  </div>
+</section>
+
 <!-- ── DELT TID ── -->
 <section class="sec">
   <div class="wrap">
@@ -236,7 +258,7 @@
       <details><summary>Hvordan registrerer jeg tid pr. klient som revisor?</summary><div class="ans">CaseTrace kører passivt og logger automatisk al din tid — hvert program, vindue og dokument — helt uden en timer at starte og stoppe. Arbejder du i klientmapper, kan du pege CaseTrace på dem, så tiden samtidig opgøres pr. klient — årsregnskab, momsindberetning, løn og bilag.</div></details>
       <details><summary>Kan jeg se hvor meget tid jeg bruger på hver klient automatisk?</summary><div class="ans">Ja. CaseTrace giver et objektivt overblik over forbrugt tid pr. klient og pr. opgavemappe, baseret på de filer og mapper du faktisk arbejder i — ikke på et efterfølgende skøn.</div></details>
       <details><summary>Egner CaseTrace sig til bogholdere med mange små klienter?</summary><div class="ans">Ja. Du kan tracke ubegrænset antal klientmapper samtidig. Hver klient får sin egen tidsopgørelse, og du kan trække en samlet eller klientspecifik rapport som PDF eller CSV når du skal fakturere.</div></details>
-      <details><summary>Hvor gemmes mine klientdata?</summary><div class="ans">Alt gemmes lokalt på din egen maskine i en SQLite-database. Intet sendes til skyen, og der er ingen telemetri — velegnet til fortrolige regnskabs- og klientoplysninger og GDPR-venligt fra dag ét.</div></details>
+      <details><summary>Hvor gemmes mine klientdata?</summary><div class="ans">Alt gemmes lokalt på din egen maskine i en SQLite-database. Intet sendes til skyen, medmindre du selv slår e-mail-rapporter til eller sender en fakturakladde til e-conomic/Billy, og der er ingen telemetri — velegnet til fortrolige regnskabs- og klientoplysninger og GDPR-venligt fra dag ét.</div></details>
       <details><summary>Hvad koster CaseTrace for revisorer?</summary><div class="ans">Det er gratis. Ingen abonnement, intet kreditkort og ingen binding. Du henter programmet til Windows 10 eller 11 og er i gang på under to minutter.</div></details>
     </div>
   </div>
