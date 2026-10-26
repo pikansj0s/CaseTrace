@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tokenet står i adressen: send den aldrig videre som referrer, og lad
+     siden hverken indeksere eller hente noget udefra. -->
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<title>Forbundet til e-conomic · CaseTrace</title>
+<!--
+  casetrace.dk/e-conomic/forbundet/  (læg filen som e-conomic/forbundet/index.html)
+
+  e-conomic sender brugeren hertil efter «Tilføj app» med ?token=<grant-token>.
+  Siden
+    1. fjerner tokenet fra adresselinjen med det samme (history.replaceState),
+    2. åbner casetrace://economic-connected?token=…(&state=…), så CaseTrace
+       modtager tokenet og forbinder,
+    3. viser «Du kan lukke vinduet» — og som fallback tokenet med en
+       kopiér-knap, hvis CaseTrace ikke åbnede (casetrace:// ikke registreret).
+  Siden gemmer og logger INTET: ingen cookies, ingen localStorage, ingen
+  statistik, ingen eksterne filer (heller ikke skrifttyper).
+-->
+<style>
+  :root {
+    --cream:#faf9f5; --panel:#fffefb; --ink:#15181f; --muted:#5d626f;
+    --gold:#b08544; --gold-deep:#876727; --line:#e8e3d8; --green:#2f8a4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --cream:#0d1014; --panel:#1b212b; --ink:#f3f1ea; --muted:#a9adb8;
+            --gold:#e3b341; --gold-deep:#e3b341; --line:#2a313c; --green:#4caf6e; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:var(--cream); color:var(--ink);
+         font:16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+         padding:24px 16px; }
+  main { width:100%; max-width:520px; background:var(--panel); border:1px solid var(--line);
+         border-radius:14px; padding:32px 28px; }
+  .brand { font:600 13px/1 ui-monospace, "Cascadia Mono", Consolas, monospace;
+           letter-spacing:2px; color:var(--gold-deep); text-transform:uppercase; }
+  h1 { font:500 28px/1.2 Georgia, "Times New Roman", serif; margin:14px 0 8px; }
+  p { margin:0 0 14px; color:var(--muted); }
+  .ok { color:var(--green); font-weight:600; }
+  .fallback { margin-top:22px; padding-top:18px; border-top:1px solid var(--line); }
+  .fallback h2 { font-size:15px; margin:0 0 6px; color:var(--ink); }
+  .row { display:flex; gap:8px; flex-wrap:wrap; }
+  input { flex:1 1 220px; min-width:0; padding:10px 12px; border:1px solid var(--line);
+          border-radius:8px; background:transparent; color:var(--ink);
+          font:14px ui-monospace, Consolas, monospace; }
+  button, .btn { padding:10px 16px; border-radius:8px; border:1px solid var(--gold);
+          background:var(--gold); color:#15181f; font-weight:600; cursor:pointer;
+          text-decoration:none; display:inline-block; }
+  .btn.secondary { background:transparent; color:var(--gold-deep); }
+  .hidden { display:none; }
+  .err { color:#c0392b; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">CaseTrace × e-conomic</div>
+
+  <div id="ok" class="hidden">
+    <h1>CaseTrace er godkendt</h1>
+    <p class="ok">e-conomic har givet CaseTrace adgang.</p>
+    <p>CaseTrace åbner nu og viser «Forbundet til» med firmanavn og aftalenummer.
+       <strong>Du kan lukke vinduet.</strong></p>
+    <p><a class="btn secondary" id="again" href="#">Åbn CaseTrace igen</a></p>
+
+    <div class="fallback">
+      <h2>Åbnede CaseTrace ikke?</h2>
+      <p>Kopiér tokenet, og indsæt det i CaseTrace under
+         <em>Indstillinger → Integrationer (beta) → Indsæt token …</em></p>
+      <div class="row">
+        <input id="token" type="password" readonly aria-label="Token fra e-conomic">
+        <button id="copy" type="button">Kopiér</button>
+      </div>
+      <p id="copied" class="ok hidden" style="margin-top:8px">Kopieret.</p>
+    </div>
+  </div>
+
+  <div id="missing" class="hidden">
+    <h1>Ingen adgang modtaget</h1>
+    <p class="err">Siden fik ikke noget token fra e-conomic.</p>
+    <p>Gå tilbage til CaseTrace, og tryk «Forbind e-conomic» igen under
+       Indstillinger → Integrationer (beta).</p>
+  </div>
+
+  <noscript>
+    <h1>Slå JavaScript til</h1>
+    <p>Siden skal bruge JavaScript for at give tokenet videre til CaseTrace.
+       Intet sendes andre steder hen.</p>
+  </noscript>
+</main>
+<script>
+(function () {
+  "use strict";
+  var params = new URLSearchParams(window.location.search);
+  var token = (params.get("token") || "").trim();
+  var state = (params.get("state") || "").trim();
+
+  // 1) Tokenet væk fra adresselinjen (og browserens historik) med det samme.
+  try { history.replaceState(null, "", window.location.pathname); } catch (e) {}
+
+  if (!/^[A-Za-z0-9._~+\/=-]{8,512}$/.test(token)) {
+    document.getElementById("missing").classList.remove("hidden");
+    return;
+  }
+  if (state && !/^[A-Za-z0-9_-]{8,128}$/.test(state)) { state = ""; }
+
+  var link = "casetrace://economic-connected?token=" + encodeURIComponent(token)
+           + (state ? "&state=" + encodeURIComponent(state) : "");
+
+  document.getElementById("ok").classList.remove("hidden");
+  var field = document.getElementById("token");
+  field.value = token;
+
+  function openApp() { window.location.href = link; }
+  document.getElementById("again").addEventListener("click", function (ev) {
+    ev.preventDefault(); openApp();
+  });
+  document.getElementById("copy").addEventListener("click", function () {
+    var done = function () { document.getElementById("copied").classList.remove("hidden"); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(token).then(done, function () {
+        field.type = "text"; field.select(); document.execCommand("copy"); done();
+      });
+    } else {
+      field.type = "text"; field.select(); document.execCommand("copy"); done();
+    }
+  });
+
+  // 2) Giv tokenet til CaseTrace (browseren spørger evt. «Åbn CaseTrace?»).
+  setTimeout(openApp, 250);
+})();
+</script>
+</body>
+</html>
