@@ -16,7 +16,8 @@
   e-conomic sender brugeren hertil efter «Tilføj app» med ?token=<kode>
   (e-conomics grant-token; på siden og i CaseTrace hedder det «kode»).
   Siden
-    1. fjerner koden fra adresselinjen med det samme (history.replaceState),
+    1. fjerner koden fra adresselinjen og tilbage-knappen med det samme
+       (history.replaceState),
     2. åbner casetrace://economic-connected?token=…(&state=…), så CaseTrace
        modtager koden og forbinder,
     3. viser «Du kan lukke dette vindue.» — og en lille fallback med
@@ -24,8 +25,14 @@
        «Indstillinger → Regnskabsprogram → Indsæt kode …» i CaseTrace.
   Koden vises ikke på siden (kun kopiér-knappen). Adressen læses rå, så et
   «+» i koden ikke bliver til et mellemrum (som med URLSearchParams).
-  Siden gemmer og logger INTET: ingen cookies, ingen localStorage, ingen
-  statistik, ingen eksterne filer (heller ikke skrifttyper).
+  Sproget følger browseren: dansk, hvis brugeren foretrækker dansk frem for
+  engelsk, ellers engelsk — med de navne, CaseTraces engelske udgave bruger
+  (Settings → Accounting software → Paste code …).
+  Siden selv gemmer og logger INTET: ingen cookies, ingen localStorage, ingen
+  statistik, ingen eksterne filer (heller ikke skrifttyper).  NB: den fulde
+  adresse med koden står alligevel i browserens historik (replaceState
+  fjerner den ikke derfra) og i webhotellets adgangslog — se
+  it-dokumentation.html, afsnit 3.
 -->
 <style>
   :root {
@@ -84,37 +91,39 @@
 <main>
   <div class="brand">CaseTrace × e-conomic</div>
 
+  <!-- Dansk står i siden; data-t peger på den engelske tekst i scriptet. -->
   <section id="ok" hidden>
     <svg class="mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
       <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="2"/>
       <path d="M12.5 20.5l5 5 10-11" fill="none" stroke="currentColor" stroke-width="2.6"
             stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <h1>CaseTrace er forbundet til e-conomic</h1>
-    <p class="lead">Du kan lukke dette vindue.</p>
+    <h1 data-t="okTitle">CaseTrace er forbundet til <span class="nw">e-conomic</span></h1>
+    <p class="lead" data-t="okLead">Du kan lukke dette vindue.</p>
 
     <div class="fallback">
-      <p class="q">Skete der ikke noget i CaseTrace?</p>
+      <p class="q" data-t="okQ">Skete der ikke noget i CaseTrace?</p>
       <div class="actions">
-        <button type="button" id="again">Prøv igen</button>
-        <button type="button" id="copy">Kopiér kode</button>
+        <button type="button" id="again" data-t="again">Prøv igen</button>
+        <button type="button" id="copy" data-t="copy">Kopiér kode</button>
       </div>
-      <p class="hint">Indsæt koden i CaseTrace under
+      <p class="hint" data-t="okHint">Indsæt koden i CaseTrace under
         <b>Indstillinger&nbsp;→ Regnskabsprogram&nbsp;→ Indsæt&nbsp;kode&nbsp;…</b></p>
       <div id="manual" class="manual" hidden>
         <input id="code" type="text" readonly spellcheck="false" autocomplete="off"
                aria-label="Koden fra e-conomic">
-        <p>Browseren ville ikke kopiere. Koden er markeret — tryk Ctrl+C.</p>
+        <p data-t="manual">Browseren ville ikke kopiere. Koden er markeret — tryk Ctrl+C.</p>
       </div>
       <p id="status" class="sr" role="status" aria-live="polite"></p>
     </div>
   </section>
 
   <section id="missing" hidden>
-    <h1>Ingen kode modtaget</h1>
-    <p class="lead">Siden giver kun koden videre, når du kommer direkte fra e-conomic.</p>
+    <h1 data-t="missTitle">Ingen kode modtaget</h1>
+    <p class="lead" data-t="missLead">Siden giver kun koden videre, når du kommer direkte fra
+      <span class="nw">e-conomic</span>.</p>
     <div class="fallback">
-      <p class="hint">Er CaseTrace ikke forbundet? Åbn
+      <p class="hint" data-t="missHint">Er CaseTrace ikke forbundet? Åbn
         <b>Indstillinger&nbsp;→ Regnskabsprogram</b> i CaseTrace, og tryk
         <span class="nw">«Forbind e-conomic»</span>.</p>
     </div>
@@ -124,11 +133,67 @@
     <h1>Slå JavaScript til</h1>
     <p class="lead">Siden skal bruge JavaScript for at give koden videre til CaseTrace.
        Intet sendes andre steder hen.</p>
+    <div class="fallback" lang="en">
+      <p class="q">Turn on JavaScript</p>
+      <p>The page needs JavaScript to pass the code on to CaseTrace.
+         Nothing is sent anywhere else.</p>
+    </div>
   </noscript>
 </main>
 <script>
 (function () {
   "use strict";
+
+  // Sprog: det første af browserens foretrukne sprog, der er dansk eller
+  // engelsk, vinder; alt andet får engelsk.  Engelsk bruger præcis de navne,
+  // CaseTraces engelske udgave viser (Settings → Accounting software …).
+  function pickLang() {
+    var langs = navigator.languages && navigator.languages.length
+              ? navigator.languages : [navigator.language || ""];
+    for (var i = 0; i < langs.length; i++) {
+      var l = String(langs[i] || "").toLowerCase();
+      if (l.indexOf("da") === 0) { return "da"; }
+      if (l.indexOf("en") === 0) { return "en"; }
+    }
+    return "en";
+  }
+
+  var EN = {
+    okTitle: 'CaseTrace is connected to <span class="nw">e-conomic</span>',
+    okLead: "You can close this window.",
+    okQ: "Did nothing happen in CaseTrace?",
+    again: "Try again",
+    copy: "Copy code",
+    okHint: "Paste the code into CaseTrace under "
+          + "<b>Settings&nbsp;→ Accounting&nbsp;software&nbsp;→ Paste&nbsp;code&nbsp;…</b>",
+    manual: "The browser would not copy. The code is selected — press Ctrl+C.",
+    missTitle: "No code received",
+    missLead: 'This page only passes the code on when you come straight from '
+            + '<span class="nw">e-conomic</span>.',
+    missHint: "Is CaseTrace not connected? Open <b>Settings&nbsp;→ Accounting&nbsp;software</b> "
+            + 'in CaseTrace and press <span class="nw">«Connect e-conomic»</span>.'
+  };
+  var T = {
+    da: { title: "CaseTrace er forbundet til e-conomic", missing: "Ingen kode modtaget · CaseTrace",
+          copy: "Kopiér kode", copied: "Kopieret ✓", copiedStatus: "Koden er kopieret.",
+          codeLabel: "Koden fra e-conomic" },
+    en: { title: "CaseTrace is connected to e-conomic", missing: "No code received · CaseTrace",
+          copy: "Copy code", copied: "Copied ✓", copiedStatus: "The code has been copied.",
+          codeLabel: "The code from e-conomic" }
+  };
+  var lang = pickLang();
+  var t = T[lang];
+  if (lang === "en") {
+    document.documentElement.lang = "en";
+    document.title = t.title;
+    // Kun faste tekster herfra — koden kommer aldrig i innerHTML.
+    var nodes = document.querySelectorAll("[data-t]");
+    for (var n = 0; n < nodes.length; n++) {
+      var key = nodes[n].getAttribute("data-t");
+      if (EN.hasOwnProperty(key)) { nodes[n].innerHTML = EN[key]; }
+    }
+    document.getElementById("code").setAttribute("aria-label", t.codeLabel);
+  }
 
   // Adressen læses RÅT: URLSearchParams gør «+» til mellemrum, men «+» kan
   // være en del af koden.  decodeURIComponent lader «+» være.
@@ -147,12 +212,13 @@
   var token = param("token");
   var state = param("state");
 
-  // 1) Koden væk fra adresselinjen (og browserens historik) med det samme.
+  // 1) Koden væk fra adresselinjen og browserens tilbage-knap med det samme.
+  //    (Browserens historik og webhotellets log har stadig den fulde adresse.)
   try { history.replaceState(null, "", window.location.pathname); } catch (e) {}
 
   if (!/^[A-Za-z0-9._~+\/=-]{8,512}$/.test(token)) {
     token = "";
-    document.title = "Ingen kode modtaget · CaseTrace";
+    document.title = t.missing;
     document.getElementById("missing").hidden = false;
     return;
   }
@@ -175,12 +241,12 @@
     manual.hidden = true;
     document.getElementById("code").value = "";
     copyBtn.classList.add("done");
-    copyBtn.textContent = "Kopieret ✓";
-    status.textContent = "Koden er kopieret.";
+    copyBtn.textContent = t.copied;
+    status.textContent = t.copiedStatus;
     clearTimeout(timer);
     timer = setTimeout(function () {
       copyBtn.classList.remove("done");
-      copyBtn.textContent = "Kopiér kode";
+      copyBtn.textContent = t.copy;
       status.textContent = "";
     }, 4000);
   }
